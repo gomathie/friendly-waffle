@@ -1,13 +1,6 @@
 <template>
   <div class="telematics">
-    <HeroSection
-      title="Smarter Vehicles. Better Decisions."
-      subtitle="Harness real-time data with Hitrace's advanced telematics solutions to improve fleet performance, safety, and operational efficiency."
-      badge="Telematics"
-      cta-text="Request a Demo"
-      cta-link="/contact"
-      bg-image="/images/25326182_thanit2022february_16-scaled.webp"
-    />
+    <TelematicsAnimatedHero />
 
     <!-- What is Telematics -->
     <section class="section">
@@ -90,7 +83,7 @@
 
 <script setup>
 import { MapPin, Settings, UserCheck, Fuel, Clock, FileText, Video, Map } from 'lucide-vue-next'
-import HeroSection from '../components/common/HeroSection.vue'
+import TelematicsAnimatedHero from '../components/common/TelematicsAnimatedHero.vue'
 import FeatureCard from '../components/common/FeatureCard.vue'
 import StepCard from '../components/common/StepCard.vue'
 import CtaBanner from '../components/common/CtaBanner.vue'
