@@ -1,6 +1,13 @@
 <template>
   <div>
-    <HeroSection title="Simple, Transparent Pricing" subtitle="Choose the plan that fits your fleet. No hidden fees, no surprises." badge="Pricing" compact />
+    <HeroSection
+      title="Simple, Transparent Pricing"
+      subtitle="Choose the plan that fits your fleet. No hidden fees, no surprises."
+      badge="Pricing"
+      compact
+      bg-image="/images/photo_2025-05-14_00-31-00.webp"
+    />
+
     <section class="section">
       <div class="container">
         <div class="pricing-grid stagger-children">
@@ -12,13 +19,20 @@
         </div>
       </div>
     </section>
-    <CtaBanner title="Not Sure Which Plan is Right for You?" description="Our team will help you find the perfect fit for your fleet size and needs." button-text="Talk to Sales" />
+
+    <CtaBanner
+      title="Not Sure Which Plan is Right for You?"
+      description="Our team will help you find the perfect fit for your fleet size and needs."
+      button-text="Talk to Sales"
+    />
   </div>
 </template>
+
 <script setup>
 import HeroSection from '../components/common/HeroSection.vue'
 import PricingCard from '../components/common/PricingCard.vue'
 import CtaBanner from '../components/common/CtaBanner.vue'
+
 const plans = [
   {
     tier: 'Basic',
@@ -63,6 +77,7 @@ const plans = [
   }
 ]
 </script>
+
 <style scoped>
 .pricing-grid {
   display: grid;
@@ -72,16 +87,22 @@ const plans = [
   max-width: 1000px;
   margin: 0 auto;
 }
+
 .pricing-note {
   text-align: center;
   margin-top: var(--space-12);
 }
+
 .pricing-note p {
   font-size: var(--font-size-lg);
   color: var(--color-text-muted);
   margin-bottom: var(--space-6);
 }
+
 @media (max-width: 900px) {
-  .pricing-grid { grid-template-columns: 1fr; max-width: 420px; }
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+  }
 }
 </style>

@@ -1,33 +1,51 @@
 <template>
   <div>
-    <HeroSection title="Frequently Asked Questions" subtitle="Find answers to the most common questions about our telematics, fleet management, and IoT solutions." badge="FAQ" compact />
+    <HeroSection
+      title="Frequently Asked Questions"
+      subtitle="Find answers to the most common questions about our telematics, fleet management, and IoT solutions."
+      badge="FAQ"
+      compact
+      bg-image="/images/2149916734-e1774871688434.webp"
+    />
+
     <section class="section">
-      <div class="container container--narrow">
-        <div class="faq-list">
-          <div class="faq-item reveal" v-for="(faq, i) in faqs" :key="i" :class="{ 'faq-item--open': openIndex === i }">
-            <button class="faq-item__question" @click="toggle(i)">
-              <span>{{ faq.q }}</span>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="faq-item__chevron"><path d="m6 9 6 6 6-6"/></svg>
-            </button>
-            <div class="faq-item__answer" v-show="openIndex === i">
-              <p>{{ faq.a }}</p>
+      <div class="container">
+        <div class="faq-layout">
+          <div class="faq-main">
+            <div class="faq-list">
+              <div class="faq-item reveal" v-for="(faq, i) in faqs" :key="i" :class="{ 'faq-item--open': openIndex === i }">
+                <button class="faq-item__question" @click="toggle(i)">
+                  <span>{{ faq.q }}</span>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="faq-item__chevron"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+                <div class="faq-item__answer" v-show="openIndex === i">
+                  <p>{{ faq.a }}</p>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="faq-cta reveal">
-          <h3>Still have questions?</h3>
-          <p>Our team is here to help you find the right solution for your business.</p>
-          <router-link to="/contact" class="btn btn--primary">Contact Us</router-link>
+          
+          <div class="faq-sidebar reveal">
+            <div class="faq-sidebar__card">
+              <img src="/images/hand-woman-using-digital-tablet.webp" alt="Support" class="faq-sidebar__img" />
+              <h3>Still have questions?</h3>
+              <p>Our team of telematics and IoT specialists is available to assist you with tailored recommendations.</p>
+              <router-link to="/contact" class="btn btn--primary" style="width: 100%;">Contact Support</router-link>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   </div>
 </template>
+
 <script setup>
 import { ref } from 'vue'
 import HeroSection from '../components/common/HeroSection.vue'
+
 const openIndex = ref(0)
 const toggle = (i) => { openIndex.value = openIndex.value === i ? -1 : i }
+
 const faqs = [
   {
     q: 'What is telematics?',
@@ -63,17 +81,104 @@ const faqs = [
   }
 ]
 </script>
+
 <style scoped>
-.faq-list { display: flex; flex-direction: column; gap: var(--space-3); margin-bottom: var(--space-16); }
-.faq-item { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden; transition: all var(--transition-base); }
-.faq-item--open { border-color: var(--color-primary); box-shadow: var(--shadow-card); }
-.faq-item__question { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: var(--space-5) var(--space-6); font-size: var(--font-size-base); font-weight: var(--font-weight-semibold); text-align: left; color: var(--color-text); transition: color var(--transition-fast); }
-.faq-item__question:hover { color: var(--color-primary); }
-.faq-item__chevron { transition: transform var(--transition-base); flex-shrink: 0; color: var(--color-text-muted); }
-.faq-item--open .faq-item__chevron { transform: rotate(180deg); color: var(--color-primary); }
-.faq-item__answer { padding: 0 var(--space-6) var(--space-6); }
-.faq-item__answer p { font-size: var(--font-size-sm); color: var(--color-text-muted); line-height: var(--line-height-relaxed); }
-.faq-cta { text-align: center; padding: var(--space-10); background: var(--color-surface-alt); border-radius: var(--radius-xl); }
-.faq-cta h3 { font-size: var(--font-size-xl); margin-bottom: var(--space-3); }
-.faq-cta p { color: var(--color-text-muted); margin-bottom: var(--space-6); }
+.faq-layout {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: var(--space-12);
+  align-items: start;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.faq-item {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-base);
+}
+
+.faq-item--open {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-card);
+}
+
+.faq-item__question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--space-5) var(--space-6);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  text-align: left;
+  color: var(--color-text);
+  transition: color var(--transition-fast);
+}
+
+.faq-item__question:hover {
+  color: var(--color-primary);
+}
+
+.faq-item__chevron {
+  transition: transform var(--transition-base);
+  flex-shrink: 0;
+  color: var(--color-text-muted);
+}
+
+.faq-item--open .faq-item__chevron {
+  transform: rotate(180deg);
+  color: var(--color-primary);
+}
+
+.faq-item__answer {
+  padding: 0 var(--space-6) var(--space-6);
+}
+
+.faq-item__answer p {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-relaxed);
+}
+
+.faq-sidebar__card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  text-align: center;
+  box-shadow: var(--shadow-md);
+}
+
+.faq-sidebar__img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-6);
+}
+
+.faq-sidebar__card h3 {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--space-3);
+}
+
+.faq-sidebar__card p {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--space-6);
+  line-height: var(--line-height-relaxed);
+}
+
+@media (max-width: 900px) {
+  .faq-layout {
+    grid-template-columns: 1fr;
+  }
+}
 </style>

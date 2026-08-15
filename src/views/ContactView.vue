@@ -1,6 +1,13 @@
 <template>
   <div>
-    <HeroSection title="Get In Touch" subtitle="Have a question or want to book a demo? We'd love to hear from you." badge="Contact" compact />
+    <HeroSection
+      title="Get In Touch"
+      subtitle="Have a question or want to book a demo? We'd love to hear from you."
+      badge="Contact"
+      compact
+      bg-image="/images/2150471691-e1774869571425.webp"
+    />
+
     <section class="section">
       <div class="container">
         <div class="contact-grid">
@@ -61,25 +68,114 @@
     </section>
   </div>
 </template>
+
 <script setup>
 import HeroSection from '../components/common/HeroSection.vue'
 import ContactForm from '../components/common/ContactForm.vue'
 </script>
+
 <style scoped>
-.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-12); align-items: start; }
-.contact-info h2 { font-size: var(--font-size-h2); margin-bottom: var(--space-3); }
-.contact-info > p { color: var(--color-text-muted); margin-bottom: var(--space-8); font-size: var(--font-size-lg); }
-.contact-details { display: flex; flex-direction: column; gap: var(--space-6); margin-bottom: var(--space-8); }
-.contact-item { display: flex; gap: var(--space-4); }
-.contact-item__icon { display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: var(--radius-md); background: var(--color-primary-light); color: var(--color-primary); flex-shrink: 0; }
-.contact-item h4 { font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); margin-bottom: var(--space-1); }
-.contact-item p { font-size: var(--font-size-sm); color: var(--color-text-muted); }
-.contact-item a { color: var(--color-text-muted); transition: color var(--transition-fast); }
-.contact-item a:hover { color: var(--color-primary); }
-.contact-social { display: flex; gap: var(--space-3); }
-.contact-social__link { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: var(--radius-md); background: var(--color-surface-alt); color: var(--color-text-muted); transition: all var(--transition-base); }
-.contact-social__link:hover { background: var(--color-primary); color: white; transform: translateY(-3px); }
-.contact-form-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: var(--space-10); box-shadow: var(--shadow-lg); }
-.contact-form-card h3 { font-size: var(--font-size-xl); margin-bottom: var(--space-6); }
-@media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+  align-items: start;
+}
+
+.contact-info h2 {
+  font-size: var(--font-size-h2);
+  margin-bottom: var(--space-3);
+}
+
+.contact-info > p {
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-8);
+  font-size: var(--font-size-lg);
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+.contact-item {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.contact-item__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.contact-item h4 {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-1);
+}
+
+.contact-item p {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.contact-item a {
+  color: var(--color-text-muted);
+  transition: color var(--transition-fast);
+}
+
+.contact-item a:hover {
+  color: var(--color-primary);
+}
+
+.contact-social {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.contact-social__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: var(--color-surface-alt);
+  color: var(--color-text-muted);
+  transition: all var(--transition-base);
+}
+
+.contact-social__link:hover {
+  background: var(--color-primary);
+  color: white;
+  transform: translateY(-3px);
+}
+
+.contact-form-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-10);
+  box-shadow: var(--shadow-lg);
+}
+
+.contact-form-card h3 {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--space-6);
+}
+
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
 </style>
