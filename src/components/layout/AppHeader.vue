@@ -3,22 +3,7 @@
     <div class="header__inner container">
       <router-link to="/" class="header__logo" @click="closeMobile">
         <div class="logo">
-          <div class="logo__icon">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-              <rect width="32" height="32" rx="8" fill="url(#logoGrad)"/>
-              <path d="M8 16h6v-6h4v6h6v4h-6v6h-4v-6H8v-4z" fill="white"/>
-              <defs>
-                <linearGradient id="logoGrad" x1="0" y1="0" x2="32" y2="32">
-                  <stop stop-color="#0066FF"/>
-                  <stop offset="1" stop-color="#0052CC"/>
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
-          <div class="logo__text">
-            <span class="logo__name">Hitrace</span>
-            <span class="logo__tagline">Solutions</span>
-          </div>
+          <img src="/images/hit-logo-web.png" alt="Hitrace Solutions" class="logo__img" />
         </div>
       </router-link>
 
@@ -188,28 +173,12 @@ onUnmounted(() => {
 .logo {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
 }
 
-.logo__text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.1;
-}
-
-.logo__name {
-  font-size: 1.3rem;
-  font-weight: var(--font-weight-extrabold);
-  color: var(--color-text-light);
-  letter-spacing: -0.02em;
-}
-
-.logo__tagline {
-  font-size: 0.7rem;
-  font-weight: var(--font-weight-medium);
-  color: var(--color-primary);
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
+.logo__img {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
 }
 
 /* Desktop Nav */

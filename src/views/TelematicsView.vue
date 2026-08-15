@@ -6,6 +6,7 @@
       badge="Telematics"
       cta-text="Request a Demo"
       cta-link="/contact"
+      bg-image="/images/25326182_thanit2022february_16-scaled.webp"
     />
 
     <!-- What is Telematics -->
@@ -45,16 +46,22 @@
       </div>
     </section>
 
-    <!-- Benefits -->
+    <!-- Benefits with Visual Image -->
     <section class="section">
       <div class="container">
-        <div class="section-header reveal">
-          <h2>Benefits of Hitrace Telematics</h2>
-        </div>
-        <div class="benefits-grid stagger-children">
-          <div class="benefit-item" v-for="b in benefits" :key="b">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
-            <span>{{ b }}</span>
+        <div class="telematics__benefits-layout reveal">
+          <div class="telematics__benefits-img-box">
+            <img src="/images/16406297_rm373batch2-06-scaled.webp" alt="Hitrace Telematics Technology" class="telematics__benefits-img" />
+          </div>
+          <div class="telematics__benefits-content">
+            <h2>Benefits of Hitrace Telematics</h2>
+            <p class="telematics__benefits-subtitle">Empowering organizations with visibility, predictability, and control across every vehicle.</p>
+            <div class="benefits-list stagger-children">
+              <div class="benefit-item" v-for="b in benefits" :key="b">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
+                <span>{{ b }}</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -64,7 +71,9 @@
     <section class="section section--dark">
       <div class="container">
         <div class="testimonial reveal">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" class="testimonial__quote"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+          <div class="testimonial__avatar">
+            <img src="/images/owp-people-2.jpg" alt="Tayo E." />
+          </div>
           <blockquote class="testimonial__text">"The telematics insights from Hitrace helped us cut fuel costs by 25% and drastically improved our driver performance."</blockquote>
           <cite class="testimonial__author">Tayo E., Logistics Supervisor</cite>
         </div>
@@ -139,12 +148,40 @@ const benefits = [
   color: var(--color-primary);
 }
 
-.benefits-grid {
+.telematics__benefits-layout {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--space-4);
-  max-width: 800px;
-  margin: 0 auto;
+  grid-template-columns: 1fr 1.2fr;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+.telematics__benefits-img-box {
+  position: relative;
+}
+
+.telematics__benefits-img {
+  width: 100%;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  object-fit: cover;
+}
+
+.telematics__benefits-content h2 {
+  font-size: var(--font-size-h2);
+  margin-bottom: var(--space-3);
+}
+
+.telematics__benefits-subtitle {
+  font-size: var(--font-size-base);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-8);
+  line-height: var(--line-height-relaxed);
+}
+
+.benefits-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
 }
 
 .benefit-item {
@@ -175,10 +212,17 @@ const benefits = [
   padding: var(--space-8);
 }
 
-.testimonial__quote {
-  color: var(--color-primary);
-  opacity: 0.4;
+.testimonial__avatar {
   margin-bottom: var(--space-6);
+}
+
+.testimonial__avatar img {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  margin: 0 auto;
+  border: 3px solid var(--color-primary);
+  object-fit: cover;
 }
 
 .testimonial__text {
@@ -194,5 +238,12 @@ const benefits = [
   font-weight: var(--font-weight-semibold);
   color: var(--color-text-light);
   font-size: var(--font-size-sm);
+}
+
+@media (max-width: 900px) {
+  .telematics__benefits-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
 }
 </style>

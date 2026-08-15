@@ -8,7 +8,20 @@
       cta-link="/contact"
       secondary-text="Explore Services"
       secondary-link="/telematics"
+      bg-image="/images/photo_2025-05-14_00-31-08.webp"
     />
+
+    <!-- Partners / Integrations Banner -->
+    <section class="partners-banner">
+      <div class="container">
+        <p class="partners-banner__label">Trusted by industry leaders & hardware providers</p>
+        <div class="partners-banner__logos">
+          <div class="partner-logo" v-for="partner in partners" :key="partner.name">
+            <img :src="partner.img" :alt="partner.name" />
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Services Grid -->
     <section class="section">
@@ -53,7 +66,8 @@
     <!-- Tracker Installation CTA -->
     <section class="section section--alt">
       <div class="container">
-        <div class="home__tracker reveal">
+        <div class="home__tracker reveal" style="background-image: url('/images/truck-vehicle-with-trailers-background_600x316.webp');">
+          <div class="home__tracker-overlay"></div>
           <div class="home__tracker-content">
             <h2>Interested in a tracker installation?</h2>
             <p>Talk to us today</p>
@@ -67,33 +81,46 @@
     <section class="section">
       <div class="container">
         <div class="home__mission reveal">
-          <div class="home__mission-text">
-            <span class="badge">About Us</span>
-            <h2>Our Mission & Vision</h2>
-            <p>To revolutionize the way businesses manage their fleets, providing real-time insights and actionable data that drive smarter decisions, reduce costs, and improve safety.</p>
-            <router-link to="/" class="btn btn--outline">Learn More About Us</router-link>
+          <div class="home__mission-image-wrapper">
+            <img 
+              src="/images/portrait-african-american-man-factory.webp" 
+              alt="HiTrace Mission and Operations" 
+              class="home__mission-img"
+            />
+            <div class="home__mission-badge">
+              <span class="badge">About Us</span>
+              <h2>Our Mission & Vision</h2>
+              <p>To revolutionize the way businesses manage their fleets, providing real-time insights and actionable data that drive smarter decisions, reduce costs, and improve safety.</p>
+              <router-link to="/telematics" class="btn btn--outline">Learn More About Us</router-link>
+            </div>
           </div>
           <div class="home__mission-stats stagger-children">
             <div class="stat-card">
-              <div class="stat-card__icon">
-                <Award :size="28" />
+              <div class="stat-card__icon-img">
+                <img src="/images/trophy.png" alt="Experience" />
               </div>
-              <h3>Experience</h3>
-              <p>We have more than 15 years of experience in providing Vehicle Tracking & Fleet Management solutions.</p>
+              <div class="stat-card__text">
+                <h3>Experience</h3>
+                <p>We have more than 15 years of experience in providing Vehicle Tracking & Fleet Management solutions.</p>
+              </div>
             </div>
             <div class="stat-card">
-              <div class="stat-card__icon">
-                <DollarSign :size="28" />
+              <div class="stat-card__icon-img">
+                <img src="/images/income_13431106.png" alt="Affordability" />
               </div>
-              <h3>Affordability</h3>
-              <p>We offer dependable and high-quality GPS hardware and software that remains budget-friendly for everyone.</p>
+              <div class="stat-card__text">
+                <h3>Affordability</h3>
+                <p>We offer dependable and high-quality GPS hardware and software that remains budget-friendly for everyone.</p>
+              </div>
             </div>
             <div class="stat-card">
-              <div class="stat-card__icon">
-                <Zap :size="28" />
+              <div class="stat-card__icon-img">
+                <img src="/images/employee.png" alt="Advanced Technologies" />
               </div>
-              <h3>Advanced Technologies</h3>
-              <p>Wonderful customer support with advanced technologies</p>
+              <div class="stat-card__text">
+                <h3>Advanced Technologies</h3>
+                <p>Wonderful customer support with advanced technologies and 24/7 assistance.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -111,11 +138,19 @@
 </template>
 
 <script setup>
-import { Truck, Radio, Home as HomeIcon, Globe, LayoutGrid, Puzzle, Cpu, Headphones, Award, DollarSign, Zap } from 'lucide-vue-next'
+import { Truck, Radio, Home as HomeIcon, Globe, LayoutGrid, Puzzle, Cpu, Headphones, Award } from 'lucide-vue-next'
 import HeroSection from '../components/common/HeroSection.vue'
 import ServiceCard from '../components/common/ServiceCard.vue'
 import FeatureCard from '../components/common/FeatureCard.vue'
 import CtaBanner from '../components/common/CtaBanner.vue'
+
+const partners = [
+  { name: 'Teltonika', img: '/images/telto-e1724330667289-1.png' },
+  { name: 'Pilot', img: '/images/pilot-logo-new-1-e1773316299924.png' },
+  { name: 'Green', img: '/images/Green0-e1773316256847.png' },
+  { name: 'Industrial', img: '/images/industrial-logo_logo2.webp' },
+  { name: 'XBR', img: '/images/xbr1.png' }
+]
 
 const services = [
   {
@@ -179,24 +214,66 @@ const partnerFeatures = [
 </script>
 
 <style scoped>
+/* Partners Banner */
+.partners-banner {
+  background: var(--color-surface-alt);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-6) 0;
+}
+
+.partners-banner__label {
+  text-align: center;
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-4);
+  font-weight: var(--font-weight-semibold);
+}
+
+.partners-banner__logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+  flex-wrap: wrap;
+}
+
+.partner-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  filter: grayscale(1) opacity(0.7);
+  transition: all var(--transition-base);
+}
+
+.partner-logo:hover {
+  filter: grayscale(0) opacity(1);
+  transform: translateY(-2px);
+}
+
+.partner-logo img {
+  max-height: 32px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Tracker Banner */
 .home__tracker {
+  position: relative;
   text-align: center;
   padding: var(--space-16) var(--space-8);
-  background: var(--gradient-dark);
+  background-size: cover;
+  background-position: center;
   border-radius: var(--radius-xl);
-  position: relative;
   overflow: hidden;
 }
 
-.home__tracker::before {
-  content: '';
+.home__tracker-overlay {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 500px;
-  height: 250px;
-  background: radial-gradient(ellipse, rgba(0, 102, 255, 0.12) 0%, transparent 70%);
+  inset: 0;
+  background: linear-gradient(135deg, rgba(10, 22, 40, 0.9) 0%, rgba(0, 102, 255, 0.85) 100%);
 }
 
 .home__tracker-content {
@@ -212,42 +289,59 @@ const partnerFeatures = [
 
 .home__tracker p {
   font-size: var(--font-size-lg);
-  color: var(--color-text-dark-muted);
+  color: rgba(255, 255, 255, 0.85);
   margin-bottom: var(--space-8);
 }
 
 /* Mission Section */
 .home__mission {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.1fr 1fr;
   gap: var(--space-12);
   align-items: center;
 }
 
-.home__mission-text .badge {
+.home__mission-image-wrapper {
+  position: relative;
+}
+
+.home__mission-img {
+  width: 100%;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  object-fit: cover;
+  max-height: 480px;
+}
+
+.home__mission-badge {
+  margin-top: var(--space-6);
+}
+
+.home__mission-badge .badge {
+  margin-bottom: var(--space-3);
+}
+
+.home__mission-badge h2 {
+  font-size: var(--font-size-h2);
   margin-bottom: var(--space-4);
 }
 
-.home__mission-text h2 {
-  font-size: var(--font-size-h2);
-  margin-bottom: var(--space-6);
-}
-
-.home__mission-text p {
-  font-size: var(--font-size-lg);
+.home__mission-badge p {
+  font-size: var(--font-size-base);
   color: var(--color-text-muted);
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-6);
   line-height: var(--line-height-relaxed);
 }
 
 .home__mission-stats {
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
+  gap: var(--space-5);
 }
 
 .stat-card {
   display: flex;
+  align-items: flex-start;
   gap: var(--space-4);
   padding: var(--space-6);
   background: var(--color-surface);
@@ -262,7 +356,7 @@ const partnerFeatures = [
   transform: translateX(4px);
 }
 
-.stat-card__icon {
+.stat-card__icon-img {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -270,23 +364,29 @@ const partnerFeatures = [
   height: 52px;
   border-radius: var(--radius-md);
   background: var(--color-primary-light);
-  color: var(--color-primary);
   flex-shrink: 0;
+  padding: 8px;
 }
 
-.stat-card h3 {
+.stat-card__icon-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.stat-card__text h3 {
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-semibold);
-  margin-bottom: var(--space-2);
+  margin-bottom: var(--space-1);
 }
 
-.stat-card p {
+.stat-card__text p {
   font-size: var(--font-size-sm);
   color: var(--color-text-muted);
   line-height: var(--line-height-relaxed);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .home__mission {
     grid-template-columns: 1fr;
     gap: var(--space-8);
