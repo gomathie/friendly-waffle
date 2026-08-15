@@ -105,14 +105,25 @@ const currentYear = new Date().getFullYear()
 }
 
 .logo {
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 6px 14px;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: all var(--transition-base);
+}
+
+.logo:hover {
+  background: #ffffff;
+  transform: translateY(-1px);
 }
 
 .logo__img {
-  height: 36px;
+  height: 32px;
   width: auto;
   object-fit: contain;
+  filter: contrast(1.15) brightness(1.02);
 }
 
 .footer__desc {

@@ -173,12 +173,24 @@ onUnmounted(() => {
 .logo {
   display: flex;
   align-items: center;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 6px 14px;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), 0 0 1px rgba(255, 255, 255, 0.5);
+  transition: all var(--transition-base);
+}
+
+.logo:hover {
+  background: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 102, 255, 0.25);
 }
 
 .logo__img {
-  height: 38px;
+  height: 32px;
   width: auto;
   object-fit: contain;
+  filter: contrast(1.15) brightness(1.02);
 }
 
 /* Desktop Nav */
