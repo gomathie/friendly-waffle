@@ -9,12 +9,14 @@
       </router-view>
     </main>
     <AppFooter />
+    <WhatsAppFloat />
   </div>
 </template>
 
 <script setup>
 import AppHeader from './components/layout/AppHeader.vue'
 import AppFooter from './components/layout/AppFooter.vue'
+import WhatsAppFloat from './components/common/WhatsAppFloat.vue'
 </script>
 
 <style>
