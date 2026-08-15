@@ -89,31 +89,31 @@ import StepCard from '../components/common/StepCard.vue'
 import CtaBanner from '../components/common/CtaBanner.vue'
 
 const features = [
-  { icon: MapPin, title: 'Live GPS Tracking', description: "Monitor every vehicle's real-time location." },
-  { icon: Settings, title: 'Vehicle Diagnostics', description: 'Get instant alerts for engine faults, maintenance needs, and fuel levels.' },
-  { icon: UserCheck, title: 'Driver Behavior Monitoring', description: 'Track speed, harsh braking, acceleration, and idling.' },
-  { icon: Fuel, title: 'Fuel Monitoring', description: "Monitor every vehicle's fuel consumption rate." },
-  { icon: Clock, title: 'Trip History & Playback', description: 'Review route histories with speed and stop reports.' },
-  { icon: FileText, title: 'Custom Reports', description: 'Generate automated insights for performance, safety, and compliance.' },
-  { icon: Video, title: 'AI Video Monitoring', description: 'Utilize cutting-edge AI-driven video technology to safeguard your most valuable assets.' },
-  { icon: Map, title: 'Geofencing', description: 'Create custom zones and receive instant exit/entry notifications.' }
+  { icon: MapPin, title: 'Live GPS Tracking', description: "Monitor every vehicle's real-time location with pinpoint accuracy. Our advanced satellite tracking ensures you always know the exact position, route history, and ETA of your assets, updating every few seconds." },
+  { icon: Settings, title: 'Vehicle Diagnostics', description: 'Prevent breakdowns before they happen. Get instant, automated alerts for engine faults, battery voltage drops, scheduled maintenance needs, and critical fluid levels directly from the vehicle CAN bus.' },
+  { icon: UserCheck, title: 'Driver Behavior Monitoring', description: 'Promote a culture of safety. Track and score drivers based on speeding, harsh braking, rapid acceleration, and excessive idling to reduce accidents and lower insurance premiums.' },
+  { icon: Fuel, title: 'Fuel Monitoring', description: "Stop fuel theft and optimize consumption. High-precision sensors monitor every vehicle's fuel level in real-time, instantly notifying you of unauthorized drains or inefficient fuel usage rates." },
+  { icon: Clock, title: 'Trip History & Playback', description: 'Review comprehensive route histories with detailed speed profiles and stop durations. Replay historical trips on the map to verify driver logs and investigate disputes.' },
+  { icon: FileText, title: 'Custom Reports', description: 'Generate automated, actionable insights. Schedule daily, weekly, or monthly reports on fleet performance, safety scores, and regulatory compliance, delivered straight to your inbox.' },
+  { icon: Video, title: 'AI Video Monitoring', description: 'Safeguard your most valuable assets with cutting-edge AI dashcams. Capture forward-facing and driver-facing video events triggered by harsh driving or distracted behavior.' },
+  { icon: Map, title: 'Geofencing', description: 'Create custom virtual boundaries around depots, client sites, or restricted areas. Receive instant push notifications the moment a vehicle enters or exits a designated zone.' }
 ]
 
 const steps = [
-  { title: 'Install Devices', description: 'Install telematics devices in your vehicles' },
-  { title: 'Transmit Data', description: "Transmit data to Hitrace's secure cloud" },
-  { title: 'Access Insights', description: 'Access insights from your custom dashboard' },
-  { title: 'Take Action', description: 'Take action to reduce risks and boost performance' }
+  { title: 'Install Devices', description: 'Our certified technicians seamlessly install robust, tamper-proof telematics hardware into your vehicles, ensuring zero disruption to your daily operations.' },
+  { title: 'Transmit Data', description: "The hardware continuously transmits encrypted telemetry data over secure cellular networks directly to Hitrace's high-availability cloud infrastructure." },
+  { title: 'Access Insights', description: 'Log into your intuitive, customized web dashboard or mobile app from anywhere in the world to view real-time fleet metrics and interactive maps.' },
+  { title: 'Take Action', description: 'Leverage data-driven insights to proactively schedule maintenance, coach underperforming drivers, optimize dispatch routes, and ultimately reduce operational risks.' }
 ]
 
-const industries = ['Logistics & Transport', 'Public Transportation', 'Construction & Equipment Fleets', 'Corporate Vehicle Management', 'Emergency Services']
+const industries = ['Logistics & Transport', 'Public Transportation', 'Construction & Equipment Fleets', 'Corporate Vehicle Management', 'Emergency Services', 'Cold Chain & Refrigerated Transport', 'Agriculture & Farming Equipment', 'Waste Management & Utilities']
 
 const benefits = [
-  'Lower fuel and maintenance costs',
-  'Improve driver safety and compliance',
-  'Reduce downtime with proactive maintenance',
-  'Boost productivity with smarter routing',
-  'Enhance customer satisfaction through ETA accuracy'
+  'Significantly lower fuel consumption and ongoing maintenance costs',
+  'Improve driver safety records and ensure strict regulatory compliance',
+  'Reduce unexpected vehicle downtime with predictive, proactive maintenance',
+  'Boost daily operational productivity with smarter, data-backed routing',
+  'Enhance customer satisfaction and trust through precise ETA accuracy'
 ]
 </script>
 
