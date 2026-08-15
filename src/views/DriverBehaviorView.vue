@@ -66,20 +66,20 @@ import FeatureCard from '../components/common/FeatureCard.vue'
 import CtaBanner from '../components/common/CtaBanner.vue'
 
 const features = [
-  { icon: Gauge, title: 'Speed Monitoring', description: 'Track and alert on speeding violations across your fleet in real-time.' },
-  { icon: AlertTriangle, title: 'Harsh Braking Detection', description: 'Identify dangerous braking patterns and coach drivers for safer habits.' },
-  { icon: Zap, title: 'Rapid Acceleration Tracking', description: 'Detect excessive acceleration that wastes fuel and increases wear.' },
-  { icon: Clock, title: 'Idle Time Monitoring', description: 'Track excessive idling to reduce fuel waste and emissions.' },
-  { icon: Shield, title: 'Safety Scoring', description: 'Assign safety scores to each driver based on their performance data.' },
-  { icon: Award, title: 'Driver Ranking', description: 'Rank drivers and incentivize good behavior with gamification.' }
+  { icon: Gauge, title: 'Speed Monitoring', description: 'Ensure absolute compliance with road speed limits. Our system triggers instant alerts for excessive speeding, allowing managers to intervene before costly fines or severe accidents occur.' },
+  { icon: AlertTriangle, title: 'Harsh Braking Detection', description: 'Pinpoint dangerous, aggressive braking patterns. Use hard data to proactively coach drivers, improve overall road safety, and significantly reduce wear and tear on brake pads and rotors.' },
+  { icon: Zap, title: 'Rapid Acceleration Tracking', description: 'Monitor jackrabbit starts and erratic acceleration. Eliminating this aggressive driving style is proven to substantially cut fuel waste and minimize stress on the vehicle drivetrain.' },
+  { icon: Clock, title: 'Idle Time Monitoring', description: 'Combat unnecessary fuel burn and emissions. Identify drivers who leave engines running during extended stops and enforce corporate anti-idling policies to drastically reduce overhead.' },
+  { icon: Shield, title: 'Safety Scoring', description: 'Automatically compile comprehensive telemetry data into a straightforward 0-100 safety score for each driver, giving you a clear, objective benchmark of fleet risk levels.' },
+  { icon: Award, title: 'Driver Ranking', description: 'Foster a healthy culture of competition. Rank drivers on a dynamic leaderboard and introduce gamification to incentivize and reward your safest, most efficient operators.' }
 ]
 
 const benefits = [
-  'Reduce accident rates and insurance costs',
-  'Improve fuel efficiency through better driving habits',
-  'Enhance fleet safety and regulatory compliance',
-  'Protect your brand reputation',
-  'Create a culture of responsible driving'
+  'Dramatically reduce accident rates, liability claims, and insurance premiums',
+  'Improve fleet-wide fuel efficiency by coaching out aggressive driving habits',
+  'Enhance public brand reputation by ensuring your branded vehicles are driven safely',
+  'Extend the lifespan of your vehicles by minimizing harsh mechanical wear and tear',
+  'Create a transparent, accountable, and highly responsible corporate driving culture'
 ]
 </script>
 

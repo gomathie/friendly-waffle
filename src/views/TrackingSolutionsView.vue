@@ -105,33 +105,33 @@ import StepCard from '../components/common/StepCard.vue'
 import CtaBanner from '../components/common/CtaBanner.vue'
 
 const trackingTypes = [
-  { icon: Truck, title: 'Vehicle Tracking', description: 'Live location, speed, route history, fuel usage, and driver behavior analytics.' },
-  { icon: Package, title: 'Asset Tracking', description: 'Monitor valuable equipment or goods in transit with geo-fencing and movement alerts.' },
-  { icon: BarChart3, title: 'Fleet Management', description: 'Full platform for dispatch, maintenance alerts, and analytics reporting.' }
+  { icon: Truck, title: 'Vehicle Tracking', description: 'Real-time location monitoring, speed analysis, route history playback, fuel consumption metrics, and comprehensive driver behavior analytics designed for any vehicle type.' },
+  { icon: Package, title: 'Asset Tracking', description: 'Monitor the exact location of valuable equipment, generators, or goods in transit. Utilize advanced geo-fencing and receive instant movement or tamper alerts.' },
+  { icon: BarChart3, title: 'Fleet Management', description: 'A robust, centralized platform for dispatch coordination, automated maintenance scheduling, compliance tracking, and deep-dive operational analytics reporting.' }
 ]
 
 const features = [
-  { icon: MapPin, title: 'Real-Time GPS Tracking', description: 'Instant visibility into asset or vehicle locations.' },
-  { icon: Map, title: 'Geofencing', description: 'Get alerts when items leave designated areas.' },
-  { icon: Navigation, title: 'Route Optimization', description: 'Smarter paths for faster, cost-effective operations.' },
-  { icon: UserCheck, title: 'Driver Behavior Monitoring', description: 'Track speeding, harsh braking, and idle times.' },
-  { icon: FileText, title: 'Reporting & Analytics', description: 'Custom dashboards for performance insights.' },
-  { icon: Smartphone, title: 'Mobile App', description: 'Monitor and control on the go.' }
+  { icon: MapPin, title: 'Real-Time GPS Tracking', description: 'Gain instant, second-by-second visibility into your entire fleet or asset inventory from any device.' },
+  { icon: Map, title: 'Geofencing', description: 'Establish virtual perimeters and automatically trigger alerts the moment an asset enters or leaves a designated safe zone.' },
+  { icon: Navigation, title: 'Route Optimization', description: 'Calculate and dispatch the smartest, most efficient paths to reduce mileage, cut fuel costs, and ensure faster delivery times.' },
+  { icon: UserCheck, title: 'Driver Behavior Monitoring', description: 'Protect your vehicles by monitoring and scoring drivers on speeding, harsh braking, rapid cornering, and excessive idling.' },
+  { icon: FileText, title: 'Reporting & Analytics', description: 'Generate custom dashboards and schedule automated reports to track ROI, fuel usage, and overall fleet performance.' },
+  { icon: Smartphone, title: 'Mobile App', description: 'Stay connected on the go with our fully-featured iOS and Android mobile applications, bringing fleet control to your pocket.' }
 ]
 
 const steps = [
-  { title: 'Install Trackers', description: 'Install GPS-enabled trackers on vehicles, assets, or personnel.' },
-  { title: 'Connect Platform', description: 'Connect to the Hitrace cloud platform.' },
-  { title: 'Track & Monitor', description: 'Track & Monitor via web or mobile interface.' },
-  { title: 'Act on Data', description: 'Act on real-time alerts and reports.' }
+  { title: 'Install Trackers', description: 'Our certified engineers covertly install high-precision, tamper-proof GPS trackers on your vehicles, heavy assets, or specialized personnel equipment.' },
+  { title: 'Connect Platform', description: 'The hardware automatically connects to the Hitrace cloud platform, initiating a secure, encrypted stream of real-time telemetry data.' },
+  { title: 'Track & Monitor', description: 'Log in via our intuitive web portal or mobile app to immediately begin tracking movements, monitoring engine health, and viewing live maps.' },
+  { title: 'Act on Data', description: 'Utilize automated alerts, predictive maintenance reports, and driver scores to make immediate decisions that boost safety and profitability.' }
 ]
 
 const benefits = [
-  'Improved asset visibility and theft prevention',
-  'Reduced fuel and maintenance costs',
-  'Enhanced driver safety and compliance',
-  'Better decision-making with real-time data',
-  'Increased operational transparency and customer trust'
+  'Achieve complete asset visibility and drastically reduce the risk of theft or unauthorized use',
+  'Significantly lower operational costs by cutting unnecessary fuel burn and optimizing maintenance',
+  'Enhance driver safety, enforce corporate driving policies, and ensure regulatory compliance',
+  'Make rapid, informed business decisions backed by real-time telematics data and historical analytics',
+  'Increase customer trust and satisfaction with precise dispatching and highly accurate arrival times'
 ]
 </script>
 

@@ -79,20 +79,20 @@ import FeatureCard from '../components/common/FeatureCard.vue'
 import CtaBanner from '../components/common/CtaBanner.vue'
 
 const features = [
-  { icon: MapPin, title: 'Field Activity Tracking', description: 'Track all field operations in real-time including plowing, planting, and harvesting.' },
-  { icon: Tractor, title: 'Equipment Management', description: 'Monitor your agricultural machinery and schedule maintenance proactively.' },
-  { icon: Thermometer, title: 'Environmental Monitoring', description: 'Track temperature, humidity, and other environmental conditions affecting crops.' },
-  { icon: Droplets, title: 'Fuel Optimization', description: 'Monitor fuel usage across your farming equipment to reduce costs.' },
-  { icon: BarChart3, title: 'Performance Analytics', description: 'Gain insights into field productivity and equipment utilization.' },
-  { icon: Clock, title: 'Work Hour Tracking', description: 'Track operator hours and optimize labor allocation across your farm.' }
+  { icon: MapPin, title: 'Field Activity Tracking', description: 'Monitor every single field operation in real-time. Precisely track plowing, planting, spraying, and harvesting routes to ensure total coverage without costly overlaps.' },
+  { icon: Tractor, title: 'Equipment Management', description: 'Protect your high-value agricultural machinery. Schedule proactive maintenance based on actual engine hours rather than calendar days to eliminate unexpected breakdowns during peak seasons.' },
+  { icon: Thermometer, title: 'Environmental Monitoring', description: 'Integrate advanced sensors to track ambient temperature, soil moisture, and humidity. Use this granular environmental data to optimize watering and fertilization schedules.' },
+  { icon: Droplets, title: 'Fuel Optimization', description: 'Stop agricultural fuel theft and reduce waste. High-precision tank sensors monitor fuel levels 24/7, instantly alerting you to sudden drops or highly inefficient operating rates.' },
+  { icon: BarChart3, title: 'Performance Analytics', description: 'Transform raw farm data into actionable insights. Generate detailed reports comparing yields, machine utilization rates, and operator efficiency across different plots of land.' },
+  { icon: Clock, title: 'Work Hour Tracking', description: 'Automate your agricultural workforce management. Accurately track operator hours, verify timesheets, and optimize labor allocation based on real-time field activity.' }
 ]
 
 const benefits = [
-  'Increase field productivity and efficiency',
-  'Reduce equipment downtime and repair costs',
-  'Optimize fuel and resource consumption',
-  'Track and verify all field activities',
-  'Make data-driven agricultural decisions'
+  'Dramatically increase overall crop yields and field productivity through precision agriculture',
+  'Slash expensive equipment downtime and prevent catastrophic breakdowns with predictive maintenance',
+  'Drastically reduce farming overhead by optimizing fuel consumption, water, and fertilizer usage',
+  'Digitize your operations to automatically track, verify, and document all seasonal field activities',
+  'Make confident, data-driven agricultural decisions that maximize profitability year after year'
 ]
 </script>
 
