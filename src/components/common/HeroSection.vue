@@ -1,6 +1,12 @@
 <template>
   <section class="hero" :class="[`hero--${variant}`, { 'hero--compact': compact }]">
     <div class="hero__bg">
+      <div 
+        v-if="bgImage" 
+        class="hero__bg-img" 
+        :style="{ backgroundImage: `url(${bgImage})` }"
+      ></div>
+      <div class="hero__overlay"></div>
       <div class="hero__glow"></div>
       <div class="hero__grid-pattern"></div>
     </div>
@@ -30,7 +36,8 @@ defineProps({
   secondaryText: { type: String, default: '' },
   secondaryLink: { type: String, default: '/' },
   variant: { type: String, default: 'default' },
-  compact: { type: Boolean, default: false }
+  compact: { type: Boolean, default: false },
+  bgImage: { type: String, default: '' }
 })
 </script>
 
@@ -39,13 +46,13 @@ defineProps({
   position: relative;
   display: flex;
   align-items: center;
-  min-height: 520px;
+  min-height: 540px;
   padding: calc(72px + var(--space-16)) 0 var(--space-16);
   overflow: hidden;
 }
 
 .hero--compact {
-  min-height: 380px;
+  min-height: 400px;
   padding: calc(72px + var(--space-10)) 0 var(--space-10);
 }
 
@@ -56,6 +63,22 @@ defineProps({
   z-index: 0;
 }
 
+.hero__bg-img {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.25;
+  filter: saturate(1.2);
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 22, 40, 0.75) 0%, rgba(10, 22, 40, 0.92) 100%);
+}
+
 .hero__glow {
   position: absolute;
   top: 10%;
@@ -63,7 +86,7 @@ defineProps({
   transform: translateX(-50%);
   width: 800px;
   height: 400px;
-  background: radial-gradient(ellipse, rgba(0, 102, 255, 0.12) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(0, 102, 255, 0.18) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -82,7 +105,7 @@ defineProps({
   position: relative;
   z-index: 1;
   text-align: center;
-  max-width: 800px;
+  max-width: 840px;
   margin: 0 auto;
 }
 
@@ -96,13 +119,13 @@ defineProps({
   color: var(--color-text-light);
   margin-bottom: var(--space-6);
   letter-spacing: -0.02em;
-  line-height: 1.1;
+  line-height: 1.15;
 }
 
 .hero__subtitle {
   font-size: var(--font-size-lg);
   color: var(--color-text-dark-muted);
-  max-width: 640px;
+  max-width: 660px;
   margin: 0 auto var(--space-10);
   line-height: var(--line-height-relaxed);
 }
@@ -116,10 +139,10 @@ defineProps({
 
 @media (max-width: 640px) {
   .hero {
-    min-height: 420px;
+    min-height: 440px;
   }
   .hero--compact {
-    min-height: 320px;
+    min-height: 340px;
   }
   .hero__actions {
     flex-direction: column;
