@@ -13,6 +13,7 @@ const routes = [
   { path: '/industries', name: 'Industries', component: () => import('../views/IndustriesView.vue'), meta: { title: 'Industries - Hitrace' } },
   { path: '/pricing', name: 'Pricing', component: () => import('../views/PricingView.vue'), meta: { title: 'Pricing - Hitrace' } },
   { path: '/contact', name: 'Contact', component: () => import('../views/ContactView.vue'), meta: { title: 'Contact - Hitrace' } },
+  { path: '/onegps-africa', name: 'OneGpsAfrica', component: () => import('../views/OneGpsAfricaView.vue'), meta: { title: 'OneGPS Africa - Hitrace' } },
   { path: '/faq', name: 'FAQ', component: () => import('../views/FaqView.vue'), meta: { title: 'FAQ - Hitrace' } },
   { path: '/book-a-demo', redirect: '/contact' },
   { path: '/services', redirect: '/telematics' },
