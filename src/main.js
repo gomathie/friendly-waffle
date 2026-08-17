@@ -10,27 +10,33 @@ app.use(router)
 app.mount('#app')
 
 // Scroll reveal observer
-const observeRevealElements = () => {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed')
-        }
-      })
-    },
-    { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
-  )
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed')
+        // Optional: Stop observing once revealed
+        // observer.unobserve(entry.target)
+      }
+    })
+  },
+  { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+)
 
+const observeRevealElements = () => {
   document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger-children').forEach((el) => {
-    observer.observe(el)
+    if (!el.dataset.observed) {
+      observer.observe(el)
+      el.dataset.observed = 'true'
+    }
   })
 }
 
-// Re-observe on route changes
-router.afterEach(() => {
-  setTimeout(observeRevealElements, 100)
-})
-
 // Initial observe
-setTimeout(observeRevealElements, 200)
+observeRevealElements()
+
+// Use MutationObserver to reliably catch elements as they are dynamically mounted by Vue Router
+const mutationObserver = new MutationObserver(() => {
+  observeRevealElements()
+})
+mutationObserver.observe(document.body, { childList: true, subtree: true })

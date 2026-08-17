@@ -22,11 +22,11 @@
         </div>
 
         <!-- Pricing Cards -->
-        <div class="pricing-grid stagger-children">
+        <div class="pricing-grid">
           <div 
             v-for="plan in plans" 
             :key="plan.tier" 
-            class="pricing-card hover-lift"
+            class="pricing-card hover-lift reveal"
             :class="{ 'pricing-card--featured': plan.featured }"
           >
             <div class="pricing-card__badge" v-if="plan.featured">Most Popular</div>
