@@ -37,6 +37,7 @@
           <div class="footer__col">
             <h4 class="footer__heading">What We Do</h4>
             <ul class="footer__links">
+              <li><router-link to="/onegps-africa" style="color: var(--color-primary); font-weight: 600;">⭐ OneGPS Africa (Flagship)</router-link></li>
               <li><router-link to="/fleet-management">Fleet Management</router-link></li>
               <li><router-link to="/tracking-solutions">Tracking Solutions</router-link></li>
               <li><router-link to="/fuel-monitoring">Fuel Monitoring</router-link></li>

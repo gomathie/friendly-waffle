@@ -20,6 +20,7 @@
             <div class="dropdown" v-show="activeDropdown === 'services'">
               <div class="dropdown__section">
                 <h4 class="dropdown__title">Telematics</h4>
+                <router-link to="/onegps-africa" class="dropdown__link" @click="closeDropdown" style="color: var(--color-primary); font-weight: 600;">⭐ OneGPS Africa (Flagship)</router-link>
                 <router-link to="/telematics" class="dropdown__link" @click="closeDropdown">Overview</router-link>
                 <router-link to="/fleet-management" class="dropdown__link" @click="closeDropdown">Fleet Management</router-link>
                 <router-link to="/fuel-monitoring" class="dropdown__link" @click="closeDropdown">Fuel Monitoring</router-link>
@@ -77,6 +78,7 @@
               <svg :class="{ rotated: mobileSection === 'services' }" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
             </button>
             <div class="mobile-nav__sub" v-show="mobileSection === 'services'">
+              <router-link to="/onegps-africa" class="mobile-nav__sublink" @click="closeMobile" style="color: var(--color-primary); font-weight: 600;">⭐ OneGPS Africa (Flagship)</router-link>
               <router-link to="/telematics" class="mobile-nav__sublink" @click="closeMobile">Telematics</router-link>
               <router-link to="/fleet-management" class="mobile-nav__sublink" @click="closeMobile">Fleet Management</router-link>
               <router-link to="/fuel-monitoring" class="mobile-nav__sublink" @click="closeMobile">Fuel Monitoring</router-link>
