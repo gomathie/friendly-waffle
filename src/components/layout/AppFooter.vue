@@ -202,7 +202,7 @@ const socialIcon = (name) => icons[name] || ''
 .footer__contact-line svg {
   flex-shrink: 0;
   margin-top: 3px;
-  color: var(--color-primary);
+  color: var(--color-primary-on-dark);
 }
 
 .footer__contact-line a:hover {

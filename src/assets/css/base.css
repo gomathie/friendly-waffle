@@ -334,7 +334,7 @@ select {
 }
 
 .section--dark .eyebrow {
-  color: #7FB2FF;
+  color: var(--color-primary-on-dark);
 }
 
 .section-header--left {
@@ -468,5 +468,5 @@ select {
 }
 
 .section--dark .section-header .eyebrow {
-  color: #7FB2FF;
+  color: var(--color-primary-on-dark);
 }

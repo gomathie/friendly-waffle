@@ -460,7 +460,7 @@ onUnmounted(() => {
   padding: var(--space-2) 0 var(--space-4);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
-  color: var(--color-primary);
+  color: var(--color-primary-on-dark);
 }
 
 .mnav__cta {

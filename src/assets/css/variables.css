@@ -5,6 +5,8 @@
   --color-primary-hover: #0052CC;
   --color-primary-light: rgba(0, 102, 255, 0.1);
   --color-secondary: #00C853;
+  /* Legible green for text and small icons; --color-secondary is a fill only. */
+  --color-success: #047857;
   --color-secondary-hover: #00A844;
   --color-accent: #FF6B35;
 
@@ -21,6 +23,9 @@
   --color-text-light: #FFFFFF;
   --color-text-muted: #64748B;
   --color-text-dark-muted: #94A3B8;
+  /* The brand blue only reaches 3.75:1 on the dark ground - use this for
+     links and labels that sit on it. */
+  --color-primary-on-dark: #7FB2FF;
 
   --color-border: #E2E8F0;
   --color-border-dark: #334155;
@@ -30,10 +35,10 @@
   --accent-blue-soft: rgba(37, 99, 235, 0.12);
   --accent-violet: #7C3AED;      /* DekaERP            */
   --accent-violet-soft: rgba(124, 58, 237, 0.12);
-  --accent-amber: #EA580C;       /* HiTrace Digital    */
-  --accent-amber-soft: rgba(234, 88, 12, 0.12);
-  --accent-teal: #0D9488;        /* HiTrace Consulting */
-  --accent-teal-soft: rgba(13, 148, 136, 0.12);
+  --accent-amber: #C2410C;       /* HiTrace Digital    */
+  --accent-amber-soft: rgba(194, 65, 12, 0.12);
+  --accent-teal: #0F766E;        /* HiTrace Consulting */
+  --accent-teal-soft: rgba(15, 118, 110, 0.12);
 
   /* Gradients */
   --gradient-primary: linear-gradient(135deg, #0066FF 0%, #0052CC 100%);

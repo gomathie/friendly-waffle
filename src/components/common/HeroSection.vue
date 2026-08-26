@@ -17,7 +17,8 @@
       </ul>
 
       <div v-if="hasActions" class="phero__actions">
-        <slot name="actions">
+        <slot name="actions" />
+        <template v-if="!slots.actions">
           <a
             v-if="ctaText && ctaExternal"
             class="btn btn--primary btn--lg"
@@ -33,7 +34,7 @@
           <router-link v-if="secondaryText" class="btn btn--secondary btn--lg" :to="secondaryLink">
             {{ secondaryText }}
           </router-link>
-        </slot>
+        </template>
       </div>
     </div>
   </section>
@@ -128,7 +129,7 @@ const hasActions = computed(() => Boolean(props.ctaText || props.secondaryText |
 }
 
 .phero__eyebrow {
-  color: #7FB2FF;
+  color: var(--color-primary-on-dark);
   margin-bottom: var(--space-5);
   animation: fadeInUp 0.5s ease both;
 }

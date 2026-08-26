@@ -156,7 +156,7 @@ import { capabilityGroups, businesses } from '../data/businesses.js'
 }
 
 .capgroup__items svg {
-  color: var(--color-secondary);
+  color: var(--color-success);
   flex-shrink: 0;
 }
 

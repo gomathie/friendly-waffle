@@ -51,8 +51,7 @@
     <section id="businesses" class="section" aria-labelledby="businesses-title">
       <div class="container">
         <div class="section-header reveal">
-          <p class="eyebrow">Our Businesses</p>
-          <h2 id="businesses-title">Specialized technology businesses</h2>
+          <h2 id="businesses-title">Our Businesses</h2>
           <p>
             Specialized technology businesses designed to solve different challenges across the
             modern organization.
@@ -251,7 +250,7 @@ import { brand } from '../data/site.js'
 }
 
 .hhero__eyebrow {
-  color: #7FB2FF;
+  color: var(--color-primary-on-dark);
   margin-bottom: var(--space-5);
   animation: fadeInUp 0.6s ease both;
 }
@@ -337,7 +336,7 @@ import { brand } from '../data/site.js'
 
 .why__link {
   margin-top: var(--space-6);
-  color: #7FB2FF;
+  color: var(--color-primary-on-dark);
 }
 
 .why__pillars {
@@ -369,7 +368,7 @@ import { brand } from '../data/site.js'
   height: 44px;
   border-radius: var(--radius-md);
   background: rgba(37, 99, 235, 0.16);
-  color: #7FB2FF;
+  color: var(--color-primary-on-dark);
   flex-shrink: 0;
 }
 
