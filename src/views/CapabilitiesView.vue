@@ -4,7 +4,6 @@
       eyebrow="What We Do"
       title="Capabilities across the group."
       subtitle="Technology, digital, transformation and creative. Four disciplines that combine on most engagements — and stand alone when that is all you need."
-      bg-image="/images/ChatGPT-Image-May-16-2025-01_31_08-AM-1024x683.jpg"
       compact
     />
 

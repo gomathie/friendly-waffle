@@ -9,7 +9,6 @@
       cta-link="/contact"
       secondary-text="See group capabilities"
       secondary-link="/capabilities"
-      bg-image="/images/ChatGPT-Image-May-16-2025-01_31_08-AM-1024x683.jpg"
     />
 
     <!-- The transformation path -->

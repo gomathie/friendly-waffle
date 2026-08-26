@@ -4,7 +4,6 @@
       eyebrow="Careers"
       title="Work across four technology businesses."
       subtitle="Engineering, design, consulting and operations roles across telematics, enterprise software, digital experiences and technology transformation."
-      bg-image="/images/ChatGPT-Image-May-16-2025-01_31_08-AM-1024x683.jpg"
       compact
     />
 

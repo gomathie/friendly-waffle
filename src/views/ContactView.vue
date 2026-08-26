@@ -4,7 +4,6 @@
       eyebrow="Contact"
       title="Let's build what comes next."
       subtitle="Whether you need technology, digital experiences, enterprise software or transformation expertise, we're ready to help."
-      bg-image="/images/16406297_rm373batch2-06-scaled.webp"
       compact
     />
 

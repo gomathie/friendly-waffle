@@ -4,7 +4,6 @@
       eyebrow="Our Businesses"
       title="Four businesses. One technology group."
       subtitle="Specialized technology businesses designed to solve different challenges across the modern organization. Engage one of them, or the group."
-      bg-image="/images/16406297_rm373batch2-06-scaled.webp"
       compact
     />
 

@@ -4,7 +4,6 @@
       eyebrow="About HiTrace Solutions"
       title="A technology company for an increasingly connected world."
       subtitle="HiTrace Solutions is a technology company focused on building and delivering solutions that help organizations operate smarter in an increasingly connected world."
-      bg-image="/images/16406297_rm373batch2-06-scaled.webp"
       compact
     />
 

@@ -11,7 +11,6 @@
       :cta-external="external"
       secondary-text="Talk to Us"
       secondary-link="/contact"
-      :bg-image="heroImage"
     />
 
     <!-- Positioning: what this business is, and where it sits in the group -->
