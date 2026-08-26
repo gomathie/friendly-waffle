@@ -138,3 +138,30 @@
   animation: shimmer 1.5s infinite;
   border-radius: var(--radius-sm);
 }
+
+/* ===== Reduced Motion =====
+   Anyone who has asked their OS to limit motion gets the finished state
+   immediately: content still appears, it just does not travel. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal,
+  .reveal-left,
+  .reveal-right,
+  .reveal-scale,
+  .stagger-children > * {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

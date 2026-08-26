@@ -1,7 +1,7 @@
 <template>
   <div class="whatsapp-float" :class="{ 'whatsapp-float--visible': visible }">
     <a 
-      href="https://wa.me/233209403434?text=Hello%20Hitrace%20Solutions,%20I%20would%20like%20to%20inquire%20about%20your%20services." 
+      :href="contact.whatsapp"
       target="_blank" 
       rel="noopener noreferrer"
       class="whatsapp-btn"
@@ -17,6 +17,7 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import { contact } from '../../data/site.js'
 
 const visible = ref(false)
 

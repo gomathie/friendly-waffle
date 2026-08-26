@@ -1,111 +1,102 @@
 <template>
-  <div class="contact-page">
+  <div>
     <HeroSection
-      title="Get In Touch"
-      subtitle="Have questions about our fleet solutions or want to book an interactive live demo? Our team in Kasoa, Ghana is ready to assist you."
-      badge="Contact Us"
+      eyebrow="Contact"
+      title="Let's build what comes next."
+      subtitle="Whether you need technology, digital experiences, enterprise software or transformation expertise, we're ready to help."
+      bg-image="/images/16406297_rm373batch2-06-scaled.webp"
       compact
-      bg-image="/images/2150471691-e1774869571425.webp"
     />
 
-    <section class="section">
+    <section class="section" aria-labelledby="contact-title">
       <div class="container">
-        <div class="contact-grid">
-          <div class="contact-info reveal-left">
-            <h2>Let's Discuss Your Fleet Needs</h2>
-            <p>Connect with our technical consultants, support engineers, or sales specialists today.</p>
-            
-            <div class="contact-details">
-              <div class="contact-item">
-                <div class="contact-item__icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                </div>
-                <div>
-                  <h4>Head Office Address</h4>
-                  <p>Kasoa, Human Rights Road, Central Region / Greater Accra, Ghana</p>
-                </div>
-              </div>
+        <h2 id="contact-title" class="visually-hidden">Contact HiTrace Solutions</h2>
 
-              <div class="contact-item">
-                <div class="contact-item__icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                </div>
-                <div>
-                  <h4>Direct Phone Lines</h4>
-                  <p><a href="tel:+233209403434">(+233) 20-940-3434</a> <span class="badge-tag">Main Line</span></p>
-                  <p><a href="tel:+233207949676">+233-20-794-9676</a> <span class="badge-tag">Support</span></p>
-                  <p><a href="tel:+233209403434">+233-20-940-3434</a> <span class="badge-tag badge-tag--danger">24/7 Stolen Vehicle Hotline</span></p>
-                </div>
-              </div>
+        <div class="cgrid">
+          <div class="cinfo reveal-left">
+            <h3 class="cinfo__title">Talk to HiTrace</h3>
+            <p class="lead cinfo__lead">
+              Tell us which part of the ecosystem you need — or describe the problem and we will
+              point you to the right team.
+            </p>
 
-              <div class="contact-item">
-                <div class="contact-item__icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                </div>
+            <ul class="cinfo__list">
+              <li>
+                <span class="cinfo__icon"><MapPin :size="18" aria-hidden="true" /></span>
                 <div>
-                  <h4>Email Addresses</h4>
-                  <p><a href="mailto:info@hitracesolutions.com">info@hitracesolutions.com</a> <span class="badge-tag">General Inquiries</span></p>
-                  <p><a href="mailto:support@hitracesolutions.com">support@hitracesolutions.com</a> <span class="badge-tag">Technical Support</span></p>
-                  <p><a href="mailto:sales@hitracesolutions.com">sales@hitracesolutions.com</a> <span class="badge-tag">Sales & Demo</span></p>
+                  <h4>Head office</h4>
+                  <p>{{ contact.address.full }}</p>
                 </div>
-              </div>
-
-              <div class="contact-item">
-                <div class="contact-item__icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                </div>
+              </li>
+              <li>
+                <span class="cinfo__icon"><Phone :size="18" aria-hidden="true" /></span>
                 <div>
-                  <h4>Operating Hours</h4>
-                  <p>Monday – Friday: 8:00 AM – 5:30 PM GMT</p>
-                  <p>Saturday: 9:00 AM – 2:00 PM GMT</p>
-                  <p>Sunday & Emergency: 24/7 Remote Monitoring Active</p>
+                  <h4>Phone</h4>
+                  <p v-for="phone in contact.phones" :key="phone.href">
+                    <a :href="phone.href">{{ phone.display }}</a>
+                    <span class="tag">{{ phone.label }}</span>
+                  </p>
                 </div>
-              </div>
-            </div>
+              </li>
+              <li>
+                <span class="cinfo__icon"><Mail :size="18" aria-hidden="true" /></span>
+                <div>
+                  <h4>Email</h4>
+                  <p v-for="email in contact.emails" :key="email.href">
+                    <a :href="email.href">{{ email.display }}</a>
+                    <span class="tag">{{ email.label }}</span>
+                  </p>
+                </div>
+              </li>
+              <li>
+                <span class="cinfo__icon"><Clock :size="18" aria-hidden="true" /></span>
+                <div>
+                  <h4>Office hours</h4>
+                  <p v-for="line in contact.hours" :key="line">{{ line }}</p>
+                </div>
+              </li>
+            </ul>
 
-            <div class="contact-social-block">
-              <h4>Follow Our Channels</h4>
-              <div class="contact-social">
-                <a href="https://www.facebook.com/hitracesolutions" target="_blank" rel="noopener" class="contact-social__link" aria-label="Facebook">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                </a>
-                <a href="https://www.instagram.com/hitracesolutions" target="_blank" rel="noopener" class="contact-social__link" aria-label="Instagram">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                </a>
-                <a href="https://www.linkedin.com/company/hitrace-solutions/" target="_blank" rel="noopener" class="contact-social__link" aria-label="LinkedIn">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                </a>
-              </div>
+            <!-- Direct routes to the independent businesses -->
+            <div class="direct">
+              <h4 class="direct__title">Going direct to a business?</h4>
+              <ul class="direct__list">
+                <li v-for="business in externalBusinesses" :key="business.id" :class="`accent-${business.accent}`">
+                  <a :href="business.externalUrl" target="_blank" rel="noopener noreferrer">
+                    <component :is="business.icon" :size="18" aria-hidden="true" />
+                    <span>
+                      <strong>{{ business.name }}</strong>
+                      <em>{{ prettyUrl(business.externalUrl) }}</em>
+                    </span>
+                    <ExternalLink :size="15" aria-hidden="true" />
+                    <span class="visually-hidden">(opens in a new tab)</span>
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
 
-          <div class="contact-form-wrapper reveal-right">
-            <div class="contact-form-card">
-              <h3>Send Us a Message</h3>
-              <p class="contact-form-card__subtitle">Fill in the details below and an engineer will respond within 2 hours.</p>
-              <ContactForm />
-            </div>
+          <div class="cform-card reveal-right">
+            <h3 class="cform-card__title">Send us a message</h3>
+            <p class="cform-card__sub">Fields marked * are required.</p>
+            <ContactForm :default-interest="defaultInterest" />
           </div>
         </div>
 
-        <!-- Interactive Map / Location Box -->
-        <div class="location-map-box reveal">
-          <div class="location-map-header">
-            <h3>Visit Our Office in Kasoa</h3>
-            <p>Conveniently located along Human Rights Road with dedicated vehicle installation bays.</p>
+        <div class="map reveal">
+          <div class="map__head">
+            <h3>Visit our office in Kasoa</h3>
+            <p>{{ contact.address.full }}</p>
           </div>
-          <div class="map-frame">
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.9238321034444!2d-0.4282824!3d5.5398254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdfa382c40c88c7%3A0xb3e6a0d0dcf3f081!2sKasoa%2C%20Ghana!5e0!3m2!1sen!2sgh!4v1700000000000!5m2!1sen!2sgh" 
-              width="100%" 
-              height="340" 
-              style="border:0;" 
-              allowfullscreen="" 
-              loading="lazy" 
-              referrerpolicy="no-referrer-when-downgrade"
-              title="Hitrace Solutions Kasoa Location"
-            ></iframe>
-          </div>
+          <iframe
+            class="map__frame"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.9238321034444!2d-0.4282824!3d5.5398254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdfa382c40c88c7%3A0xb3e6a0d0dcf3f081!2sKasoa%2C%20Ghana!5e0!3m2!1sen!2sgh!4v1700000000000!5m2!1sen!2sgh"
+            width="100%"
+            height="360"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Map showing the HiTrace Solutions office in Kasoa, Ghana"
+          ></iframe>
         </div>
       </div>
     </section>
@@ -113,172 +104,225 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+import { MapPin, Phone, Mail, Clock, ExternalLink } from 'lucide-vue-next'
 import HeroSection from '../components/common/HeroSection.vue'
 import ContactForm from '../components/common/ContactForm.vue'
+import { contact } from '../data/site.js'
+import { businesses, interestAreas, isExternal } from '../data/businesses.js'
+
+const route = useRoute()
+
+// /contact?interest=DekaERP preselects the matching option in the form
+const defaultInterest = computed(() => {
+  const requested = String(route.query.interest || '').toLowerCase()
+  return interestAreas.find((area) => area.toLowerCase().includes(requested) && requested) || ''
+})
+
+const externalBusinesses = computed(() => businesses.filter(isExternal))
+const prettyUrl = (url) => url.replace(/^https?:\/\//, '')
 </script>
 
 <style scoped>
-.contact-grid {
+.cgrid {
   display: grid;
   grid-template-columns: 1fr 1.05fr;
-  gap: var(--space-12);
+  gap: var(--space-16);
   align-items: start;
 }
 
-.contact-info h2 {
+.cinfo__title {
   font-size: var(--font-size-h2);
-  margin-bottom: var(--space-3);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-4);
 }
 
-.contact-info > p {
-  color: var(--color-text-muted);
-  margin-bottom: var(--space-8);
-  font-size: var(--font-size-lg);
+.cinfo__lead {
+  margin-bottom: var(--space-10);
 }
 
-.contact-details {
+.cinfo__list {
   display: flex;
   flex-direction: column;
   gap: var(--space-6);
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-10);
 }
 
-.contact-item {
+.cinfo__list li {
   display: flex;
   gap: var(--space-4);
 }
 
-.contact-item__icon {
-  display: flex;
+.cinfo__icon {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   border-radius: var(--radius-md);
   background: var(--color-primary-light);
   color: var(--color-primary);
   flex-shrink: 0;
 }
 
-.contact-item h4 {
+.cinfo__list h4 {
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
-  margin-bottom: var(--space-1);
+  margin-bottom: var(--space-2);
 }
 
-.contact-item p {
+.cinfo__list p {
   font-size: var(--font-size-sm);
   color: var(--color-text-muted);
-  margin-bottom: 3px;
+  margin-bottom: var(--space-1);
+  line-height: var(--line-height-relaxed);
 }
 
-.contact-item a {
+.cinfo__list a {
   color: var(--color-text);
   font-weight: var(--font-weight-medium);
-  transition: color var(--transition-fast);
 }
 
-.contact-item a:hover {
+.cinfo__list a:hover {
   color: var(--color-primary);
 }
 
-.badge-tag {
+.tag {
   display: inline-block;
+  margin-left: var(--space-2);
+  padding: 1px 7px;
   font-size: 0.68rem;
   font-weight: var(--font-weight-semibold);
+  color: var(--color-text-muted);
   background: var(--color-surface-alt);
   border: 1px solid var(--color-border);
-  color: var(--color-text-muted);
-  padding: 1px 6px;
   border-radius: var(--radius-sm);
-  margin-left: var(--space-2);
 }
 
-.badge-tag--danger {
-  background: rgba(239, 68, 68, 0.1);
-  border-color: rgba(239, 68, 68, 0.3);
-  color: #DC2626;
+/* Direct links out to the independent businesses */
+.direct {
+  padding: var(--space-6);
+  background: var(--color-surface-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
 }
 
-.contact-social-block h4 {
+.direct__title {
   font-size: var(--font-size-sm);
-  margin-bottom: var(--space-3);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-4);
 }
 
-.contact-social {
+.direct__list {
   display: flex;
-  gap: var(--space-3);
+  flex-direction: column;
+  gap: var(--space-2);
 }
 
-.contact-social__link {
+.direct__list a {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  background: var(--color-surface-alt);
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.direct__list a:hover {
+  border-color: var(--accent);
+  transform: translateX(3px);
+}
+
+.direct__list a > svg:first-child {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.direct__list span:not(.visually-hidden) {
+  flex: 1;
+  min-width: 0;
+}
+
+.direct__list strong {
+  display: block;
+  font-size: var(--font-size-sm);
+}
+
+.direct__list em {
+  display: block;
+  font-size: var(--font-size-xs);
+  font-style: normal;
   color: var(--color-text-muted);
-  transition: all var(--transition-base);
 }
 
-.contact-social__link:hover {
-  background: var(--color-primary);
-  color: white;
-  transform: translateY(-3px);
-}
-
-.contact-form-card {
+/* Form card */
+.cform-card {
+  padding: var(--space-10);
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
-  padding: var(--space-10);
   box-shadow: var(--shadow-lg);
 }
 
-.contact-form-card h3 {
+.cform-card__title {
   font-size: var(--font-size-xl);
   margin-bottom: var(--space-1);
 }
 
-.contact-form-card__subtitle {
+.cform-card__sub {
   font-size: var(--font-size-sm);
   color: var(--color-text-muted);
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-8);
 }
 
-/* Map Section */
-.location-map-box {
+/* Map */
+.map {
   margin-top: var(--space-20);
+  padding: var(--space-8);
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
-  padding: var(--space-8);
-  box-shadow: var(--shadow-md);
 }
 
-.location-map-header {
+.map__head {
   margin-bottom: var(--space-6);
 }
 
-.location-map-header h3 {
+.map__head h3 {
   font-size: var(--font-size-xl);
   margin-bottom: var(--space-1);
 }
 
-.location-map-header p {
+.map__head p {
   font-size: var(--font-size-sm);
   color: var(--color-text-muted);
 }
 
-.map-frame {
+.map__frame {
+  display: block;
+  width: 100%;
+  border: 0;
   border-radius: var(--radius-lg);
-  overflow: hidden;
 }
 
-@media (max-width: 900px) {
-  .contact-grid {
+@media (max-width: 1024px) {
+  .cgrid {
     grid-template-columns: 1fr;
+    gap: var(--space-12);
+  }
+}
+
+@media (max-width: 640px) {
+  .cform-card,
+  .map {
+    padding: var(--space-6);
+  }
+
+  .map {
+    margin-top: var(--space-12);
   }
 }
 </style>

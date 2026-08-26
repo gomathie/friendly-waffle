@@ -1,87 +1,99 @@
 <template>
   <footer class="footer">
-    <div class="footer__top">
-      <div class="container">
-        <div class="footer__grid">
-          <div class="footer__col">
-            <router-link to="/" class="footer__logo">
-              <div class="logo">
-                <img src="/images/hit-logo-web.png" alt="Hitrace Solutions" class="logo__img" />
-              </div>
-            </router-link>
-            <p class="footer__desc">Our cutting-edge technologies optimize all business processes to give the highest efficiency.</p>
-            <div class="footer__social">
-              <a href="https://www.facebook.com/hitracesolutions" target="_blank" rel="noopener" aria-label="Facebook" class="footer__social-link">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-              </a>
-              <a href="https://www.instagram.com/hitracesolutions" target="_blank" rel="noopener" aria-label="Instagram" class="footer__social-link">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-              </a>
-              <a href="https://www.linkedin.com/company/hitrace-solutions/" target="_blank" rel="noopener" aria-label="LinkedIn" class="footer__social-link">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-              </a>
-            </div>
-          </div>
+    <div class="container footer__top">
+      <div class="footer__grid">
+        <div class="footer__brand-col">
+          <router-link to="/" class="footer__brand" :aria-label="`${brand.name} home`">
+            <img :src="brand.logo" :alt="brand.name" class="footer__logo" width="132" height="32" loading="lazy" />
+          </router-link>
+          <p class="footer__tagline">{{ brand.tagline }}</p>
+          <p class="footer__descriptor">{{ brand.supportingStatement }}</p>
 
-          <div class="footer__col">
-            <h4 class="footer__heading">Quick Links</h4>
-            <ul class="footer__links">
-              <li><router-link to="/">Home</router-link></li>
-              <li><router-link to="/industries">Industries</router-link></li>
-              <li><router-link to="/pricing">Pricing</router-link></li>
-              <li><router-link to="/contact">Book a Demo</router-link></li>
-              <li><router-link to="/faq">FAQ</router-link></li>
-            </ul>
-          </div>
+          <ul class="footer__social">
+            <li v-for="social in socials" :key="social.name">
+              <a
+                :href="social.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="footer__social-link"
+                :aria-label="`${brand.name} on ${social.name}`"
+              >
+                <span v-html="socialIcon(social.name)" aria-hidden="true"></span>
+              </a>
+            </li>
+          </ul>
+        </div>
 
-          <div class="footer__col">
-            <h4 class="footer__heading">What We Do</h4>
-            <ul class="footer__links">
-              <li><router-link to="/onegps-africa" style="color: var(--color-primary); font-weight: 600;">⭐ OneGPS Africa (Flagship)</router-link></li>
-              <li><router-link to="/fleet-management">Fleet Management</router-link></li>
-              <li><router-link to="/tracking-solutions">Tracking Solutions</router-link></li>
-              <li><router-link to="/fuel-monitoring">Fuel Monitoring</router-link></li>
-              <li><router-link to="/iot-and-smart-homes">IoT and Smart Homes</router-link></li>
-              <li><router-link to="/web-services">Web Services</router-link></li>
-              <li><router-link to="/telematics">Telematics</router-link></li>
-            </ul>
-          </div>
+        <nav class="footer__col" aria-labelledby="footer-businesses">
+          <h2 id="footer-businesses" class="footer__heading">Businesses</h2>
+          <ul class="footer__links">
+            <li v-for="business in businesses" :key="business.id">
+              <router-link :to="business.route">{{ business.name }}</router-link>
+            </li>
+          </ul>
+        </nav>
 
-          <div class="footer__col">
-            <h4 class="footer__heading">Contact Info</h4>
-            <ul class="footer__contact">
-              <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                Kasoa, Human Rights Road
-              </li>
-              <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                <a href="tel:+233209403434">(+233) 20-940-3434</a>
-              </li>
-              <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                <a href="mailto:info@hitracesolutions.com">info@hitracesolutions.com</a>
-              </li>
-              <li>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                <a href="mailto:support@hitracesolutions.com">support@hitracesolutions.com</a>
-              </li>
-            </ul>
-          </div>
+        <nav class="footer__col" aria-labelledby="footer-company">
+          <h2 id="footer-company" class="footer__heading">Company</h2>
+          <ul class="footer__links">
+            <li><router-link to="/about">About</router-link></li>
+            <li><router-link to="/capabilities">Capabilities</router-link></li>
+            <li><router-link to="/contact">Contact</router-link></li>
+            <li><router-link to="/careers">Careers</router-link></li>
+            <li><router-link to="/privacy">Privacy Policy</router-link></li>
+            <li><router-link to="/terms">Terms</router-link></li>
+          </ul>
+        </nav>
+
+        <div class="footer__col">
+          <h2 class="footer__heading">Contact</h2>
+          <address class="footer__contact">
+            <p class="footer__contact-line">
+              <MapPin :size="16" aria-hidden="true" />
+              <span>{{ contact.address.full }}</span>
+            </p>
+            <p v-for="phone in contact.phones" :key="phone.href" class="footer__contact-line">
+              <Phone :size="16" aria-hidden="true" />
+              <a :href="phone.href">{{ phone.display }}</a>
+            </p>
+            <p v-for="email in contact.emails.slice(0, 2)" :key="email.href" class="footer__contact-line">
+              <Mail :size="16" aria-hidden="true" />
+              <a :href="email.href">{{ email.display }}</a>
+            </p>
+          </address>
         </div>
       </div>
     </div>
 
     <div class="footer__bottom">
-      <div class="container">
-        <p>&copy; {{ currentYear }} Hitrace Solutions. All rights reserved.</p>
+      <div class="container footer__bottom-inner">
+        <p>&copy; {{ currentYear }} {{ brand.name }}. All rights reserved.</p>
+        <p class="footer__ecosystem">
+          OneGPS Africa and DekaERP are part of the {{ brand.name }} technology ecosystem.
+        </p>
       </div>
     </div>
   </footer>
 </template>
 
 <script setup>
+import { MapPin, Phone, Mail } from 'lucide-vue-next'
+import { businesses } from '../../data/businesses.js'
+import { brand, contact, socials } from '../../data/site.js'
+
 const currentYear = new Date().getFullYear()
+
+// Inline brand marks: three small paths beat pulling in an icon font.
+const icons = {
+  LinkedIn:
+    '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>',
+  Facebook:
+    '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>',
+  Instagram:
+    '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>'
+}
+
+const socialIcon = (name) => icons[name] || ''
 </script>
 
 <style scoped>
@@ -91,47 +103,42 @@ const currentYear = new Date().getFullYear()
 }
 
 .footer__top {
-  padding: var(--space-16) 0 var(--space-12);
+  padding: var(--space-16) var(--section-padding-x) var(--space-12);
 }
 
 .footer__grid {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1.3fr;
-  gap: var(--space-10);
+  grid-template-columns: 1.6fr 1fr 1fr 1.4fr;
+  gap: var(--space-12) var(--space-8);
+}
+
+.footer__brand {
+  display: inline-block;
+  margin-bottom: var(--space-5);
 }
 
 .footer__logo {
-  display: inline-block;
-  margin-bottom: var(--space-4);
-}
-
-.logo {
-  display: inline-flex;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.95);
-  padding: 6px 14px;
-  border-radius: var(--radius-md);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  transition: all var(--transition-base);
-}
-
-.logo:hover {
-  background: #ffffff;
-  transform: translateY(-1px);
-}
-
-.logo__img {
   height: 32px;
   width: auto;
   object-fit: contain;
-  filter: contrast(1.15) brightness(1.02);
+  background: rgba(255, 255, 255, 0.95);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
 }
 
-.footer__desc {
-  font-size: var(--font-size-sm);
-  line-height: var(--line-height-relaxed);
-  margin-bottom: var(--space-6);
+.footer__tagline {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-light);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--space-3);
   max-width: 280px;
+}
+
+.footer__descriptor {
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--space-6);
+  max-width: 300px;
 }
 
 .footer__social {
@@ -148,7 +155,7 @@ const currentYear = new Date().getFullYear()
   border-radius: var(--radius-md);
   background: rgba(255, 255, 255, 0.06);
   color: var(--color-text-dark-muted);
-  transition: all var(--transition-base);
+  transition: background var(--transition-base), color var(--transition-base), transform var(--transition-base);
 }
 
 .footer__social-link:hover {
@@ -158,23 +165,12 @@ const currentYear = new Date().getFullYear()
 }
 
 .footer__heading {
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--color-text-light);
-  margin-bottom: var(--space-6);
-  position: relative;
-  padding-bottom: var(--space-3);
-}
-
-.footer__heading::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 30px;
-  height: 2px;
-  background: var(--color-primary);
-  border-radius: 1px;
+  margin-bottom: var(--space-5);
 }
 
 .footer__links li {
@@ -184,48 +180,60 @@ const currentYear = new Date().getFullYear()
 .footer__links a {
   font-size: var(--font-size-sm);
   color: var(--color-text-dark-muted);
-  transition: all var(--transition-fast);
 }
 
 .footer__links a:hover {
-  color: var(--color-primary);
-  padding-left: var(--space-2);
+  color: var(--color-text-light);
 }
 
-.footer__contact li {
+.footer__contact {
+  font-style: normal;
+}
+
+.footer__contact-line {
   display: flex;
   align-items: flex-start;
   gap: var(--space-3);
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-3);
   font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
 }
 
-.footer__contact svg {
+.footer__contact-line svg {
   flex-shrink: 0;
-  margin-top: 2px;
+  margin-top: 3px;
   color: var(--color-primary);
 }
 
-.footer__contact a {
-  color: var(--color-text-dark-muted);
-  transition: color var(--transition-fast);
-}
-
-.footer__contact a:hover {
-  color: var(--color-primary);
+.footer__contact-line a:hover {
+  color: var(--color-text-light);
 }
 
 .footer__bottom {
   border-top: 1px solid var(--color-border-dark);
   padding: var(--space-6) 0;
-  text-align: center;
+}
+
+.footer__bottom-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
   font-size: var(--font-size-sm);
+}
+
+.footer__ecosystem {
+  color: rgba(148, 163, 184, 0.75);
 }
 
 @media (max-width: 1024px) {
   .footer__grid {
     grid-template-columns: 1fr 1fr;
-    gap: var(--space-10) var(--space-8);
+  }
+
+  .footer__brand-col {
+    grid-column: 1 / -1;
   }
 }
 
@@ -233,6 +241,11 @@ const currentYear = new Date().getFullYear()
   .footer__grid {
     grid-template-columns: 1fr;
     gap: var(--space-10);
+  }
+
+  .footer__bottom-inner {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 </style>

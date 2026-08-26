@@ -261,3 +261,195 @@ select {
   background: var(--color-primary);
   color: var(--color-text-light);
 }
+
+/* ===== Accessibility ===== */
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: -100px;
+  z-index: var(--z-modal);
+  padding: 0.75rem 1.25rem;
+  background: var(--color-surface);
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: var(--space-4);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+.section--dark :focus-visible,
+.header :focus-visible,
+.footer :focus-visible {
+  outline-color: #7FB2FF;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ===== Ecosystem accent scopes =====
+   Set --accent / --accent-soft on any container and its cards, icons and
+   rules pick up that business's colour without a bespoke class each time. */
+.accent-blue   { --accent: var(--accent-blue);   --accent-soft: var(--accent-blue-soft); }
+.accent-violet { --accent: var(--accent-violet); --accent-soft: var(--accent-violet-soft); }
+.accent-amber  { --accent: var(--accent-amber);  --accent-soft: var(--accent-amber-soft); }
+.accent-teal   { --accent: var(--accent-teal);   --accent-soft: var(--accent-teal-soft); }
+
+/* ===== Typography helpers ===== */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent, var(--color-primary));
+}
+
+.eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 2px;
+  border-radius: 1px;
+  background: currentColor;
+}
+
+.section--dark .eyebrow {
+  color: #7FB2FF;
+}
+
+.section-header--left {
+  text-align: left;
+  max-width: 720px;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.section-header--left p {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.lead {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-relaxed);
+}
+
+.section--dark .lead {
+  color: var(--color-text-dark-muted);
+}
+
+/* ===== Link with a moving arrow ===== */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--accent, var(--color-primary));
+}
+
+.link-arrow svg {
+  transition: transform var(--transition-base);
+}
+
+.link-arrow:hover svg,
+.link-arrow:focus-visible svg {
+  transform: translateX(4px);
+}
+
+/* ===== Extra button variants ===== */
+.btn--accent {
+  background: var(--accent, var(--color-primary));
+  color: var(--color-text-light);
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.18);
+}
+
+.btn--accent:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.26);
+}
+
+.btn--quiet {
+  background: transparent;
+  color: var(--color-text);
+  border: 1.5px solid var(--color-border);
+}
+
+.btn--quiet:hover {
+  border-color: var(--color-text);
+  transform: translateY(-2px);
+}
+
+.btn:disabled {
+  cursor: default;
+  transform: none;
+}
+
+/* ===== Chips ===== */
+.chip {
+  display: inline-block;
+  padding: 0.3rem 0.75rem;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-muted);
+  background: var(--color-surface-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+}
+
+.section--dark .chip {
+  color: var(--color-text-dark-muted);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--color-border-dark);
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+/* ===== Tighter mobile rhythm =====
+   Mobile is not a shrunken desktop: sections breathe less, headings sit
+   closer to their body copy, and full-width buttons become the norm. */
+@media (max-width: 640px) {
+  .section-header {
+    margin-bottom: var(--space-8);
+    text-align: left;
+  }
+
+  .section-header p {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .grid {
+    gap: var(--space-4);
+  }
+
+  .btn--lg {
+    padding: 0.9rem 1.75rem;
+    font-size: var(--font-size-base);
+  }
+}

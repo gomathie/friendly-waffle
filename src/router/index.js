@@ -1,39 +1,150 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { applyMeta } from './seo.js'
 
+/**
+ * The corporate site: the group, its four businesses, what it does and how to
+ * reach it. Telematics detail now lives with OneGPS Africa, so the old
+ * product URLs redirect to that business profile instead of 404ing.
+ */
 const routes = [
-  { path: '/', name: 'Home', component: () => import('../views/HomeView.vue'), meta: { title: 'Home - Hitrace' } },
-  { path: '/telematics', name: 'Telematics', component: () => import('../views/TelematicsView.vue'), meta: { title: 'Telematics - Hitrace' } },
-  { path: '/fleet-management', name: 'FleetManagement', component: () => import('../views/FleetManagementView.vue'), meta: { title: 'Fleet Management - Hitrace' } },
-  { path: '/fuel-monitoring', name: 'FuelMonitoring', component: () => import('../views/FuelMonitoringView.vue'), meta: { title: 'Fuel Monitoring - Hitrace' } },
-  { path: '/tracking-solutions', name: 'TrackingSolutions', component: () => import('../views/TrackingSolutionsView.vue'), meta: { title: 'Tracking Solutions - Hitrace' } },
-  { path: '/driver-behavior-monitoring', name: 'DriverBehavior', component: () => import('../views/DriverBehaviorView.vue'), meta: { title: 'Driver Behavior Monitoring - Hitrace' } },
-  { path: '/smart-farming', name: 'SmartFarming', component: () => import('../views/SmartFarmingView.vue'), meta: { title: 'Smart Farming - Hitrace' } },
-  { path: '/iot-and-smart-homes', name: 'IoTSmartHomes', component: () => import('../views/IoTSmartHomesView.vue'), meta: { title: 'IoT and Smart Homes - Hitrace' } },
-  { path: '/web-services', name: 'WebServices', component: () => import('../views/WebServicesView.vue'), meta: { title: 'Web Services - Hitrace' } },
-  { path: '/industries', name: 'Industries', component: () => import('../views/IndustriesView.vue'), meta: { title: 'Industries - Hitrace' } },
-  { path: '/pricing', name: 'Pricing', component: () => import('../views/PricingView.vue'), meta: { title: 'Pricing - Hitrace' } },
-  { path: '/contact', name: 'Contact', component: () => import('../views/ContactView.vue'), meta: { title: 'Contact - Hitrace' } },
-  { path: '/onegps-africa', name: 'OneGpsAfrica', component: () => import('../views/OneGpsAfricaView.vue'), meta: { title: 'OneGPS Africa - Hitrace' } },
-  { path: '/faq', name: 'FAQ', component: () => import('../views/FaqView.vue'), meta: { title: 'FAQ - Hitrace' } },
+  {
+    path: '/',
+    name: 'Home',
+    component: () => import('../views/HomeView.vue'),
+    meta: {
+      title: 'HiTrace Solutions | Technology That Moves Businesses Forward',
+      description:
+        'HiTrace Solutions builds technology businesses and solutions across telematics, enterprise software, digital experiences, IoT and digital transformation.'
+    }
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: () => import('../views/AboutView.vue'),
+    meta: {
+      title: 'About | HiTrace Solutions',
+      description:
+        'HiTrace Solutions is a technology company building specialized businesses across telematics, enterprise software, digital experiences and technology consulting.'
+    }
+  },
+  {
+    path: '/businesses',
+    name: 'Businesses',
+    component: () => import('../views/BusinessesView.vue'),
+    meta: {
+      title: 'Our Businesses | HiTrace Solutions',
+      description:
+        'OneGPS Africa, DekaERP, HiTrace Digital and HiTrace Consulting - four specialized technology businesses in the HiTrace Solutions group.'
+    }
+  },
+  // Consulting has a full page of its own; keep the businesses URL pointing at it.
+  { path: '/businesses/hitrace-consulting', redirect: '/consulting' },
+  {
+    path: '/businesses/:id(onegps-africa|dekaerp|hitrace-digital)',
+    name: 'Business',
+    component: () => import('../views/BusinessView.vue')
+  },
+  {
+    path: '/capabilities',
+    name: 'Capabilities',
+    component: () => import('../views/CapabilitiesView.vue'),
+    meta: {
+      title: 'Capabilities | HiTrace Solutions',
+      description:
+        'Technology, digital, transformation and creative capabilities delivered across the HiTrace Solutions group of businesses.'
+    }
+  },
+  {
+    path: '/consulting',
+    name: 'Consulting',
+    component: () => import('../views/ConsultingView.vue'),
+    meta: {
+      title: 'HiTrace Consulting | Technology Consulting & Digital Transformation',
+      description:
+        'HiTrace Consulting helps organizations turn technology into business outcomes through technology strategy, digital transformation, IoT and systems integration.'
+    }
+  },
+  {
+    path: '/contact',
+    name: 'Contact',
+    component: () => import('../views/ContactView.vue'),
+    meta: {
+      title: 'Contact | HiTrace Solutions',
+      description:
+        'Talk to HiTrace Solutions about technology, enterprise software, digital experiences or digital transformation. Offices in Kasoa, Ghana.'
+    }
+  },
+  {
+    path: '/careers',
+    name: 'Careers',
+    component: () => import('../views/CareersView.vue'),
+    meta: {
+      title: 'Careers | HiTrace Solutions',
+      description:
+        'Engineering, design, consulting and operations roles across the HiTrace Solutions group of technology businesses.'
+    }
+  },
+  {
+    path: '/privacy',
+    name: 'Privacy',
+    component: () => import('../views/LegalView.vue'),
+    meta: {
+      document: 'privacy',
+      title: 'Privacy Policy | HiTrace Solutions',
+      description: 'How HiTrace Solutions handles information collected through this website.'
+    }
+  },
+  {
+    path: '/terms',
+    name: 'Terms',
+    component: () => import('../views/LegalView.vue'),
+    meta: {
+      document: 'terms',
+      title: 'Terms of Use | HiTrace Solutions',
+      description: 'The terms on which the HiTrace Solutions corporate website is made available.'
+    }
+  },
+
+  // --- Legacy URLs from the previous telematics-first site ---
+  { path: '/telematics', redirect: '/businesses/onegps-africa' },
+  { path: '/fleet-management', redirect: '/businesses/onegps-africa' },
+  { path: '/fuel-monitoring', redirect: '/businesses/onegps-africa' },
+  { path: '/tracking-solutions', redirect: '/businesses/onegps-africa' },
+  { path: '/driver-behavior-monitoring', redirect: '/businesses/onegps-africa' },
+  { path: '/smart-farming', redirect: '/businesses/onegps-africa' },
+  { path: '/onegps-africa', redirect: '/businesses/onegps-africa' },
+  { path: '/industries', redirect: '/businesses/onegps-africa' },
+  { path: '/pricing', redirect: '/businesses/onegps-africa' },
+  { path: '/services', redirect: '/businesses' },
+  { path: '/iot-and-smart-homes', redirect: '/consulting' },
+  { path: '/web-services', redirect: '/businesses/hitrace-digital' },
+  { path: '/faq', redirect: '/contact' },
   { path: '/book-a-demo', redirect: '/contact' },
-  { path: '/services', redirect: '/telematics' },
   { path: '/technical-support', redirect: '/contact' },
   { path: '/blog', redirect: '/' },
   { path: '/new-blog', redirect: '/' },
   { path: '/news', redirect: '/' },
-  { path: '/:pathMatch(.*)*', name: 'NotFound', component: () => import('../views/NotFoundView.vue'), meta: { title: '404 - Hitrace' } },
+
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: () => import('../views/NotFoundView.vue'),
+    meta: { title: 'Page not found | HiTrace Solutions' }
+  }
 ]
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
-  scrollBehavior() {
-    return { top: 0, behavior: 'smooth' }
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) return savedPosition
+    if (to.hash) return { el: to.hash, behavior: 'smooth', top: 90 }
+    return { top: 0 }
   }
 })
 
-router.beforeEach((to) => {
-  document.title = to.meta.title || 'Hitrace Solutions'
+router.afterEach((to) => {
+  applyMeta(to)
 })
 
 export default router

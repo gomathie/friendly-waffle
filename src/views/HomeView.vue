@@ -1,395 +1,548 @@
 <template>
   <div class="home">
-    <!-- Hero -->
-    <HeroSection
-      title="Cutting-Edge Fleet & Technology Solutions"
-      subtitle="Our cutting-edge technologies optimize all business processes to give the highest efficiency. The best solutions you can always trust!"
-      cta-text="Book a Demo"
-      cta-link="/contact"
-      secondary-text="Explore Services"
-      secondary-link="/telematics"
-      bg-image="/images/photo_2025-05-14_00-31-08.webp"
-    />
+    <!-- ===== Hero ===== -->
+    <section class="hhero" aria-labelledby="hero-title">
+      <div class="hhero__bg" aria-hidden="true">
+        <div class="hhero__image"></div>
+        <div class="hhero__veil"></div>
+        <div class="hhero__glow"></div>
+      </div>
 
-    <!-- Partners / Integrations Banner -->
-    <section class="partners-banner">
-      <div class="container">
-        <p class="partners-banner__label">Trusted by industry leaders & hardware providers</p>
-        <div class="partners-banner__logos">
-          <div class="partner-logo" v-for="partner in partners" :key="partner.name">
-            <img :src="partner.img" :alt="partner.name" />
+      <div class="container hhero__inner">
+        <div class="hhero__text">
+          <p class="eyebrow hhero__eyebrow">{{ brand.descriptor }}</p>
+          <h1 id="hero-title" class="hhero__title">Technology that moves businesses forward.</h1>
+          <p class="hhero__sub">{{ brand.intro }}</p>
+          <div class="hhero__actions">
+            <router-link to="/businesses" class="btn btn--primary btn--lg">Explore Our Businesses</router-link>
+            <router-link to="/contact" class="btn btn--secondary btn--lg">Talk to Us</router-link>
           </div>
+
+          <ul class="hhero__strip">
+            <li v-for="business in businesses" :key="business.id" :class="`accent-${business.accent}`">
+              <span class="hhero__dot" aria-hidden="true"></span>
+              {{ business.name }}
+            </li>
+          </ul>
+        </div>
+
+        <div class="hhero__visual">
+          <EcosystemGraphic />
         </div>
       </div>
     </section>
 
-    <!-- Services Grid -->
-    <section class="section">
+    <!-- ===== Brand architecture: the group in one glance ===== -->
+    <section class="section section--alt" aria-labelledby="architecture-title">
       <div class="container">
         <div class="section-header reveal">
-          <h2>Our Solutions</h2>
-          <p>Comprehensive technology solutions tailored for your business needs</p>
+          <h2 id="architecture-title">One group. Four specialisms.</h2>
+          <p>
+            HiTrace Solutions is the parent technology group. Each business below solves a
+            different class of problem, and each one can be engaged on its own.
+          </p>
         </div>
+        <div class="reveal">
+          <EcosystemDiagram />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Our Businesses ===== -->
+    <section id="businesses" class="section" aria-labelledby="businesses-title">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="eyebrow">Our Businesses</p>
+          <h2 id="businesses-title">Specialized technology businesses</h2>
+          <p>
+            Specialized technology businesses designed to solve different challenges across the
+            modern organization.
+          </p>
+        </div>
+
+        <div class="biz-grid stagger-children">
+          <BusinessCard v-for="business in businesses" :key="business.id" :business="business" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Why HiTrace Solutions ===== -->
+    <section class="section section--dark" aria-labelledby="why-title">
+      <div class="container">
+        <div class="why">
+          <div class="why__intro reveal-left">
+            <p class="eyebrow">Why HiTrace Solutions</p>
+            <h2 id="why-title">Building technology for the way business works today.</h2>
+            <p class="lead">
+              HiTrace Solutions brings together technology, digital expertise and business
+              transformation to help organizations adapt, operate smarter and create new
+              opportunities.
+            </p>
+            <router-link to="/about" class="link-arrow why__link">
+              More about the group
+              <ArrowRight :size="16" aria-hidden="true" />
+            </router-link>
+          </div>
+
+          <ul class="why__pillars stagger-children">
+            <li v-for="pillar in pillars" :key="pillar.title" class="pillar">
+              <span class="pillar__icon">
+                <component :is="pillar.icon" :size="22" aria-hidden="true" />
+              </span>
+              <div>
+                <h3 class="pillar__title">{{ pillar.title }}</h3>
+                <p class="pillar__desc">{{ pillar.description }}</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Consulting across the ecosystem ===== -->
+    <section class="section consulting-band accent-teal" aria-labelledby="consulting-title">
+      <div class="container">
+        <div class="section-header section-header--left reveal">
+          <p class="eyebrow">HiTrace Consulting</p>
+          <h2 id="consulting-title">Need to transform your business?</h2>
+          <p>
+            From technology strategy to implementation, HiTrace Consulting helps organizations
+            identify the right technologies, integrate systems and build a roadmap for digital
+            transformation.
+          </p>
+        </div>
+
+        <div class="reveal consulting-band__flow">
+          <TransformationFlow :steps="transformationFlow" />
+        </div>
+
+        <div class="consulting-band__actions reveal">
+          <router-link to="/consulting" class="btn btn--accent btn--lg">Talk to HiTrace Consulting</router-link>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== What We Do ===== -->
+    <section class="section section--alt" aria-labelledby="capabilities-title">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="eyebrow">What We Do</p>
+          <h2 id="capabilities-title">Capabilities across the group</h2>
+          <p>
+            Four disciplines that combine on most engagements — and stand alone when that is all
+            you need.
+          </p>
+        </div>
+
         <div class="grid grid--4 stagger-children">
-          <ServiceCard
-            v-for="service in services"
-            :key="service.title"
-            :icon="service.icon"
-            :title="service.title"
-            :description="service.description"
-            :link="service.link"
+          <article v-for="group in capabilityGroups" :key="group.title" class="cap">
+            <span class="cap__icon">
+              <component :is="group.icon" :size="22" aria-hidden="true" />
+            </span>
+            <h3 class="cap__title">{{ group.title }}</h3>
+            <p class="cap__desc">{{ group.description }}</p>
+            <ul class="cap__items">
+              <li v-for="item in group.items" :key="item">{{ item }}</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="text-center reveal" style="margin-top: var(--space-10);">
+          <router-link to="/capabilities" class="btn btn--outline">See full capabilities</router-link>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== About ===== -->
+    <section class="section" aria-labelledby="about-title">
+      <div class="container">
+        <div class="about-split">
+          <div class="reveal-left">
+            <p class="eyebrow">About HiTrace Solutions</p>
+            <h2 id="about-title">A technology company built around connected work.</h2>
+            <p class="lead about-split__lead">
+              HiTrace Solutions is a technology company focused on building and delivering
+              solutions that help organizations operate smarter in an increasingly connected
+              world.
+            </p>
+            <p class="lead about-split__lead">
+              Our ecosystem brings together specialized businesses across telematics, enterprise
+              software, digital experiences and technology consulting.
+            </p>
+            <router-link to="/about" class="btn btn--outline">Read about the group</router-link>
+          </div>
+
+          <img
+            class="about-split__img reveal-right"
+            src="/images/ChatGPT-Image-May-16-2025-01_31_08-AM-1024x683.jpg"
+            alt="Abstract diagram of connected devices, cloud services and the people who use them"
+            width="1024"
+            height="683"
+            loading="lazy"
+            decoding="async"
           />
         </div>
       </div>
     </section>
 
-    <!-- Partner Features -->
-    <section class="section section--dark">
-      <div class="container">
-        <div class="section-header reveal">
-          <h2>Why Partner With Hitrace</h2>
-          <p>Everything you need to scale your fleet operations</p>
-        </div>
-        <div class="grid grid--3 stagger-children">
-          <FeatureCard
-            v-for="feature in partnerFeatures"
-            :key="feature.title"
-            :icon="feature.icon"
-            :title="feature.title"
-            :description="feature.description"
-            dark
-          />
-        </div>
-      </div>
-    </section>
-
-    <!-- Tracker Installation CTA -->
-    <section class="section section--alt">
-      <div class="container">
-        <div class="home__tracker reveal" style="background-image: url('/images/truck-vehicle-with-trailers-background_600x316.webp');">
-          <div class="home__tracker-overlay"></div>
-          <div class="home__tracker-content">
-            <h2>Interested in a tracker installation?</h2>
-            <p>Talk to us today</p>
-            <router-link to="/contact" class="btn btn--primary btn--lg">Book a Demo</router-link>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Mission & Vision -->
-    <section class="section">
-      <div class="container">
-        <div class="home__mission reveal">
-          <div class="home__mission-image-wrapper">
-            <img 
-              src="/images/portrait-african-american-man-factory.webp" 
-              alt="HiTrace Mission and Operations" 
-              class="home__mission-img"
-            />
-            <div class="home__mission-badge">
-              <span class="badge">About Us</span>
-              <h2>Our Mission & Vision</h2>
-              <p>To revolutionize the way businesses manage their fleets, providing real-time insights and actionable data that drive smarter decisions, reduce costs, and improve safety.</p>
-              <router-link to="/telematics" class="btn btn--outline">Learn More About Us</router-link>
-            </div>
-          </div>
-          <div class="home__mission-stats stagger-children">
-            <div class="stat-card">
-              <div class="stat-card__icon-img">
-                <img src="/images/trophy.png" alt="Experience" />
-              </div>
-              <div class="stat-card__text">
-                <h3>Experience</h3>
-                <p>We have more than 15 years of experience in providing Vehicle Tracking & Fleet Management solutions.</p>
-              </div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-card__icon-img">
-                <img src="/images/income_13431106.png" alt="Affordability" />
-              </div>
-              <div class="stat-card__text">
-                <h3>Affordability</h3>
-                <p>We offer dependable and high-quality GPS hardware and software that remains budget-friendly for everyone.</p>
-              </div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-card__icon-img">
-                <img src="/images/employee.png" alt="Advanced Technologies" />
-              </div>
-              <div class="stat-card__text">
-                <h3>Advanced Technologies</h3>
-                <p>Wonderful customer support with advanced technologies and 24/7 assistance.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <CtaBanner
-      title="Ready to Get Started?"
-      description="Let's transform the way you monitor, manage, and maintain your fleet."
-      button-text="Book a Demo"
-      link="/contact"
-    />
+    <!-- ===== Final CTA ===== -->
+    <FinalCta />
   </div>
 </template>
 
 <script setup>
-import { Truck, Radio, Home as HomeIcon, Globe, LayoutGrid, Puzzle, Cpu, Headphones, Award } from 'lucide-vue-next'
-import HeroSection from '../components/common/HeroSection.vue'
-import ServiceCard from '../components/common/ServiceCard.vue'
-import FeatureCard from '../components/common/FeatureCard.vue'
-import CtaBanner from '../components/common/CtaBanner.vue'
-
-const partners = [
-  { name: 'Teltonika', img: '/images/telto-e1724330667289-1.png' },
-  { name: 'Pilot', img: '/images/pilot-logo-new-1-e1773316299924.png' },
-  { name: 'Green', img: '/images/Green0-e1773316256847.png' },
-  { name: 'Industrial', img: '/images/industrial-logo_logo2.webp' },
-  { name: 'XBR', img: '/images/xbr1.png' }
-]
-
-const services = [
-  {
-    icon: Truck,
-    title: 'Fleet / Fuel Management',
-    description: 'Fuel represents a significant cost for a fleet. A comprehensive solution is necessary to effectively track and manage fuel usage and the fleet\'s activities.',
-    link: '/fleet-management'
-  },
-  {
-    icon: Radio,
-    title: 'Telematics',
-    description: 'Gain essential insights for effective fleet or asset management by obtaining precise, current information on the locations of vehicles, assets, and personnel.',
-    link: '/telematics'
-  },
-  {
-    icon: HomeIcon,
-    title: 'IoT and Smart Homes',
-    description: 'Advanced smart home security systems, featuring real-time monitoring, remote access, and automated alerts, ensuring your home and family are safe and secure.',
-    link: '/iot-and-smart-homes'
-  },
-  {
-    icon: Globe,
-    title: 'Web Services',
-    description: 'We deliver custom web solutions, from stunning website designs to fully functional e-commerce stores with expert digital and social media management.',
-    link: '/web-services'
-  }
-]
-
-const partnerFeatures = [
-  {
-    icon: LayoutGrid,
-    title: 'Perfect fit for any industry',
-    description: 'The Hitrace fleet management software fits diverse projects, from real-time fleet tracking to full digitalization and business intelligence, delivering valuable insights for strategic growth.'
-  },
-  {
-    icon: Puzzle,
-    title: 'Seamless API Integrations',
-    description: 'Seamlessly transmit processed data to visualization tools and external systems through APIs. Build a tailored solution and integrate with ERP, BI, accounting, and more.'
-  },
-  {
-    icon: Cpu,
-    title: 'Hardware-Agnostic Solution',
-    description: 'Hitrace integrates with most GPS device models — from small scooter trackers to complex devices with multiple inputs, CAN bus, and OBD support.'
-  },
-  {
-    icon: Headphones,
-    title: 'Technical Consulting',
-    description: 'Partners benefit from technical support in five languages, project implementation assistance, expert-led training sessions, and certification opportunities.'
-  },
-  {
-    icon: Globe,
-    title: 'White-Labeling',
-    description: 'Partners can use the fleet management platform under the Hitrace brand or opt for a customized, white-labeled solution with its own brand identity.'
-  },
-  {
-    icon: Award,
-    title: 'Hitrace Community',
-    description: 'The largest network of telematics and IoT experts. A platform for knowledge exchange, technology sharing, and collaborative problem-solving.'
-  }
-]
+import { ArrowRight } from 'lucide-vue-next'
+import EcosystemGraphic from '../components/common/EcosystemGraphic.vue'
+import EcosystemDiagram from '../components/common/EcosystemDiagram.vue'
+import BusinessCard from '../components/common/BusinessCard.vue'
+import TransformationFlow from '../components/common/TransformationFlow.vue'
+import FinalCta from '../components/common/FinalCta.vue'
+import { businesses, pillars, capabilityGroups, transformationFlow } from '../data/businesses.js'
+import { brand } from '../data/site.js'
 </script>
 
 <style scoped>
-/* Partners Banner */
-.partners-banner {
-  background: var(--color-surface-alt);
-  border-bottom: 1px solid var(--color-border);
-  padding: var(--space-6) 0;
-}
-
-.partners-banner__label {
-  text-align: center;
-  font-size: var(--font-size-xs);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--color-text-muted);
-  margin-bottom: var(--space-4);
-  font-weight: var(--font-weight-semibold);
-}
-
-.partners-banner__logos {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-8);
-  flex-wrap: wrap;
-}
-
-.partner-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 36px;
-  filter: grayscale(1) opacity(0.7);
-  transition: all var(--transition-base);
-}
-
-.partner-logo:hover {
-  filter: grayscale(0) opacity(1);
-  transform: translateY(-2px);
-}
-
-.partner-logo img {
-  max-height: 32px;
-  width: auto;
-  object-fit: contain;
-}
-
-/* Tracker Banner */
-.home__tracker {
+/* ===== Hero ===== */
+.hhero {
   position: relative;
-  text-align: center;
-  padding: var(--space-16) var(--space-8);
-  background-size: cover;
-  background-position: center;
-  border-radius: var(--radius-xl);
+  display: flex;
+  align-items: center;
+  min-height: 640px;
+  padding: calc(76px + var(--space-16)) 0 var(--space-16);
   overflow: hidden;
+  background: var(--gradient-hero);
 }
 
-.home__tracker-overlay {
+.hhero__bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(10, 22, 40, 0.9) 0%, rgba(0, 102, 255, 0.85) 100%);
 }
 
-.home__tracker-content {
+/* Abstract network imagery — connected nodes, not vehicles */
+.hhero__image {
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/16406297_rm373batch2-06-scaled.webp');
+  background-size: cover;
+  background-position: center right;
+  opacity: 0.45;
+}
+
+.hhero__veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, rgba(10, 22, 40, 0.97) 0%, rgba(10, 22, 40, 0.85) 45%, rgba(10, 22, 40, 0.55) 100%);
+}
+
+.hhero__glow {
+  position: absolute;
+  top: -10%;
+  right: 5%;
+  width: 620px;
+  height: 620px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.22) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.hhero__inner {
   position: relative;
   z-index: 1;
-}
-
-.home__tracker h2 {
-  font-size: var(--font-size-h2);
-  color: var(--color-text-light);
-  margin-bottom: var(--space-3);
-}
-
-.home__tracker p {
-  font-size: var(--font-size-lg);
-  color: rgba(255, 255, 255, 0.85);
-  margin-bottom: var(--space-8);
-}
-
-/* Mission Section */
-.home__mission {
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: var(--space-12);
+  grid-template-columns: 1.08fr 0.92fr;
+  align-items: center;
+  gap: var(--space-16);
+  max-width: 1280px;
+}
+
+.hhero__eyebrow {
+  color: #7FB2FF;
+  margin-bottom: var(--space-5);
+  animation: fadeInUp 0.6s ease both;
+}
+
+.hhero__title {
+  font-size: clamp(2.4rem, 5.2vw, 4rem);
+  font-weight: var(--font-weight-extrabold);
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  color: var(--color-text-light);
+  margin-bottom: var(--space-6);
+  max-width: 15ch;
+  animation: fadeInUp 0.6s ease 0.08s both;
+}
+
+.hhero__sub {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-dark-muted);
+  line-height: var(--line-height-relaxed);
+  max-width: 52ch;
+  margin-bottom: var(--space-10);
+  animation: fadeInUp 0.6s ease 0.16s both;
+}
+
+.hhero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  animation: fadeInUp 0.6s ease 0.24s both;
+}
+
+.hhero__strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-6);
+  margin-top: var(--space-12);
+  padding-top: var(--space-6);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  animation: fadeInUp 0.6s ease 0.32s both;
+}
+
+.hhero__strip li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-dark-muted);
+}
+
+.hhero__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--radius-full);
+  background: var(--accent);
+}
+
+.hhero__visual {
+  animation: fadeIn 0.9s ease 0.3s both;
+}
+
+/* ===== Business grid ===== */
+.biz-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+}
+
+/* ===== Why pillars ===== */
+.why {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: var(--space-16);
   align-items: center;
 }
 
-.home__mission-image-wrapper {
-  position: relative;
-}
-
-.home__mission-img {
-  width: 100%;
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-xl);
-  object-fit: cover;
-  max-height: 480px;
-}
-
-.home__mission-badge {
-  margin-top: var(--space-6);
-}
-
-.home__mission-badge .badge {
-  margin-bottom: var(--space-3);
-}
-
-.home__mission-badge h2 {
+.why__intro h2 {
   font-size: var(--font-size-h2);
-  margin-bottom: var(--space-4);
+  color: var(--color-text-light);
+  margin: var(--space-4) 0 var(--space-5);
+  letter-spacing: -0.02em;
 }
 
-.home__mission-badge p {
-  font-size: var(--font-size-base);
-  color: var(--color-text-muted);
-  margin-bottom: var(--space-6);
-  line-height: var(--line-height-relaxed);
+.why__link {
+  margin-top: var(--space-6);
+  color: #7FB2FF;
 }
 
-.home__mission-stats {
-  display: flex;
-  flex-direction: column;
+.why__pillars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: var(--space-5);
 }
 
-.stat-card {
+.pillar {
   display: flex;
-  align-items: flex-start;
   gap: var(--space-4);
+  padding: var(--space-6);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--color-border-dark);
+  border-radius: var(--radius-lg);
+  transition: transform var(--transition-base), border-color var(--transition-base);
+}
+
+.pillar:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-primary);
+}
+
+.pillar__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: rgba(37, 99, 235, 0.16);
+  color: #7FB2FF;
+  flex-shrink: 0;
+}
+
+.pillar__title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-light);
+  margin-bottom: var(--space-2);
+}
+
+.pillar__desc {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-dark-muted);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ===== Consulting band ===== */
+.consulting-band {
+  position: relative;
+  background:
+    radial-gradient(ellipse at 15% 0%, rgba(13, 148, 136, 0.1) 0%, transparent 55%),
+    var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.consulting-band__flow {
+  margin: var(--space-12) 0;
+}
+
+.consulting-band__actions {
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* ===== Capability cards ===== */
+.cap {
+  display: flex;
+  flex-direction: column;
   padding: var(--space-6);
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  transition: all var(--transition-base);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
 
-.stat-card:hover {
-  border-color: var(--color-primary);
+.cap:hover {
+  transform: translateY(-4px);
   box-shadow: var(--shadow-card);
-  transform: translateX(4px);
 }
 
-.stat-card__icon-img {
-  display: flex;
+.cap__icon {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 52px;
-  height: 52px;
+  width: 44px;
+  height: 44px;
   border-radius: var(--radius-md);
   background: var(--color-primary-light);
-  flex-shrink: 0;
-  padding: 8px;
+  color: var(--color-primary);
+  margin-bottom: var(--space-4);
 }
 
-.stat-card__icon-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+.cap__title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-2);
 }
 
-.stat-card__text h3 {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-semibold);
-  margin-bottom: var(--space-1);
-}
-
-.stat-card__text p {
+.cap__desc {
   font-size: var(--font-size-sm);
   color: var(--color-text-muted);
-  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--space-4);
+}
+
+.cap__items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+.cap__items li {
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ===== About split ===== */
+.about-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  align-items: center;
+}
+
+.about-split h2 {
+  font-size: var(--font-size-h2);
+  letter-spacing: -0.02em;
+  margin: var(--space-4) 0 var(--space-5);
+}
+
+.about-split__lead {
+  margin-bottom: var(--space-5);
+}
+
+.about-split__img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1024px) {
+  .hhero__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+  }
+
+  .hhero__title {
+    max-width: 18ch;
+  }
+
+  .why,
+  .about-split {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
 }
 
 @media (max-width: 900px) {
-  .home__mission {
+  .biz-grid {
     grid-template-columns: 1fr;
-    gap: var(--space-8);
+  }
+}
+
+@media (max-width: 640px) {
+  .hhero {
+    min-height: 0;
+    padding: calc(76px + var(--space-10)) 0 var(--space-12);
+  }
+
+  .hhero__sub {
+    margin-bottom: var(--space-8);
+  }
+
+  .hhero__actions .btn {
+    width: 100%;
+  }
+
+  .hhero__strip {
+    margin-top: var(--space-8);
+    gap: var(--space-2) var(--space-4);
+  }
+
+  /* The graphic stays on mobile — it is the fastest way to read what the
+     group is — but it drops below the copy and loses its outer breathing room. */
+  .hhero__visual {
+    margin: 0 calc(var(--space-4) * -1);
+  }
+
+  .why__pillars {
+    grid-template-columns: 1fr;
+  }
+
+  .consulting-band__actions .btn {
+    width: 100%;
   }
 }
 </style>
