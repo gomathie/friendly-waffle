@@ -3,9 +3,8 @@
     <!-- ===== Hero ===== -->
     <section class="hhero" aria-labelledby="hero-title">
       <div class="hhero__bg" aria-hidden="true">
-        <div class="hhero__image"></div>
-        <div class="hhero__veil"></div>
-        <div class="hhero__glow"></div>
+        <div class="hhero__mesh"></div>
+        <div class="hhero__grid"></div>
       </div>
 
       <div class="container hhero__inner">
@@ -218,30 +217,27 @@ import { brand } from '../data/site.js'
   inset: 0;
 }
 
-/* Abstract network imagery — connected nodes, not vehicles */
-.hhero__image {
+/* The backdrop is drawn, not photographed: layered radial washes and a faint
+   engineering grid. It costs no image bytes, so the hero paints immediately,
+   and it reads as infrastructure rather than as a fleet of vehicles. */
+.hhero__mesh {
   position: absolute;
   inset: 0;
-  background-image: url('/images/16406297_rm373batch2-06-scaled.webp');
-  background-size: cover;
-  background-position: center right;
-  opacity: 0.45;
+  background:
+    radial-gradient(ellipse 60% 70% at 78% 18%, rgba(37, 99, 235, 0.34) 0%, transparent 62%),
+    radial-gradient(ellipse 50% 60% at 92% 72%, rgba(13, 148, 136, 0.2) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 50% at 12% 88%, rgba(124, 58, 237, 0.16) 0%, transparent 62%);
 }
 
-.hhero__veil {
+.hhero__grid {
   position: absolute;
   inset: 0;
-  background: linear-gradient(100deg, rgba(10, 22, 40, 0.97) 0%, rgba(10, 22, 40, 0.85) 45%, rgba(10, 22, 40, 0.55) 100%);
-}
-
-.hhero__glow {
-  position: absolute;
-  top: -10%;
-  right: 5%;
-  width: 620px;
-  height: 620px;
-  background: radial-gradient(circle, rgba(37, 99, 235, 0.22) 0%, transparent 65%);
-  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse 70% 80% at 70% 45%, black 0%, transparent 72%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 80% at 70% 45%, black 0%, transparent 72%);
 }
 
 .hhero__inner {

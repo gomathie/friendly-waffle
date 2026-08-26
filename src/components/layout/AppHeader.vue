@@ -133,9 +133,9 @@ const mobileOpen = ref(false)
 const isMobile = ref(false)
 const dropdownOpen = ref(false)
 
-const isBusinessesRoute = computed(
-  () => route.path.startsWith('/businesses') || route.path === '/consulting'
-)
+// The dropdown label lights up for any business profile page. /consulting has
+// its own top-level item, so it is deliberately not counted here.
+const isBusinessesRoute = computed(() => route.path.startsWith('/businesses'))
 
 const closeMobile = () => {
   mobileOpen.value = false
@@ -270,7 +270,7 @@ onUnmounted(() => {
 
 .nav__link:hover,
 .nav__link--active,
-.nav__link.router-link-active {
+.nav__link.router-link-exact-active {
   color: var(--color-text-light);
   background: rgba(255, 255, 255, 0.07);
 }

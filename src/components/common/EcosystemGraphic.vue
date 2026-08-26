@@ -141,6 +141,18 @@ const ringPath = computed(() => {
   animation: ecoFade 5s ease-in-out infinite;
 }
 
+/* Without motion-path support the pulses would sit at the SVG origin, so they
+   only appear where the browser can actually move them along a spoke. */
+.eco__pulses {
+  display: none;
+}
+
+@supports (offset-path: path('M0 0 L1 1')) {
+  .eco__pulses {
+    display: block;
+  }
+}
+
 .eco__pulse {
   offset-rotate: 0deg;
 }

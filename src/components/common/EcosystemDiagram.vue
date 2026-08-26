@@ -115,8 +115,8 @@ const consulting = computed(() => businesses.find((b) => b.id === 'hitrace-consu
   content: "";
   position: absolute;
   top: 0;
-  left: 16.6667%;
-  right: 16.6667%;
+  left: calc((100% - 2 * var(--space-5)) / 6);
+  right: calc((100% - 2 * var(--space-5)) / 6);
   height: 2px;
   background: var(--arch-line);
 }
@@ -146,6 +146,7 @@ const consulting = computed(() => businesses.find((b) => b.id === 'hitrace-consu
   position: absolute;
   top: calc(var(--space-8) * -1);
   left: 50%;
+  transform: translateX(-50%);
   width: 2px;
   height: var(--space-8);
   background: var(--arch-line);

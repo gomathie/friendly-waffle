@@ -109,8 +109,11 @@ defineProps({
     padding-bottom: 0;
   }
 
+  /* Stretching the marker to the full row height lets the rail bridge
+     the gap down to the next step. */
   .flow__marker {
     height: auto;
+    align-self: stretch;
     align-items: flex-start;
     padding-top: 4px;
   }
@@ -118,8 +121,8 @@ defineProps({
   .flow__rail {
     left: 6px;
     right: auto;
-    top: 18px;
-    bottom: calc(var(--space-8) * -1);
+    top: 22px;
+    bottom: calc(var(--space-8) * -0.5);
     width: 2px;
     height: auto;
     background: linear-gradient(180deg, var(--color-primary), var(--flow-line));

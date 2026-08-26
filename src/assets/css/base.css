@@ -453,3 +453,20 @@ select {
     font-size: var(--font-size-base);
   }
 }
+
+/* `.section-header p` is more specific than `.eyebrow`, so an eyebrow used as
+   the first line of a section header needs its styling restated here. */
+.section-header .eyebrow {
+  font-size: var(--font-size-xs);
+  color: var(--accent, var(--color-primary));
+  max-width: none;
+  margin: 0 0 var(--space-4);
+}
+
+.section-header--left .eyebrow {
+  margin-left: 0;
+}
+
+.section--dark .section-header .eyebrow {
+  color: #7FB2FF;
+}

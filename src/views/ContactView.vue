@@ -116,8 +116,9 @@ const route = useRoute()
 
 // /contact?interest=DekaERP preselects the matching option in the form
 const defaultInterest = computed(() => {
-  const requested = String(route.query.interest || '').toLowerCase()
-  return interestAreas.find((area) => area.toLowerCase().includes(requested) && requested) || ''
+  const requested = String(route.query.interest || '').trim().toLowerCase()
+  if (!requested) return ''
+  return interestAreas.find((area) => area.toLowerCase().includes(requested)) || ''
 })
 
 const externalBusinesses = computed(() => businesses.filter(isExternal))
