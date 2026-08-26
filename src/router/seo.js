@@ -4,7 +4,7 @@ import { businessById } from '../data/businesses.js'
 const DEFAULT_TITLE = 'HiTrace Solutions | Technology That Moves Businesses Forward'
 const DEFAULT_DESCRIPTION =
   'HiTrace Solutions builds technology businesses and solutions across telematics, enterprise software, digital experiences, IoT and digital transformation.'
-const DEFAULT_IMAGE = `${SITE_URL}/images/16406297_rm373batch2-06-scaled.webp`
+const DEFAULT_IMAGE = `${SITE_URL}/images/ChatGPT-Image-May-16-2025-01_31_08-AM-1024x683.jpg`
 
 /** Create or update a <meta> tag, keyed by name or property. */
 const setMeta = (attr, key, content) => {

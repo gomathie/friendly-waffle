@@ -139,15 +139,7 @@ const headlines = {
   'hitrace-consulting': 'The transformation arm of the group.'
 }
 
-const heroImages = {
-  'onegps-africa': '/images/16406297_rm373batch2-06-scaled.webp',
-  dekaerp: '/images/ChatGPT-Image-May-16-2025-01_31_08-AM-1024x683.jpg',
-  'hitrace-digital': '/images/be-change-inspired-active-thunder-website.webp',
-  'hitrace-consulting': '/images/16406297_rm373batch2-06-scaled.webp'
-}
-
 const headline = computed(() => headlines[route.params.id] || '')
-const heroImage = computed(() => heroImages[route.params.id] || '')
 const prettyUrl = computed(() =>
   business.value?.externalUrl ? business.value.externalUrl.replace(/^https?:\/\//, '') : ''
 )
