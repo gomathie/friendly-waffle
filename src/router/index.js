@@ -1,150 +1,35 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { routes } from './routes.js'
 import { applyMeta } from './seo.js'
+import { trackPageView } from '../lib/analytics.js'
 
-/**
- * The corporate site: the group, its four businesses, what it does and how to
- * reach it. Telematics detail now lives with OneGPS Africa, so the old
- * product URLs redirect to that business profile instead of 404ing.
- */
-const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: () => import('../views/HomeView.vue'),
-    meta: {
-      title: 'HiTrace Solutions | Technology That Moves Businesses Forward',
-      description:
-        'HiTrace Solutions builds technology businesses and solutions across telematics, enterprise software, digital experiences, IoT and digital transformation.'
-    }
-  },
-  {
-    path: '/about',
-    name: 'About',
-    component: () => import('../views/AboutView.vue'),
-    meta: {
-      title: 'About | HiTrace Solutions',
-      description:
-        'HiTrace Solutions is a technology company building specialized businesses across telematics, enterprise software, digital experiences and technology consulting.'
-    }
-  },
-  {
-    path: '/businesses',
-    name: 'Businesses',
-    component: () => import('../views/BusinessesView.vue'),
-    meta: {
-      title: 'Our Businesses | HiTrace Solutions',
-      description:
-        'OneGPS Africa, DekaERP, HiTrace Digital and HiTrace Consulting - four specialized technology businesses in the HiTrace Solutions group.'
-    }
-  },
-  // Consulting has a full page of its own; keep the businesses URL pointing at it.
-  { path: '/businesses/hitrace-consulting', redirect: '/consulting' },
-  {
-    path: '/businesses/:id(onegps-africa|dekaerp|hitrace-digital)',
-    name: 'Business',
-    component: () => import('../views/BusinessView.vue')
-  },
-  {
-    path: '/capabilities',
-    name: 'Capabilities',
-    component: () => import('../views/CapabilitiesView.vue'),
-    meta: {
-      title: 'Capabilities | HiTrace Solutions',
-      description:
-        'Technology, digital, transformation and creative capabilities delivered across the HiTrace Solutions group of businesses.'
-    }
-  },
-  {
-    path: '/consulting',
-    name: 'Consulting',
-    component: () => import('../views/ConsultingView.vue'),
-    meta: {
-      title: 'HiTrace Consulting | Technology Consulting & Digital Transformation',
-      description:
-        'HiTrace Consulting helps organizations turn technology into business outcomes through technology strategy, digital transformation, IoT and systems integration.'
-    }
-  },
-  {
-    path: '/contact',
-    name: 'Contact',
-    component: () => import('../views/ContactView.vue'),
-    meta: {
-      title: 'Contact | HiTrace Solutions',
-      description:
-        'Talk to HiTrace Solutions about technology, enterprise software, digital experiences or digital transformation. Offices in Kasoa, Ghana.'
-    }
-  },
-  {
-    path: '/careers',
-    name: 'Careers',
-    component: () => import('../views/CareersView.vue'),
-    meta: {
-      title: 'Careers | HiTrace Solutions',
-      description:
-        'Engineering, design, consulting and operations roles across the HiTrace Solutions group of technology businesses.'
-    }
-  },
-  {
-    path: '/privacy',
-    name: 'Privacy',
-    component: () => import('../views/LegalView.vue'),
-    meta: {
-      document: 'privacy',
-      title: 'Privacy Policy | HiTrace Solutions',
-      description: 'How HiTrace Solutions handles information collected through this website.'
-    }
-  },
-  {
-    path: '/terms',
-    name: 'Terms',
-    component: () => import('../views/LegalView.vue'),
-    meta: {
-      document: 'terms',
-      title: 'Terms of Use | HiTrace Solutions',
-      description: 'The terms on which the HiTrace Solutions corporate website is made available.'
-    }
-  },
 
-  // --- Legacy URLs from the previous telematics-first site ---
-  { path: '/telematics', redirect: '/businesses/onegps-africa' },
-  { path: '/fleet-management', redirect: '/businesses/onegps-africa' },
-  { path: '/fuel-monitoring', redirect: '/businesses/onegps-africa' },
-  { path: '/tracking-solutions', redirect: '/businesses/onegps-africa' },
-  { path: '/driver-behavior-monitoring', redirect: '/businesses/onegps-africa' },
-  { path: '/smart-farming', redirect: '/businesses/onegps-africa' },
-  { path: '/onegps-africa', redirect: '/businesses/onegps-africa' },
-  { path: '/industries', redirect: '/businesses/onegps-africa' },
-  { path: '/pricing', redirect: '/businesses/onegps-africa' },
-  { path: '/services', redirect: '/businesses' },
-  { path: '/iot-and-smart-homes', redirect: '/consulting' },
-  { path: '/web-services', redirect: '/businesses/hitrace-digital' },
-  { path: '/faq', redirect: '/contact' },
-  { path: '/book-a-demo', redirect: '/contact' },
-  { path: '/technical-support', redirect: '/contact' },
-  { path: '/blog', redirect: '/' },
-  { path: '/new-blog', redirect: '/' },
-  { path: '/news', redirect: '/' },
+// Vue Router restores position from its own history state, so the browser's
+// restore only fights it - on a reload it would put the page part-way down and
+// the router would then scroll up from there.
+if (typeof window !== 'undefined' && 'scrollRestoration' in window.history) {
+  window.history.scrollRestoration = 'manual'
+}
 
-  {
-    path: '/:pathMatch(.*)*',
-    name: 'NotFound',
-    component: () => import('../views/NotFoundView.vue'),
-    meta: { title: 'Page not found | HiTrace Solutions' }
-  }
-]
+const prefersReducedMotion = () =>
+  typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
   scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) return savedPosition
-    if (to.hash) return { el: to.hash, behavior: 'smooth', top: 90 }
-    return { top: 0 }
+    // Back/forward returns you where you were, instantly.
+    if (savedPosition) return { ...savedPosition, behavior: 'instant' }
+    // In-page anchors are the one case that should glide, offset for the header.
+    if (to.hash) return { el: to.hash, top: 90, behavior: prefersReducedMotion() ? 'instant' : 'smooth' }
+    return { top: 0, left: 0, behavior: 'instant' }
   }
 })
 
 router.afterEach((to) => {
   applyMeta(to)
+  // A no-op until the visitor has consented and the script has loaded.
+  trackPageView(to.fullPath, document.title)
 })
 
 export default router

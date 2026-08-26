@@ -1,0 +1,124 @@
+# Changelog
+
+All notable changes to the HiTrace Solutions corporate website.
+Format loosely follows [Keep a Changelog](https://keepachangelog.com/).
+
+## [2.0.0] — 2026-08-26
+
+Complete repositioning: the site is now the **corporate website of the HiTrace
+Solutions technology group**, not a telematics website. Telematics is the business
+of OneGPS Africa; enterprise software is DekaERP's.
+
+### Added
+
+**Brand architecture**
+- `EcosystemDiagram.vue` — parent group → three delivery businesses → HiTrace
+  Consulting spanning them; the group structure is readable within seconds of landing.
+- `BusinessCard.vue` — premium cards for the four businesses, each with its own
+  colour accent carried consistently through nav, cards and profile pages.
+- `EcosystemGraphic.vue` — animated abstract network hero visual (People, Systems,
+  Data, Cloud, IoT, Digital around a HiTrace core). No vehicles, no tracking dashboard.
+- `TransformationFlow.vue` — Strategy → Technology → Integration → Transformation →
+  Business Growth, horizontal on desktop, vertical on mobile.
+- `FinalCta.vue` — shared "Let's build what comes next." closing CTA.
+
+**Pages**
+- `/about`, `/businesses`, `/businesses/{onegps-africa,dekaerp,hitrace-digital}`,
+  `/capabilities`, `/consulting`.
+- `/careers`, `/privacy`, `/terms` — required by the footer.
+- Custom 404 (`NotFoundView.vue`) that routes visitors to the four businesses
+  rather than dead-ending.
+
+**Content as data**
+- `src/data/businesses.js` — the four businesses, services, tags, CTAs, destinations,
+  capability groups, pillars and the consulting flow.
+- `src/data/site.js` — brand strings and the published contact details.
+- A business's CTA destination is one field: set `externalUrl` and every CTA for that
+  business becomes an external link. HiTrace Digital and Consulting are `null` pending
+  their own domains.
+
+**SEO**
+- Per-route title, description, canonical, Open Graph and Twitter tags via
+  `src/router/seo.js`; business pages derive theirs from the business record.
+- `Organization` JSON-LD in `index.html` listing all four as `subOrganization`.
+- Generated `sitemap.xml` and `robots.txt` (`scripts/generate-seo-files.mjs`), wired
+  to `prebuild` so a new page cannot ship missing from the sitemap.
+- `robots`, `og:locale`, `og:image:width/height/alt` and `twitter:image:alt`.
+
+**Analytics and consent**
+- `src/lib/analytics.js` — provider-agnostic loader (Plausible or GA4), configured by
+  env var. Ships inert: no provider configured means no script, no cookie.
+- `src/lib/consent.js` + `CookieConsent.vue` — consent stored in `localStorage`, not a
+  cookie. The banner only appears when the configured provider actually stores
+  identifiers, so a cookieless provider means no banner at all.
+- Route changes reported via `trackPageView`, a no-op until consent loads a provider.
+
+**Tooling**
+- `npm run check:links` — verifies internal routes resolve, images exist, external
+  URLs respond, and every new-tab link carries `rel="noopener noreferrer"`.
+- `README.md` documenting the data files, the CTA-destination switch, the contact
+  endpoint, and the deployment rewrite requirement.
+
+### Changed
+
+- **Hero** — "Technology that moves businesses forward." with `Explore Our Businesses`
+  / `Talk to Us`, replacing "Cutting-Edge Fleet & Technology Solutions" / `Book a Demo`.
+- **Navigation** — Home · About · Our Businesses (dropdown) · Capabilities · Consulting
+  · Contact, with a `Talk to Us` header CTA. The Telematics-led Services menu is gone.
+  Header brand lockup now carries the "Technology Group" descriptor.
+- **Footer** — restructured to Businesses / Company / Contact, with the group tagline.
+- **Contact form** — rebuilt with Name, Company, Email, Phone, Area of Interest and
+  Message; inline validation wired with `aria-describedby`. Posts to
+  `VITE_CONTACT_ENDPOINT` when set, otherwise falls back to a prefilled mail client so
+  nothing is silently dropped. `/contact?interest=DekaERP` preselects an area.
+- **Design tokens** — added per-business accent colours and an on-dark link colour.
+- **Hero backdrops** are now pure CSS. The abstract network photo was 1.17 MB and would
+  have dominated LCP; the drawn backdrop costs no image bytes and better matches the
+  "no stock photos" direction.
+- **Legacy URLs** (`/telematics`, `/fleet-management`, `/fuel-monitoring`,
+  `/tracking-solutions`, `/driver-behavior-monitoring`, `/smart-farming`, `/industries`,
+  `/pricing`, `/web-services`, `/iot-and-smart-homes`, `/faq`, `/book-a-demo`, …) now
+  redirect to whichever business owns that subject, preserving inbound links.
+- Route table extracted to `src/router/routes.js` so build tooling can read it without
+  a browser environment.
+
+### Fixed
+
+- **Page scrolled itself from bottom to top on first load.** Global
+  `scroll-behavior: smooth` on `html` meant the router's scroll-to-top *animated* up
+  from the position the browser had restored. Removed the global rule, set
+  `history.scrollRestoration = 'manual'`, and made `scrollBehavior` return an explicit
+  `behavior` — instant for navigation and back/forward, smooth only for in-page anchors
+  and not under `prefers-reduced-motion`.
+- **Contrast**: the amber (`#EA580C` → `#C2410C`) and teal (`#0D9488` → `#0F766E`)
+  accents failed WCAG AA at their original values; check icons moved off `#00C853` to
+  `#047857`. On-dark links moved from `#0066FF` (3.75:1) to `#7FB2FF` (8.4:1).
+- **Eyebrow labels** inside section headers were being overridden by the more specific
+  `.section-header p` rule.
+- Nav "Home" link stayed highlighted on every page (`router-link-active` matches `/`
+  inclusively); now keyed to exact match.
+- Mobile tap targets: footer social buttons 40px → 44px; consent buttons min 44px.
+- Motion-path hero pulses are now feature-detected, so they cannot strand at the SVG
+  origin in browsers without `offset-path`.
+
+### Removed
+
+- Telematics-specific views, now OneGPS Africa's territory: Telematics, Fleet
+  Management, Fuel Monitoring, Tracking Solutions, Driver Behavior, Smart Farming,
+  Industries, Pricing, FAQ, IoT & Smart Homes, Web Services, OneGPS Africa (old
+  white-label reseller page).
+- Components only those pages used: `ServiceCard`, `FeatureCard`, `CtaBanner`,
+  `StepCard`, `PricingCard`, `TelematicsAnimatedHero`.
+- `scripts/audit_phrases.mjs` and `scripts/verify_content.mjs`, which asserted the old
+  telematics-first copy.
+
+### Notes / outstanding
+
+- `VITE_CONTACT_ENDPOINT` is unset — set it before launch or submissions go via the
+  visitor's mail client.
+- Privacy and Terms describe this website accurately but have **not** been reviewed by
+  counsel.
+- `public/images` still holds ~21 MB of unreferenced telematics photography. Nothing
+  loads it, but it is worth pruning before deploy.
+- The site was verified by build, link check and code review — **not** in a browser, as
+  no browser automation was available in the environment it was built in.

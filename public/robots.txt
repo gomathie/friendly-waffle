@@ -1,0 +1,5 @@
+# https://hitracesolutions.com
+User-agent: *
+Allow: /
+
+Sitemap: https://hitracesolutions.com/sitemap.xml

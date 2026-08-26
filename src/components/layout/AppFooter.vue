@@ -150,8 +150,9 @@ const socialIcon = (name) => icons[name] || ''
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  /* 44px is the minimum comfortable touch target. */
+  width: 44px;
+  height: 44px;
   border-radius: var(--radius-md);
   background: rgba(255, 255, 255, 0.06);
   color: var(--color-text-dark-muted);

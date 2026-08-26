@@ -5,8 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "node scripts/generate-seo-files.mjs",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "check:links": "node scripts/check-links.mjs",
+    "seo": "node scripts/generate-seo-files.mjs"
   },
   "dependencies": {
     "vue": "^3.4.0",

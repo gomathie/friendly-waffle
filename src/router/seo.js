@@ -5,6 +5,7 @@ const DEFAULT_TITLE = 'HiTrace Solutions | Technology That Moves Businesses Forw
 const DEFAULT_DESCRIPTION =
   'HiTrace Solutions builds technology businesses and solutions across telematics, enterprise software, digital experiences, IoT and digital transformation.'
 const DEFAULT_IMAGE = `${SITE_URL}/images/ChatGPT-Image-May-16-2025-01_31_08-AM-1024x683.jpg`
+const IMAGE_ALT = 'Abstract diagram of connected devices, cloud services and the people who use them'
 
 /** Create or update a <meta> tag, keyed by name or property. */
 const setMeta = (attr, key, content) => {
@@ -56,10 +57,14 @@ export const applyMeta = (to) => {
   setMeta('property', 'og:description', description)
   setMeta('property', 'og:url', canonical)
   setMeta('property', 'og:image', DEFAULT_IMAGE)
+  setMeta('property', 'og:image:alt', IMAGE_ALT)
+  setMeta('property', 'og:locale', 'en_GH')
   setMeta('name', 'twitter:card', 'summary_large_image')
   setMeta('name', 'twitter:title', title)
   setMeta('name', 'twitter:description', description)
   setMeta('name', 'twitter:image', DEFAULT_IMAGE)
+  setMeta('name', 'twitter:image:alt', IMAGE_ALT)
+  setMeta('name', 'robots', 'index, follow, max-image-preview:large')
 
   setCanonical(canonical)
 }

@@ -10,6 +10,7 @@
   </main>
   <AppFooter />
   <WhatsAppFloat />
+  <CookieConsent />
 </template>
 
 <script setup>
@@ -18,6 +19,7 @@ import { useRoute } from 'vue-router'
 import AppHeader from './components/layout/AppHeader.vue'
 import AppFooter from './components/layout/AppFooter.vue'
 import WhatsAppFloat from './components/common/WhatsAppFloat.vue'
+import CookieConsent from './components/common/CookieConsent.vue'
 
 const route = useRoute()
 const main = ref(null)

@@ -15,9 +15,11 @@ No CSS framework — design tokens in `src/assets/css/variables.css`, shared uti
 
 ```bash
 npm install
-npm run dev       # http://localhost:5173
-npm run build     # -> dist/
+npm run dev          # http://localhost:5173
+npm run build        # regenerates sitemap/robots, then builds to dist/
 npm run preview
+npm run check:links  # internal routes, images, external URLs, rel on new-tab links
+npm run seo          # regenerate public/sitemap.xml + robots.txt on their own
 ```
 
 ## Where the content lives
@@ -53,6 +55,28 @@ With no endpoint configured it falls back to opening the visitor's mail client a
 to `info@hitracesolutions.com`, so submissions are never silently dropped. **Set the
 endpoint before launch** if you want submissions captured server-side.
 
+## Analytics and cookie consent
+
+The site ships **analytics-free**. Nothing loads unless you configure a provider:
+
+```
+# .env.local
+VITE_PLAUSIBLE_DOMAIN=hitracesolutions.com   # cookieless - no banner shown
+# or
+VITE_GA_ID=G-XXXXXXXXXX                      # GA4 - banner shown, gated on consent
+```
+
+`src/lib/analytics.js` loads whichever is set (Plausible wins if both are).
+`CookieConsent.vue` only appears when the configured provider actually stores
+identifiers — so choosing Plausible means visitors never see a banner, because
+there is nothing to consent to. With GA4, no script is injected and no cookie is
+written until the visitor accepts; the choice is kept in `localStorage`, not a
+cookie. Route changes are reported via `trackPageView` in the router, which is a
+no-op until consent has loaded a provider.
+
+Bumping `VERSION` in `src/lib/consent.js` re-asks everyone — do that if the
+policy materially changes.
+
 ## Routing and SEO
 
 Routes are declared in `src/router/index.js`; per-page title, description, canonical and
@@ -65,6 +89,20 @@ existing inbound links and search results keep working.
 
 `index.html` carries the static homepage metadata plus `Organization` structured data
 listing the four businesses as `subOrganization`.
+
+`public/sitemap.xml` and `public/robots.txt` are **generated**, not hand-written —
+`scripts/generate-seo-files.mjs` reads `src/router/routes.js` and runs automatically
+before every build, so a new page cannot ship missing from the sitemap. Don't edit those
+two files by hand; they get overwritten.
+
+### Scrolling
+
+The router owns scroll position: `history.scrollRestoration` is set to `manual` and
+`scrollBehavior` returns an explicit `behavior`. There is deliberately **no global
+`scroll-behavior: smooth`** in `base.css` — with it set, the scroll-to-top on load
+animates up from whatever position the browser restored, which looks like the page
+scrolling itself on arrival. Only in-page anchor links glide, and not under
+`prefers-reduced-motion`.
 
 ### Deployment note
 

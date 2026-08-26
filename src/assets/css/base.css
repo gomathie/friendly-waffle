@@ -7,8 +7,11 @@
   box-sizing: border-box;
 }
 
+/* No global `scroll-behavior: smooth` here. With it set, the router's
+   scroll-to-top on load animates up from whatever position the browser
+   restored, which reads as the page scrolling itself on arrival. Smooth
+   scrolling is opted into per navigation instead, in the router. */
 html {
-  scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
 }
 

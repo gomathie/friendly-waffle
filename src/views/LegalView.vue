@@ -59,6 +59,13 @@ const documents = {
         ]
       },
       {
+        heading: 'Cookies and analytics',
+        body: [
+          'This website sets no cookies of its own in order to work. If analytics are enabled, we ask before anything is stored: the banner you see on your first visit lets you accept or decline, and declining means no analytics script is loaded and no analytics cookie is set.',
+          'Your choice is remembered in your browser’s local storage, not in a cookie, and never leaves your device. To change it, clear this site’s data in your browser and the banner will ask again.'
+        ]
+      },
+      {
         heading: 'Third parties',
         body: [
           'Pages on this site embed a Google Maps frame showing our office location. Loading that map involves a request to Google, which is subject to Google’s own privacy terms. Links to onegps.africa, dekaerp.com and our social media profiles take you to services operated separately from this website.'
