@@ -140,7 +140,7 @@
             <h3 class="cap__title">{{ group.title }}</h3>
             <p class="cap__desc">{{ group.description }}</p>
             <ul class="cap__items">
-              <li v-for="item in group.items" :key="item">{{ item }}</li>
+              <li v-for="item in group.items" :key="item.name">{{ item.name }}</li>
             </ul>
           </article>
         </div>

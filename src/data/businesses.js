@@ -147,29 +147,82 @@ export const interestAreas = [
 /** Cross-ecosystem service groups shown on the Services page. */
 export const serviceGroups = [
   {
+    id: 'technology',
     title: 'Technology',
     icon: Cloud,
+    accent: 'blue',
     description: 'The systems that run the operation.',
-    items: ['Software', 'Cloud', 'IoT', 'Systems Integration', 'Data']
+    intent:
+      'Most operational pain is not a people problem. It is data trapped in one system, a process held together by spreadsheets, or infrastructure that was sized for a smaller company. This is the work of fixing that.',
+    deliveredBy: ['dekaerp', 'onegps-africa', 'hitrace-consulting'],
+    items: [
+      { name: 'Software', description: 'Business applications built around a specific operation, rather than a template bent into shape.' },
+      { name: 'Cloud', description: 'Hosting, environments and infrastructure sized to what the workload actually needs.' },
+      { name: 'IoT', description: 'Connected devices, the network behind them, and the data they send back.' },
+      { name: 'Systems Integration', description: 'Getting platforms that were never designed to talk to each other exchanging data reliably.' },
+      { name: 'Data & Analytics', description: 'Turning operational records into reporting people actually use to decide things.' }
+    ]
   },
   {
+    id: 'digital',
     title: 'Digital',
     icon: Monitor,
+    accent: 'amber',
     description: 'How the organization shows up and interacts.',
-    items: ['Websites', 'Applications', 'Digital Experiences', 'E-commerce']
+    intent:
+      'The website is usually the first thing anyone sees, and increasingly the place the work itself happens. This covers both: the pages that win attention and the interfaces your team logs into.',
+    deliveredBy: ['hitrace-digital'],
+    items: [
+      { name: 'Websites', description: 'Corporate and marketing sites that load fast, rank, and read properly on a phone.' },
+      { name: 'Web Applications', description: 'The tools your team signs into — portals, dashboards and internal systems.' },
+      { name: 'Digital Experiences', description: 'Interface and interaction design, from first wireframe through to production UI.' },
+      { name: 'E-commerce', description: 'Online stores with payments, stock and fulfilment wired into the back office.' }
+    ]
   },
   {
+    id: 'transformation',
     title: 'Transformation',
     icon: Compass,
+    accent: 'teal',
     description: 'Changing how the work itself gets done.',
-    items: ['Digital Strategy', 'Process Optimization', 'Technology Advisory', 'Business Transformation']
+    intent:
+      'Technology only pays off when the way people work changes with it. This is the advisory half of the group: deciding what is worth doing, in what order, and making the change stick afterwards.',
+    deliveredBy: ['hitrace-consulting'],
+    items: [
+      { name: 'Digital Strategy', description: 'A roadmap for what to build, buy, integrate or retire — and in what order.' },
+      { name: 'Process Optimization', description: 'Redesigning how work flows before automating it, so the automation is worth having.' },
+      { name: 'Technology Advisory', description: 'An independent read on the systems, vendors, risks and costs already in place.' },
+      { name: 'Business Transformation', description: 'Moving people and processes onto new systems, not just installing the software.' }
+    ]
   },
   {
+    id: 'creative',
     title: 'Creative',
     icon: Palette,
+    accent: 'violet',
     description: 'The brand and the message around it.',
-    items: ['Branding', 'Graphic Design', 'Digital Marketing', 'Content']
+    intent:
+      'A good system nobody understands still fails. This is the work of making what you do legible — to customers, to partners and to the people you are trying to hire.',
+    deliveredBy: ['hitrace-digital'],
+    items: [
+      { name: 'Branding', description: 'Brand strategy, visual identity, logo design and the guidelines that keep it consistent.' },
+      { name: 'Graphic Design', description: 'Marketing collateral, presentations, signage and campaign assets.' },
+      { name: 'Digital Marketing', description: 'Search, social and content campaigns aimed at measurable growth.' },
+      { name: 'Content', description: 'The copy and imagery that give the brand something worth saying.' }
+    ]
   }
+]
+
+/**
+ * How an engagement runs, whichever service it starts from. Descriptive of
+ * process only - it deliberately promises no timeline or service level.
+ */
+export const engagementSteps = [
+  { title: 'Conversation', description: 'Tell us what the business needs to do differently. No cost and no obligation.' },
+  { title: 'Discovery', description: 'We look at the systems, processes and constraints already in place.' },
+  { title: 'Recommendation', description: 'A written view of the options, what each involves, and what we would do.' },
+  { title: 'Delivery', description: 'The right team in the group builds, configures and integrates it.' },
+  { title: 'Support', description: 'Handover, training and ongoing help once it is running.' }
 ]
 
 /** Industries where the group's technology, software and advisory services apply. */

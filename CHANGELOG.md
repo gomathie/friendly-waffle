@@ -3,6 +3,44 @@
 All notable changes to the HiTrace Solutions corporate website.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [Unreleased] — 2026-08-27
+
+### Added
+
+- **Services page rebuilt with real content.** Each of the four practices
+  (Technology, Digital, Transformation, Creative) now gets its own full section with a
+  framing paragraph, every service described rather than just named, and pills linking to
+  the business that actually delivers it. Sticky jump-links sit under the header since
+  the page is now long.
+- **`engagementSteps`** — a five-step engagement flow (Conversation → Discovery →
+  Recommendation → Delivery → Support), rendered with the existing `TransformationFlow`
+  component in its `dark` variant. Describes process only; promises no timeline or
+  service level.
+- Service items in `serviceGroups` changed from bare strings to `{ name, description }`,
+  and each group gained `id` (for anchors), `accent`, `intent` and `deliveredBy`.
+  OneGPS Africa now appears on the Services page, under Technology.
+
+### Changed
+
+- `CapabilitiesView.vue` renamed to `ServicesView.vue` to match its route. The
+  `/capabilities` → `/services` redirect is unaffected.
+- Home page service cards read `item.name` to match the new item shape.
+
+- **`/industries`** — a group-level Industries page (`IndustriesView.vue`) covering
+  Transport & Logistics, Agriculture & Agribusiness, Distribution & Wholesale and
+  Growing Businesses. Each card routes to whichever business owns that need, so the page
+  is a router into the ecosystem rather than a telematics landing page. Backed by a new
+  `industries` export in `src/data/businesses.js`.
+
+### Changed
+
+- **Capabilities → Services.** `/capabilities` now redirects to `/services`; the data
+  export `capabilityGroups` was renamed `serviceGroups`. Header, mobile nav and footer
+  updated.
+- `/industries` and `/services` are no longer legacy redirects to OneGPS Africa and
+  `/businesses` respectively — they are real pages again.
+- `sitemap.xml` picked both up automatically on the next build (13 URLs).
+
 ## [2.0.0] — 2026-08-26
 
 Complete repositioning: the site is now the **corporate website of the HiTrace

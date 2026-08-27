@@ -44,7 +44,7 @@ export const routes = [
   {
     path: '/services',
     name: 'Services',
-    component: () => import('../views/CapabilitiesView.vue'),
+    component: () => import('../views/ServicesView.vue'),
     meta: {
       title: 'Services | HiTrace Solutions',
       description:
