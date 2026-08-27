@@ -37,13 +37,13 @@
       </div>
     </section>
 
-    <!-- ===== Brand architecture: the group in one glance ===== -->
+    <!-- ===== Brand architecture: the company in one glance ===== -->
     <section class="section section--alt" aria-labelledby="architecture-title">
       <div class="container">
         <div class="section-header reveal">
-          <h2 id="architecture-title">One group. Distinct specialisms.</h2>
+          <h2 id="architecture-title">One company. Distinct specialisms.</h2>
           <p>
-            HiTrace Solutions is the parent technology group. Each business below solves a
+            HiTrace Solutions is the parent company. Each business below solves a
             different class of problem, and each one can be engaged on its own.
           </p>
         </div>
@@ -83,7 +83,7 @@
               opportunities.
             </p>
             <router-link to="/about" class="link-arrow why__link">
-              More about the group
+              More about the company
               <ArrowRight :size="16" aria-hidden="true" />
             </router-link>
           </div>
@@ -131,7 +131,7 @@
       <div class="container">
         <div class="section-header reveal">
           <p class="eyebrow">What We Do</p>
-          <h2 id="services-title">Services across the group</h2>
+          <h2 id="services-title">Services across our businesses</h2>
           <p>
             Disciplines that combine on most engagements — and stand alone when that is all
             you need.
@@ -173,7 +173,7 @@
               Our ecosystem brings together specialized businesses across telematics, enterprise
               software, digital experiences and technology consulting.
             </p>
-            <router-link to="/about" class="btn btn--outline">Read about the group</router-link>
+            <router-link to="/about" class="btn btn--outline">Read about the company</router-link>
           </div>
 
           <img
@@ -584,7 +584,7 @@ onBeforeUnmount(() => applyParallax.cancel())
   }
 
   /* The graphic stays on mobile — it is the fastest way to read what the
-     group is — but it drops below the copy and loses its outer breathing room. */
+     company is — but it drops below the copy and loses its outer breathing room. */
   .hhero__visual {
     margin: 0 calc(var(--space-4) * -1);
   }

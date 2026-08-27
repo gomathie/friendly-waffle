@@ -12,17 +12,17 @@
         <div class="who">
           <div class="reveal-left">
             <p class="eyebrow">Who we are</p>
-            <h2 id="who-title" class="who__title">A group, not a single product.</h2>
+            <h2 id="who-title" class="who__title">Specialized businesses, not a single product.</h2>
             <p class="lead who__p">
               Our ecosystem brings together specialized businesses across telematics, enterprise
               software, digital experiences and technology consulting. Each has its own focus,
               its own team and its own customers.
             </p>
             <p class="lead who__p">
-              The group's roots are in telematics — more than 15 years of vehicle tracking and
+              Our roots are in telematics — more than 15 years of vehicle tracking and
               fleet management work in Ghana. That work now belongs to
               <router-link to="/businesses/onegps-africa" class="who__inline">OneGPS Africa</router-link>,
-              which frees HiTrace Solutions to do what a technology group should: build,
+              which frees HiTrace Solutions to do what a technology company should: build,
               advise and connect across everything an organization runs.
             </p>
             <router-link to="/businesses" class="btn btn--outline">Explore our businesses</router-link>
@@ -47,7 +47,7 @@
               <Network :size="18" aria-hidden="true" />
               <div>
                 <strong>One ecosystem</strong>
-                <span>Engage a single business, or the group on a larger programme</span>
+                <span>Engage a single business, or several of them on a larger programme</span>
               </div>
             </li>
           </ul>
@@ -60,7 +60,7 @@
         <div class="section-header reveal">
           <h2 id="structure-title">How HiTrace Solutions is structured</h2>
           <p>
-            HiTrace Solutions is the parent technology group. Below it sit the businesses that do
+            HiTrace Solutions is the parent company. Below it sit the businesses that do
             the work.
           </p>
         </div>

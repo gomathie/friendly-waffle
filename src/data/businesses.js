@@ -107,7 +107,7 @@ export const businesses = [
     summary:
       'We help organizations turn technology into measurable business outcomes through technology consulting, digital transformation and IoT solutions.',
     longSummary:
-      'HiTrace Consulting is the advisory and transformation arm of the group. It works across the ecosystem - and independently of it - to help organizations choose the right technology, integrate what they already run, and build a roadmap they can execute.',
+      'HiTrace Consulting is the advisory and transformation arm of HiTrace Solutions. It works across the ecosystem - and independently of it - to help organizations choose the right technology, integrate what they already run, and build a roadmap they can execute.',
     relationship: 'The transformation arm of HiTrace Solutions',
     route: '/consulting',
     externalUrl: null,
@@ -125,7 +125,7 @@ export const businesses = [
       { icon: LineChart, title: 'Data & Analytics', description: 'Turning operational data into reporting people actually use.' },
       { icon: Brain, title: 'AI Strategy', description: 'Identifying where AI adds real value - and where it does not.' },
       { icon: Search, title: 'Technology Advisory', description: 'Ongoing counsel for teams making technology decisions.' },
-      { icon: Share2, title: 'Ecosystem Delivery', description: 'Access to the telematics, software and creative teams across the group.' }
+      { icon: Share2, title: 'Ecosystem Delivery', description: 'Access to the telematics, software and creative teams across the ecosystem.' }
     ]
   }
 ]
@@ -188,7 +188,7 @@ export const serviceGroups = [
     accent: 'teal',
     description: 'Changing how the work itself gets done.',
     intent:
-      'Technology only pays off when the way people work changes with it. This is the advisory half of the group: deciding what is worth doing, in what order, and making the change stick afterwards.',
+      'Technology only pays off when the way people work changes with it. This is the advisory half of the company: deciding what is worth doing, in what order, and making the change stick afterwards.',
     deliveredBy: ['hitrace-consulting'],
     items: [
       { name: 'Digital Strategy', description: 'A roadmap for what to build, buy, integrate or retire — and in what order.' },
@@ -223,11 +223,11 @@ export const engagementSteps = [
   { title: 'Conversation', description: 'Tell us what the business needs to do differently. No cost and no obligation.' },
   { title: 'Discovery', description: 'We look at the systems, processes and constraints already in place.' },
   { title: 'Recommendation', description: 'A written view of the options, what each involves, and what we would do.' },
-  { title: 'Delivery', description: 'The right team in the group builds, configures and integrates it.' },
+  { title: 'Delivery', description: 'The right specialist team builds, configures and integrates it.' },
   { title: 'Support', description: 'Handover, training and ongoing help once it is running.' }
 ]
 
-/** Industries where the group's technology, software and advisory services apply. */
+/** Industries where our technology, software and advisory services apply. */
 export const industries = [
   {
     title: 'Transport & Logistics',

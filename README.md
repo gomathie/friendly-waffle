@@ -1,6 +1,6 @@
 # HiTrace Solutions — corporate website
 
-The corporate site for HiTrace Solutions, the technology group behind **OneGPS Africa**
+The corporate site for HiTrace Solutions, the technology company behind **OneGPS Africa**
 (telematics), **DekaERP** (enterprise software), **HiTrace Digital** (digital experiences
 and creative) and **HiTrace Consulting** (technology consulting and transformation).
 

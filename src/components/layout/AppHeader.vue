@@ -214,7 +214,7 @@ onUnmounted(() => {
   max-width: 1320px;
 }
 
-/* Brand lockup: logo plus the group descriptor, so the parent-company
+/* Brand lockup: logo plus the company descriptor, so the parent-company
    positioning reads from the very first element on the page. */
 .header__brand {
   display: flex;

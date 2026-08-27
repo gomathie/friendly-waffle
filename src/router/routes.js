@@ -12,7 +12,7 @@ const profileIds = businesses
   .join('|')
 
 /**
- * The corporate site: the group, its businesses, what it does and how to
+ * The corporate site: the company, its businesses, what it does and how to
  * reach it. Telematics detail now lives with OneGPS Africa, so the old
  * product URLs redirect to that business profile instead of 404ing.
  */
@@ -44,7 +44,7 @@ export const routes = [
     meta: {
       title: 'Our Businesses | HiTrace Solutions',
       description:
-        'OneGPS Africa, DekaERP, HiTrace Digital and HiTrace Consulting - specialized technology businesses in the HiTrace Solutions group.'
+        'OneGPS Africa, DekaERP, HiTrace Digital and HiTrace Consulting - specialized technology businesses from HiTrace Solutions.'
     }
   },
   // Consulting has a full page of its own; keep the businesses URL pointing at it.
@@ -61,7 +61,7 @@ export const routes = [
     meta: {
       title: 'Services | HiTrace Solutions',
       description:
-        'Technology, digital, transformation and creative services delivered across the HiTrace Solutions group of businesses.'
+        'Technology, digital, transformation and creative services delivered across the HiTrace Solutions businesses.'
     }
   },
   { path: '/capabilities', redirect: '/services' },
@@ -102,7 +102,7 @@ export const routes = [
     meta: {
       title: 'Careers | HiTrace Solutions',
       description:
-        'Engineering, design, consulting and operations roles across the HiTrace Solutions group of technology businesses.'
+        'Engineering, design, consulting and operations roles across the HiTrace Solutions technology businesses.'
     }
   },
   {

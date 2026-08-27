@@ -8,7 +8,7 @@ export const SITE_URL = 'https://hitracesolutions.com'
 
 export const brand = {
   name: 'HiTrace Solutions',
-  descriptor: 'Technology Group',
+  descriptor: 'Technology Solutions',
   tagline: 'Technology that moves businesses forward.',
   supportingStatement: 'Building technology solutions for a connected world.',
   intro:

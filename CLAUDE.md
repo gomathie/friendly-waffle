@@ -4,13 +4,13 @@ Guidance for Claude Code when working in this repository.
 
 ## What this site is
 
-The **corporate website of HiTrace Solutions**, a technology group. It is a gateway and
+The **corporate website of HiTrace Solutions**, a technology company. It is a gateway and
 brand hub, not a product catalogue. A first-time visitor should understand this within
 about ten seconds of landing:
 
 ```
                     HITRACE SOLUTIONS
-                    Technology Group
+                    Technology Solutions
                            |
      +---------------------+---------------------+
      |                     |                     |
@@ -33,6 +33,8 @@ Supporting line: *Building technology solutions for a connected world.*
 tracking or telematics company.** That was the old site and it is wrong now. Telematics
 belongs to OneGPS Africa. If a change would make the parent company look like a
 telematics vendor again, it is the wrong change.
+
+**Avoid the word "group" for HiTrace Solutions.** In some markets it reads as a large conglomerate, which carries unwanted tax and pricing assumptions. The descriptor is **Technology Solutions**, held in `brand.descriptor` and rendered from there in the header, the hero eyebrow and the architecture diagram. In prose write "the company", "our businesses" or "the ecosystem" — never "the group". "Ecosystem" is approved and in deliberate use: it describes connection rather than corporate scale.
 
 **Never commit to a number of businesses in copy.** The group has four today and may add
 more. Write "specialized businesses", not "four businesses"; "distinct specialisms", not

@@ -2,8 +2,8 @@
   <div class="arch" :class="{ 'arch--dark': dark }">
     <!-- Parent -->
     <div class="arch__parent">
-      <span class="arch__parent-name">HiTrace Solutions</span>
-      <span class="arch__parent-role">Technology Group</span>
+      <span class="arch__parent-name">{{ brand.name }}</span>
+      <span class="arch__parent-role">{{ brand.descriptor }}</span>
     </div>
 
     <div class="arch__stem" aria-hidden="true"></div>
@@ -39,6 +39,7 @@
 <script setup>
 import { computed } from 'vue'
 import { businesses } from '../../data/businesses.js'
+import { brand } from '../../data/site.js'
 
 defineProps({
   dark: { type: Boolean, default: false }

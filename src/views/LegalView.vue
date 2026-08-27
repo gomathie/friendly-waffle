@@ -38,7 +38,7 @@ const documents = {
       {
         heading: 'Scope',
         body: [
-          `This policy covers ${SITE_URL.replace(/^https?:\/\//, '')}, the corporate website of ${brand.name}. The businesses in the group operate their own websites and platforms, each with its own privacy terms — including OneGPS Africa at onegps.africa and DekaERP at dekaerp.com.`
+          `This policy covers ${SITE_URL.replace(/^https?:\/\//, '')}, the corporate website of ${brand.name}. The other HiTrace Solutions businesses operate their own websites and platforms, each with its own privacy terms — including OneGPS Africa at onegps.africa and DekaERP at dekaerp.com.`
         ]
       },
       {
@@ -55,7 +55,7 @@ const documents = {
       {
         heading: 'How we use it',
         body: [
-          'We use the details you submit to respond to your enquiry and to route it to the right business in the group. We do not sell your information, and we do not use it for unrelated marketing.'
+          'We use the details you submit to respond to your enquiry and to route it to the right business.  We do not sell your information, and we do not use it for unrelated marketing.'
         ]
       },
       {
@@ -87,7 +87,7 @@ const documents = {
       {
         heading: 'Using this website',
         body: [
-          `This website is provided by ${brand.name} for general information about the group and its businesses. By using it you agree to these terms.`
+          `This website is provided by ${brand.name} for general information about the company and its businesses. By using it you agree to these terms.`
         ]
       },
       {

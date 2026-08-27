@@ -7,7 +7,7 @@
       accent="teal"
       cta-text="Talk to Our Consultants"
       cta-link="/contact"
-      secondary-text="See group services"
+      secondary-text="See all services"
       secondary-link="/services"
     />
 
@@ -93,7 +93,7 @@
           <p class="eyebrow">Across the ecosystem</p>
           <h2 id="ecosystem-title">Advice first — then whoever is right to build it.</h2>
           <p>
-            HiTrace Consulting can draw on the group's telematics, enterprise software and
+            HiTrace Consulting can draw on our telematics, enterprise software and
             creative teams, and works just as readily with the systems and vendors you already
             have.
           </p>

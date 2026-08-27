@@ -2,7 +2,7 @@
   <div>
     <HeroSection
       eyebrow="Services"
-      title="Specialist practices. One group behind them."
+      title="Specialist practices. One company behind them."
       subtitle="Technology, digital, transformation and creative work — delivered by specialists who already work together, so the pieces fit when a project needs more than one of them."
       cta-text="Talk to Us"
       cta-link="/contact"
@@ -38,7 +38,7 @@
             <p class="lead intro__lead">
               The practices below are how we answer those. Any one of them can be engaged on
               its own; on larger programmes they run together, which is the point of keeping them
-              in one group.
+              under one roof.
             </p>
           </div>
 
@@ -123,12 +123,12 @@
     <!-- Cross-practice argument -->
     <section class="section" aria-labelledby="together-title">
       <div class="container container--narrow text-center">
-        <p class="eyebrow" style="justify-content: center;">Why one group</p>
+        <p class="eyebrow" style="justify-content: center;">Why one company</p>
         <h2 id="together-title" class="together__title">Breadth, without being unfocused.</h2>
         <p class="lead">
           A single organization rarely needs only one of these. A fleet operator that wants live
           vehicle data usually also needs the finance system to receive it, the process around it
-          redesigned, and the result explained to customers. The group is built so those pieces
+          redesigned, and the result explained to customers. The company is built so those pieces
           can be delivered by teams that already work together — and so no one is stuck
           coordinating separate suppliers who blame each other.
         </p>

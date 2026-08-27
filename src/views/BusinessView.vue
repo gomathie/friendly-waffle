@@ -13,7 +13,7 @@
       secondary-link="/contact"
     />
 
-    <!-- Positioning: what this business is, and where it sits in the group -->
+    <!-- Positioning: what this business is, and where it sits in the ecosystem -->
     <section class="section" aria-labelledby="overview-title">
       <div class="container">
         <div class="overview">
@@ -32,10 +32,10 @@
             </div>
           </div>
 
-          <aside class="ecoside reveal-right" aria-label="Group context">
+          <aside class="ecoside reveal-right" aria-label="Ecosystem context">
             <h3 class="ecoside__title">In the HiTrace Solutions ecosystem</h3>
             <p class="ecoside__body">
-              {{ business.name }} is an independent business within the group. It can be engaged
+              {{ business.name }} is an independent business within HiTrace Solutions. It can be engaged
               directly, or alongside the other HiTrace businesses on a larger programme.
             </p>
             <ul class="ecoside__list">
@@ -133,10 +133,10 @@ const siblings = computed(() =>
 )
 
 const headlines = {
-  'onegps-africa': 'The telematics business of the group.',
-  dekaerp: 'The enterprise software business of the group.',
-  'hitrace-digital': 'The creative and digital experience business of the group.',
-  'hitrace-consulting': 'The transformation arm of the group.'
+  'onegps-africa': 'The telematics business of the company.',
+  dekaerp: 'The enterprise software business of the company.',
+  'hitrace-digital': 'The creative and digital experience business of the company.',
+  'hitrace-consulting': 'The transformation arm of the company.'
 }
 
 const headline = computed(() => headlines[route.params.id] || '')
@@ -176,7 +176,7 @@ const prettyUrl = computed(() =>
   color: var(--color-text-muted);
 }
 
-/* Sibling navigation keeps the group visible from every business page */
+/* Sibling navigation keeps the ecosystem visible from every business page */
 .ecoside {
   padding: var(--space-8);
   background: var(--color-surface-alt);

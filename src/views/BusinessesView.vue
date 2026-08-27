@@ -2,8 +2,8 @@
   <div>
     <HeroSection
       eyebrow="Our Businesses"
-      title="Specialized businesses. One technology group."
-      subtitle="Specialized technology businesses designed to solve different challenges across the modern organization. Engage one of them, or the group."
+      title="Specialized businesses. One technology company."
+      subtitle="Specialized technology businesses designed to solve different challenges across the modern organization. Engage one of them, or several together."
       compact
     />
 
@@ -19,10 +19,10 @@
     <section class="section section--alt" aria-labelledby="structure-title">
       <div class="container">
         <div class="section-header reveal">
-          <h2 id="structure-title">How the group fits together</h2>
+          <h2 id="structure-title">How the businesses fit together</h2>
           <p>
             OneGPS Africa, DekaERP and HiTrace Digital deliver. HiTrace Consulting sets direction
-            and connects the parts — including systems the group did not build.
+            and connects the parts — including systems we did not build.
           </p>
         </div>
         <div class="reveal">

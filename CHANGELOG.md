@@ -7,9 +7,19 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/).
 
 ### Changed
 
+- **"Technology Group" is now "Technology Solutions".** "Group" reads as a large
+  conglomerate in some markets and carries unwanted tax and pricing assumptions. The
+  descriptor moved to a single source — `brand.descriptor` in `src/data/site.js` — and is
+  rendered from there in the header lockup, the hero eyebrow and the architecture
+  diagram, which had hardcoded it. Around 40 further replacements removed "group" from
+  prose: "One group. Distinct specialisms." → "One company. Distinct specialisms.";
+  "Why one group" → "Why one company"; "Services across the group" → "Services across
+  our businesses"; "The group's roots are in telematics" → "Our roots are in
+  telematics". Where the collective noun added nothing it was dropped rather than
+  swapped ("Engage one of them, or several together.").
 - **Copy no longer commits to a business count.** "Four businesses. One technology
-  group." became "Specialized businesses. One technology group."; "One group. Four
-  specialisms." became "One group. Distinct specialisms."; and the same across the
+  group." became "Specialized businesses. One technology company."; "One group. Four
+  specialisms." became "One company. Distinct specialisms."; and the same across the
   Services, Careers, About and Businesses pages plus the route meta description. Adding a
   fifth business no longer means rewriting headings.
 - **The business count now drives the layout instead of being assumed by it.** The
