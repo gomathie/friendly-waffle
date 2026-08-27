@@ -1,5 +1,12 @@
 <template>
-  <article class="biz" :class="[`accent-${business.accent}`, { 'biz--dark': dark }]">
+  <article
+    ref="card"
+    class="biz"
+    :class="[`accent-${business.accent}`, { 'biz--dark': dark }]"
+    @pointermove="handlePointerMove"
+    @pointerleave="resetTilt"
+  >
+    <span class="biz__sheen" aria-hidden="true"></span>
     <div class="biz__top">
       <span class="biz__icon">
         <component :is="business.icon" :size="26" aria-hidden="true" />
@@ -41,9 +48,10 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, ref, onBeforeUnmount } from 'vue'
 import { ArrowRight, ExternalLink } from 'lucide-vue-next'
 import { isExternal } from '../../data/businesses.js'
+import { pointerMotionAllowed, rafThrottle } from '../../lib/motion.js'
 
 const props = defineProps({
   business: { type: Object, required: true },
@@ -53,10 +61,55 @@ const props = defineProps({
 
 const external = computed(() => isExternal(props.business))
 const visibleTags = computed(() => props.business.tags.slice(0, props.tagLimit))
+
+/* Card tilt.
+ *
+ * Rotation is capped low on purpose - past about six degrees the text edges
+ * start to shimmer and the card reads as a toy rather than a surface. The
+ * pointer position also drives the sheen, so the highlight tracks the tilt. */
+const MAX_TILT = 5.5
+const card = ref(null)
+
+const applyTilt = rafThrottle((x, y) => {
+  const el = card.value
+  if (!el) return
+  el.style.setProperty('--rx', `${(-y * MAX_TILT).toFixed(2)}deg`)
+  el.style.setProperty('--ry', `${(x * MAX_TILT).toFixed(2)}deg`)
+  el.style.setProperty('--mx', `${(50 + x * 50).toFixed(1)}%`)
+  el.style.setProperty('--my', `${(50 + y * 50).toFixed(1)}%`)
+  el.style.setProperty('--sheen', '1')
+})
+
+const handlePointerMove = (event) => {
+  if (!pointerMotionAllowed()) return
+  const rect = card.value?.getBoundingClientRect()
+  if (!rect) return
+  applyTilt(
+    (event.clientX - rect.left) / rect.width * 2 - 1,
+    (event.clientY - rect.top) / rect.height * 2 - 1
+  )
+}
+
+const resetTilt = () => {
+  applyTilt.cancel()
+  const el = card.value
+  if (!el) return
+  el.style.setProperty('--rx', '0deg')
+  el.style.setProperty('--ry', '0deg')
+  el.style.setProperty('--sheen', '0')
+}
+
+onBeforeUnmount(() => applyTilt.cancel())
 </script>
 
 <style scoped>
 .biz {
+  /* Written by the pointer handler; all default to rest so the card is
+     unchanged without JS, on touch, and under reduced motion. */
+  --rx: 0deg;
+  --ry: 0deg;
+  --lift: 0px;
+  --sheen: 0;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -65,7 +118,40 @@ const visibleTags = computed(() => props.business.tags.slice(0, props.tagLimit))
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
   overflow: hidden;
-  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+  transform: perspective(900px) translate3d(0, var(--lift), 0) rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+/* Highlight follows the pointer, so the tilt reads as a lit surface */
+.biz__sheen {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: var(--sheen);
+  background: radial-gradient(
+    340px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(255, 255, 255, 0.34),
+    transparent 62%
+  );
+  mix-blend-mode: soft-light;
+  transition: opacity 260ms ease;
+}
+
+.biz--dark .biz__sheen {
+  background: radial-gradient(
+    340px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(125, 211, 252, 0.16),
+    transparent 62%
+  );
+  mix-blend-mode: screen;
+}
+
+/* Content sits above the sheen, so the highlight never washes out the text */
+.biz > *:not(.biz__sheen) {
+  position: relative;
+  z-index: 1;
 }
 
 /* A thin accent rule along the top edge identifies the business at a glance */
@@ -82,10 +168,11 @@ const visibleTags = computed(() => props.business.tags.slice(0, props.tagLimit))
 
 .biz:hover,
 .biz:focus-within {
-  transform: translateY(-6px);
+  --lift: -6px;
   border-color: var(--accent);
   box-shadow: var(--shadow-card-hover);
 }
+
 
 .biz:hover::before,
 .biz:focus-within::before {
@@ -201,6 +288,15 @@ const visibleTags = computed(() => props.business.tags.slice(0, props.tagLimit))
 
   .biz__cta {
     flex: 1 1 100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .biz {
+    transform: none;
+  }
+
+  .biz__sheen {
+    display: none;
   }
 }
 </style>

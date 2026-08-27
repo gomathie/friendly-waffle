@@ -1,7 +1,13 @@
 <template>
   <div class="home">
     <!-- ===== Hero ===== -->
-    <section class="hhero" aria-labelledby="hero-title">
+    <section
+      ref="hero"
+      class="hhero"
+      aria-labelledby="hero-title"
+      @pointermove="handlePointerMove"
+      @pointerleave="resetParallax"
+    >
       <div class="hhero__bg" aria-hidden="true">
         <div class="hhero__mesh"></div>
         <div class="hhero__grid"></div>
@@ -189,6 +195,7 @@
 </template>
 
 <script setup>
+import { ref, onBeforeUnmount } from 'vue'
 import { ArrowRight } from 'lucide-vue-next'
 import EcosystemGraphic from '../components/common/EcosystemGraphic.vue'
 import EcosystemDiagram from '../components/common/EcosystemDiagram.vue'
@@ -197,11 +204,50 @@ import TransformationFlow from '../components/common/TransformationFlow.vue'
 import FinalCta from '../components/common/FinalCta.vue'
 import { businesses, pillars, serviceGroups, transformationFlow } from '../data/businesses.js'
 import { brand } from '../data/site.js'
+import { pointerMotionAllowed, rafThrottle } from '../lib/motion.js'
+
+/* Hero parallax.
+ *
+ * The backdrop is three separate layers, so moving them at different rates
+ * against the pointer gives the hero real depth for the price of two custom
+ * properties. Position is written to the section as --px/--py in the range
+ * -1..1; the CSS decides how far each layer travels. */
+const hero = ref(null)
+
+const applyParallax = rafThrottle((x, y) => {
+  const el = hero.value
+  if (!el) return
+  el.style.setProperty('--px', x.toFixed(3))
+  el.style.setProperty('--py', y.toFixed(3))
+})
+
+const handlePointerMove = (event) => {
+  if (!pointerMotionAllowed()) return
+  const rect = hero.value?.getBoundingClientRect()
+  if (!rect) return
+  applyParallax(
+    (event.clientX - rect.left) / rect.width * 2 - 1,
+    (event.clientY - rect.top) / rect.height * 2 - 1
+  )
+}
+
+const resetParallax = () => {
+  applyParallax.cancel()
+  hero.value?.style.setProperty('--px', '0')
+  hero.value?.style.setProperty('--py', '0')
+}
+
+onBeforeUnmount(() => applyParallax.cancel())
 </script>
 
 <style scoped>
 /* ===== Hero ===== */
 .hhero {
+  /* --px/--py are written by the pointer handler, -1..1 from centre. Each
+     layer below multiplies them by its own depth. Defaulting to 0 means the
+     hero is identical without JS, on touch, or under reduced motion. */
+  --px: 0;
+  --py: 0;
   position: relative;
   display: flex;
   align-items: center;
@@ -221,7 +267,9 @@ import { brand } from '../data/site.js'
    and it reads as infrastructure rather than as a fleet of vehicles. */
 .hhero__mesh {
   position: absolute;
-  inset: 0;
+  inset: -6%;
+  transform: translate3d(calc(var(--px) * 14px), calc(var(--py) * 10px), 0);
+  transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
   background:
     radial-gradient(ellipse 60% 70% at 78% 18%, rgba(37, 99, 235, 0.34) 0%, transparent 62%),
     radial-gradient(ellipse 50% 60% at 92% 72%, rgba(13, 148, 136, 0.2) 0%, transparent 60%),
@@ -230,7 +278,9 @@ import { brand } from '../data/site.js'
 
 .hhero__grid {
   position: absolute;
-  inset: 0;
+  inset: -4%;
+  transform: translate3d(calc(var(--px) * -26px), calc(var(--py) * -16px), 0);
+  transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
@@ -310,6 +360,13 @@ import { brand } from '../data/site.js'
 
 .hhero__visual {
   animation: fadeIn 0.9s ease 0.3s both;
+  transform:
+    perspective(1100px)
+    translate3d(calc(var(--px) * 22px), calc(var(--py) * 14px), 0)
+    rotateY(calc(var(--px) * -5deg))
+    rotateX(calc(var(--py) * 4deg));
+  transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
 }
 
 /* ===== Business grid ===== */
