@@ -1,5 +1,5 @@
 <template>
-  <section class="phero" :class="[accent ? `accent-${accent}` : '', { 'phero--compact': compact }]">
+  <section class="phero" :class="[accent ? `accent-${accent}` : '', { 'phero--compact': compact, 'phero--split': slots.visual }]">
     <div class="phero__bg" aria-hidden="true">
       <div v-if="bgImage" class="phero__img" :style="{ backgroundImage: `url(${bgImage})` }"></div>
       <div class="phero__veil"></div>
@@ -35,6 +35,10 @@
             {{ secondaryText }}
           </router-link>
         </template>
+      </div>
+
+      <div v-if="slots.visual" class="phero__visual">
+        <slot name="visual" />
       </div>
     </div>
   </section>
@@ -128,6 +132,18 @@ const hasActions = computed(() => Boolean(props.ctaText || props.secondaryText |
   max-width: 1280px;
 }
 
+.phero--split .phero__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.9fr);
+  gap: var(--space-16);
+  align-items: center;
+}
+
+.phero--split .phero__visual {
+  grid-column: 2;
+  grid-row: 1 / span 6;
+}
+
 .phero__eyebrow {
   color: var(--color-primary-on-dark);
   margin-bottom: var(--space-5);
@@ -181,6 +197,14 @@ const hasActions = computed(() => Boolean(props.ctaText || props.secondaryText |
 
   .phero__title {
     max-width: 100%;
+  }
+
+  .phero--split .phero__inner {
+    display: block;
+  }
+
+  .phero--split .phero__visual {
+    margin-top: var(--space-10);
   }
 
   .phero__actions .btn {
