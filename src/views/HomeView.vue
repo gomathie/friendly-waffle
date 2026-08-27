@@ -121,11 +121,11 @@
     </section>
 
     <!-- ===== What We Do ===== -->
-    <section class="section section--alt" aria-labelledby="capabilities-title">
+    <section class="section section--alt" aria-labelledby="services-title">
       <div class="container">
         <div class="section-header reveal">
           <p class="eyebrow">What We Do</p>
-          <h2 id="capabilities-title">Capabilities across the group</h2>
+          <h2 id="services-title">Services across the group</h2>
           <p>
             Four disciplines that combine on most engagements — and stand alone when that is all
             you need.
@@ -133,7 +133,7 @@
         </div>
 
         <div class="grid grid--4 stagger-children">
-          <article v-for="group in capabilityGroups" :key="group.title" class="cap">
+          <article v-for="group in serviceGroups" :key="group.title" class="cap">
             <span class="cap__icon">
               <component :is="group.icon" :size="22" aria-hidden="true" />
             </span>
@@ -146,7 +146,7 @@
         </div>
 
         <div class="text-center reveal" style="margin-top: var(--space-10);">
-          <router-link to="/capabilities" class="btn btn--outline">See full capabilities</router-link>
+          <router-link to="/services" class="btn btn--outline">See all services</router-link>
         </div>
       </div>
     </section>
@@ -195,7 +195,7 @@ import EcosystemDiagram from '../components/common/EcosystemDiagram.vue'
 import BusinessCard from '../components/common/BusinessCard.vue'
 import TransformationFlow from '../components/common/TransformationFlow.vue'
 import FinalCta from '../components/common/FinalCta.vue'
-import { businesses, pillars, capabilityGroups, transformationFlow } from '../data/businesses.js'
+import { businesses, pillars, serviceGroups, transformationFlow } from '../data/businesses.js'
 import { brand } from '../data/site.js'
 </script>
 

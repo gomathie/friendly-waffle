@@ -37,7 +37,8 @@
           <h2 id="footer-company" class="footer__heading">Company</h2>
           <ul class="footer__links">
             <li><router-link to="/about">About</router-link></li>
-            <li><router-link to="/capabilities">Capabilities</router-link></li>
+            <li><router-link to="/services">Services</router-link></li>
+            <li><router-link to="/industries">Industries</router-link></li>
             <li><router-link to="/contact">Contact</router-link></li>
             <li><router-link to="/careers">Careers</router-link></li>
             <li><router-link to="/privacy">Privacy Policy</router-link></li>

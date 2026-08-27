@@ -42,13 +42,24 @@ export const routes = [
     component: () => import('../views/BusinessView.vue')
   },
   {
-    path: '/capabilities',
-    name: 'Capabilities',
+    path: '/services',
+    name: 'Services',
     component: () => import('../views/CapabilitiesView.vue'),
     meta: {
-      title: 'Capabilities | HiTrace Solutions',
+      title: 'Services | HiTrace Solutions',
       description:
-        'Technology, digital, transformation and creative capabilities delivered across the HiTrace Solutions group of businesses.'
+        'Technology, digital, transformation and creative services delivered across the HiTrace Solutions group of businesses.'
+    }
+  },
+  { path: '/capabilities', redirect: '/services' },
+  {
+    path: '/industries',
+    name: 'Industries',
+    component: () => import('../views/IndustriesView.vue'),
+    meta: {
+      title: 'Industries We Serve | HiTrace Solutions',
+      description:
+        'Technology, software, digital and transformation services for transport, logistics, agriculture, distribution and growing businesses.'
     }
   },
   {
@@ -110,9 +121,7 @@ export const routes = [
   { path: '/driver-behavior-monitoring', redirect: '/businesses/onegps-africa' },
   { path: '/smart-farming', redirect: '/businesses/onegps-africa' },
   { path: '/onegps-africa', redirect: '/businesses/onegps-africa' },
-  { path: '/industries', redirect: '/businesses/onegps-africa' },
   { path: '/pricing', redirect: '/businesses/onegps-africa' },
-  { path: '/services', redirect: '/businesses' },
   { path: '/iot-and-smart-homes', redirect: '/consulting' },
   { path: '/web-services', redirect: '/businesses/hitrace-digital' },
   { path: '/faq', redirect: '/contact' },

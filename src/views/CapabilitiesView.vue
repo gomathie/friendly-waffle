@@ -2,16 +2,16 @@
   <div>
     <HeroSection
       eyebrow="What We Do"
-      title="Capabilities across the group."
-      subtitle="Technology, digital, transformation and creative. Four disciplines that combine on most engagements — and stand alone when that is all you need."
+      title="Services across the group."
+      subtitle="Technology, digital, transformation and creative services that combine on engagements — and stand alone when that is all you need."
       compact
     />
 
     <section class="section" aria-labelledby="groups-title">
       <div class="container">
-        <h2 id="groups-title" class="visually-hidden">Capability groups</h2>
+        <h2 id="groups-title" class="visually-hidden">Service groups</h2>
         <div class="capgrid stagger-children">
-          <article v-for="group in capabilityGroups" :key="group.title" class="capgroup">
+          <article v-for="group in serviceGroups" :key="group.title" class="capgroup">
             <div class="capgroup__head">
               <span class="capgroup__icon">
                 <component :is="group.icon" :size="24" aria-hidden="true" />
@@ -32,13 +32,13 @@
       </div>
     </section>
 
-    <!-- Which business delivers which capability -->
+    <!-- Which business delivers which service -->
     <section class="section section--alt" aria-labelledby="delivery-title">
       <div class="container">
         <div class="section-header reveal">
           <p class="eyebrow">Who delivers</p>
-          <h2 id="delivery-title">Every capability has an owner</h2>
-          <p>Capabilities are not a menu of promises — each one sits with a specific business.</p>
+          <h2 id="delivery-title">Every service has an owner</h2>
+          <p>Services are not a menu of promises — each one sits with a specific business.</p>
         </div>
 
         <div class="owners stagger-children">
@@ -74,7 +74,7 @@
         </p>
         <div class="approach__actions">
           <router-link to="/consulting" class="btn btn--primary btn--lg">Talk to HiTrace Consulting</router-link>
-          <router-link to="/businesses" class="btn btn--secondary btn--lg">Explore Our Businesses</router-link>
+          <router-link to="/industries" class="btn btn--secondary btn--lg">See Industries We Serve</router-link>
         </div>
       </div>
     </section>
@@ -87,7 +87,7 @@
 import { Check, ArrowRight } from 'lucide-vue-next'
 import HeroSection from '../components/common/HeroSection.vue'
 import FinalCta from '../components/common/FinalCta.vue'
-import { capabilityGroups, businesses } from '../data/businesses.js'
+import { serviceGroups, businesses } from '../data/businesses.js'
 </script>
 
 <style scoped>

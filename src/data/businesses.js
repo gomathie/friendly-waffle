@@ -144,8 +144,8 @@ export const interestAreas = [
   'General Enquiry'
 ]
 
-/** Cross-ecosystem capability groups shown on the Capabilities page. */
-export const capabilityGroups = [
+/** Cross-ecosystem service groups shown on the Services page. */
+export const serviceGroups = [
   {
     title: 'Technology',
     icon: Cloud,
@@ -169,6 +169,46 @@ export const capabilityGroups = [
     icon: Palette,
     description: 'The brand and the message around it.',
     items: ['Branding', 'Graphic Design', 'Digital Marketing', 'Content']
+  }
+]
+
+/** Industries where the group's technology, software and advisory services apply. */
+export const industries = [
+  {
+    title: 'Transport & Logistics',
+    icon: Radar,
+    description: 'Connect fleets, assets, people and operational systems so movement is easier to see and manage.',
+    services: ['Fleet intelligence', 'Systems integration', 'Business management', 'Data & analytics'],
+    route: '/businesses/onegps-africa',
+    cta: 'Explore fleet intelligence',
+    accent: 'blue'
+  },
+  {
+    title: 'Agriculture & Agribusiness',
+    icon: Layers,
+    description: 'Bring field operations, mobile assets, inventory and business information into clearer view.',
+    services: ['Connected operations', 'Asset tracking', 'Inventory', 'Process transformation'],
+    route: '/contact',
+    cta: 'Discuss your operation',
+    accent: 'teal'
+  },
+  {
+    title: 'Distribution & Wholesale',
+    icon: Boxes,
+    description: 'Coordinate stock, orders, finance and delivery workflows with systems built around the way work moves.',
+    services: ['ERP', 'Inventory', 'Workflow', 'Operational reporting'],
+    route: '/businesses/dekaerp',
+    cta: 'Explore business software',
+    accent: 'violet'
+  },
+  {
+    title: 'Growing Businesses',
+    icon: Blocks,
+    description: 'Build a stronger foundation for growth with the right systems, digital presence and technology decisions.',
+    services: ['Technology strategy', 'Business software', 'Brand and digital', 'Cloud advisory'],
+    route: '/consulting',
+    cta: 'Start with a conversation',
+    accent: 'amber'
   }
 ]
 

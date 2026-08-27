@@ -54,7 +54,10 @@
             </div>
           </li>
           <li class="nav__item">
-            <router-link to="/capabilities" class="nav__link">Capabilities</router-link>
+            <router-link to="/services" class="nav__link">Services</router-link>
+          </li>
+          <li class="nav__item">
+            <router-link to="/industries" class="nav__link">Industries</router-link>
           </li>
           <li class="nav__item">
             <router-link to="/consulting" class="nav__link">Consulting</router-link>
@@ -107,7 +110,8 @@
             See the full ecosystem
           </router-link>
 
-          <router-link to="/capabilities" class="mnav__link" @click="closeMobile">Capabilities</router-link>
+          <router-link to="/services" class="mnav__link" @click="closeMobile">Services</router-link>
+          <router-link to="/industries" class="mnav__link" @click="closeMobile">Industries</router-link>
           <router-link to="/consulting" class="mnav__link" @click="closeMobile">Consulting</router-link>
           <router-link to="/contact" class="mnav__link" @click="closeMobile">Contact</router-link>
 

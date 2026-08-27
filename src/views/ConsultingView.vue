@@ -7,8 +7,8 @@
       accent="teal"
       cta-text="Talk to Our Consultants"
       cta-link="/contact"
-      secondary-text="See group capabilities"
-      secondary-link="/capabilities"
+      secondary-text="See group services"
+      secondary-link="/services"
     />
 
     <!-- The transformation path -->
