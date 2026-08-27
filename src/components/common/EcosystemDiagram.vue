@@ -9,7 +9,7 @@
     <div class="arch__stem" aria-hidden="true"></div>
 
     <!-- The three delivery businesses -->
-    <ul class="arch__row">
+    <ul class="arch__row" :style="{ '--cols': children.length }">
       <li
         v-for="business in children"
         :key="business.id"
@@ -103,8 +103,10 @@ const consulting = computed(() => businesses.find((b) => b.id === 'hitrace-consu
 
 /* Three businesses */
 .arch__row {
+  /* --cols comes from the data, so adding a business widens the row rather
+     than breaking it. */
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(var(--cols, 3), 1fr);
   gap: var(--space-5);
   width: 100%;
   position: relative;
@@ -115,8 +117,10 @@ const consulting = computed(() => businesses.find((b) => b.id === 'hitrace-consu
   content: "";
   position: absolute;
   top: 0;
-  left: calc((100% - 2 * var(--space-5)) / 6);
-  right: calc((100% - 2 * var(--space-5)) / 6);
+  /* Stops at the centre of the first and last column: with N columns of equal
+     width and N-1 gaps, that is (100% - (N-1)*gap) / 2N from each edge. */
+  left: calc((100% - (var(--cols, 3) - 1) * var(--space-5)) / (2 * var(--cols, 3)));
+  right: calc((100% - (var(--cols, 3) - 1) * var(--space-5)) / (2 * var(--cols, 3)));
   height: 2px;
   background: var(--arch-line);
 }
@@ -187,7 +191,7 @@ const consulting = computed(() => businesses.find((b) => b.id === 'hitrace-consu
   text-align: left;
 }
 
-@media (max-width: 760px) {
+@media (max-width: 900px) {
   .arch__row {
     grid-template-columns: 1fr;
     gap: var(--space-4);

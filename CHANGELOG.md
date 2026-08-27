@@ -5,6 +5,25 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased] — 2026-08-27
 
+### Changed
+
+- **Copy no longer commits to a business count.** "Four businesses. One technology
+  group." became "Specialized businesses. One technology group."; "One group. Four
+  specialisms." became "One group. Distinct specialisms."; and the same across the
+  Services, Careers, About and Businesses pages plus the route meta description. Adding a
+  fifth business no longer means rewriting headings.
+- **The business count now drives the layout instead of being assumed by it.** The
+  architecture diagram took its three columns from a hardcoded `repeat(3, 1fr)`; it now
+  reads `--cols` from the data and computes the connecting rail from it. The consulting
+  page's sibling grid moved to `auto-fit`.
+- **`interestAreas` (contact form) is derived from the businesses**, with an optional
+  `interestLabel` override for OneGPS Africa's "OneGPS Africa / Telematics" wording.
+- **The business profile route no longer hardcodes ids.** It was
+  `/businesses/:id(onegps-africa|dekaerp|hitrace-digital)`, so a new business would have
+  had a page but no route and no sitemap entry. The pattern is now built from the data.
+  Verified by temporarily adding a fifth business: it picked up a route and a sitemap
+  entry with no other edit.
+
 ### Added
 
 - **Services page rebuilt with real content.** Each of the four practices

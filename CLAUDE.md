@@ -34,6 +34,14 @@ tracking or telematics company.** That was the old site and it is wrong now. Tel
 belongs to OneGPS Africa. If a change would make the parent company look like a
 telematics vendor again, it is the wrong change.
 
+**Never commit to a number of businesses in copy.** The group has four today and may add
+more. Write "specialized businesses", not "four businesses"; "distinct specialisms", not
+"four specialisms". The same applies to structure: the count drives the architecture
+diagram's columns, the profile route pattern, the contact form's Area of Interest options
+and the sitemap — all derived from `src/data/businesses.js`. **Adding an entry there
+should be the only edit required.** If you find yourself editing a second place to
+accommodate a new business, that coupling is the bug.
+
 **Do not invent company facts.** No statistics, employee counts, years of experience,
 client counts, revenue, awards, partnerships, certifications, offices, testimonials or
 case studies unless they already exist in this repo. If information is missing, use a
@@ -62,7 +70,7 @@ in `animations.css`. Reuse the existing stack; don't add libraries without a rea
 
 | Path | Purpose |
 | --- | --- |
-| `src/data/businesses.js` | The four businesses, services, tags, CTAs, destinations; capability groups; pillars; consulting flow |
+| `src/data/businesses.js` | The businesses, services, tags, CTAs, destinations; capability groups; pillars; consulting flow |
 | `src/data/site.js` | Brand strings and the real published contact details |
 | `src/router/routes.js` | Route table (kept browser-free so build scripts can read it) |
 | `src/router/seo.js` | Per-route title, description, canonical, OG/Twitter tags |

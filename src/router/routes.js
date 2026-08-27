@@ -1,5 +1,18 @@
+import { businesses } from '../data/businesses.js'
+
 /**
- * The corporate site: the group, its four businesses, what it does and how to
+ * Profile-page ids, derived so adding a business to the data gives it a route
+ * and a sitemap entry without a second edit here. Consulting is excluded: it
+ * has its own /consulting page, and /businesses/hitrace-consulting redirects
+ * to it. An id outside this list still 404s, which is what we want for SEO.
+ */
+const profileIds = businesses
+  .filter((business) => business.id !== 'hitrace-consulting')
+  .map((business) => business.id)
+  .join('|')
+
+/**
+ * The corporate site: the group, its businesses, what it does and how to
  * reach it. Telematics detail now lives with OneGPS Africa, so the old
  * product URLs redirect to that business profile instead of 404ing.
  */
@@ -31,13 +44,13 @@ export const routes = [
     meta: {
       title: 'Our Businesses | HiTrace Solutions',
       description:
-        'OneGPS Africa, DekaERP, HiTrace Digital and HiTrace Consulting - four specialized technology businesses in the HiTrace Solutions group.'
+        'OneGPS Africa, DekaERP, HiTrace Digital and HiTrace Consulting - specialized technology businesses in the HiTrace Solutions group.'
     }
   },
   // Consulting has a full page of its own; keep the businesses URL pointing at it.
   { path: '/businesses/hitrace-consulting', redirect: '/consulting' },
   {
-    path: '/businesses/:id(onegps-africa|dekaerp|hitrace-digital)',
+    path: `/businesses/:id(${profileIds})`,
     name: 'Business',
     component: () => import('../views/BusinessView.vue')
   },

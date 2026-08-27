@@ -6,7 +6,8 @@ import {
 } from 'lucide-vue-next'
 
 /**
- * The four businesses in the HiTrace Solutions ecosystem.
+ * The businesses in the HiTrace Solutions ecosystem. Adding one here adds it
+ * to the nav, the footer, the homepage grid and the architecture diagram.
  *
  * `externalUrl` - when set, the card CTA leaves the corporate site.
  * `route`       - the in-site profile page for the business.
@@ -27,6 +28,7 @@ export const businesses = [
     longSummary:
       'OneGPS Africa is the dedicated telematics business in the HiTrace Solutions ecosystem. It gives operators live visibility of vehicles, assets and drivers, and turns that movement data into decisions they can act on.',
     relationship: 'A HiTrace Solutions company',
+    interestLabel: 'OneGPS Africa / Telematics',
     route: '/businesses/onegps-africa',
     externalUrl: 'https://onegps.africa',
     ctaLabel: 'Visit OneGPS Africa',
@@ -135,12 +137,12 @@ export const businessDestination = (business) => business.externalUrl || busines
 
 export const isExternal = (business) => Boolean(business.externalUrl)
 
-/** Area of Interest options for the contact form. */
+/**
+ * Area of Interest options for the contact form, derived from the businesses so
+ * a new one appears in the form without a second edit.
+ */
 export const interestAreas = [
-  'OneGPS Africa / Telematics',
-  'DekaERP',
-  'HiTrace Digital',
-  'HiTrace Consulting',
+  ...businesses.map((business) => business.interestLabel || business.name),
   'General Enquiry'
 ]
 
@@ -265,7 +267,7 @@ export const industries = [
   }
 ]
 
-/** The four pillars on the "Why HiTrace Solutions" section. */
+/** The pillars on the "Why HiTrace Solutions" section. */
 export const pillars = [
   { icon: Cloud, title: 'Technology', description: 'Building and deploying practical technology solutions.' },
   { icon: Brain, title: 'Innovation', description: 'Exploring emerging technologies and new ways of solving business problems.' },

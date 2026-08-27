@@ -39,7 +39,7 @@
             <li>
               <Building2 :size="18" aria-hidden="true" />
               <div>
-                <strong>Four businesses</strong>
+                <strong>Specialized businesses</strong>
                 <span>Telematics, enterprise software, digital experiences and consulting</span>
               </div>
             </li>

@@ -41,7 +41,7 @@
     <section class="section section--alt" aria-labelledby="architecture-title">
       <div class="container">
         <div class="section-header reveal">
-          <h2 id="architecture-title">One group. Four specialisms.</h2>
+          <h2 id="architecture-title">One group. Distinct specialisms.</h2>
           <p>
             HiTrace Solutions is the parent technology group. Each business below solves a
             different class of problem, and each one can be engaged on its own.
@@ -133,7 +133,7 @@
           <p class="eyebrow">What We Do</p>
           <h2 id="services-title">Services across the group</h2>
           <p>
-            Four disciplines that combine on most engagements — and stand alone when that is all
+            Disciplines that combine on most engagements — and stand alone when that is all
             you need.
           </p>
         </div>

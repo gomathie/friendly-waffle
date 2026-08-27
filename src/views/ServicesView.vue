@@ -2,7 +2,7 @@
   <div>
     <HeroSection
       eyebrow="Services"
-      title="Four practices. One group behind them."
+      title="Specialist practices. One group behind them."
       subtitle="Technology, digital, transformation and creative work — delivered by specialists who already work together, so the pieces fit when a project needs more than one of them."
       cta-text="Talk to Us"
       cta-link="/contact"
@@ -23,7 +23,7 @@
       </div>
     </nav>
 
-    <!-- Framing: what the four practices are for -->
+    <!-- Framing: what the practices are for -->
     <section class="section" aria-labelledby="intro-title">
       <div class="container">
         <div class="intro">
@@ -36,7 +36,7 @@
               fits the business, a plan that keeps stalling.
             </p>
             <p class="lead intro__lead">
-              The four practices below are how we answer those. Any one of them can be engaged on
+              The practices below are how we answer those. Any one of them can be engaged on
               its own; on larger programmes they run together, which is the point of keeping them
               in one group.
             </p>
@@ -55,7 +55,7 @@
       </div>
     </section>
 
-    <!-- The four practices in full -->
+    <!-- Each practice in full -->
     <section
       v-for="(group, index) in serviceGroups"
       :id="group.id"
@@ -130,7 +130,7 @@
           vehicle data usually also needs the finance system to receive it, the process around it
           redesigned, and the result explained to customers. The group is built so those pieces
           can be delivered by teams that already work together — and so no one is stuck
-          coordinating four suppliers who blame each other.
+          coordinating separate suppliers who blame each other.
         </p>
         <div class="together__actions">
           <router-link to="/consulting" class="btn btn--primary btn--lg">Talk to HiTrace Consulting</router-link>

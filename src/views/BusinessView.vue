@@ -77,7 +77,7 @@
       <div class="container">
         <div class="section-header reveal">
           <p class="eyebrow">Services</p>
-          <h2 id="services-title">Four ways we work</h2>
+          <h2 id="services-title">Our service areas</h2>
         </div>
         <div class="grid grid--4 stagger-children">
           <article v-for="group in business.serviceGroups" :key="group.title" class="svc">
