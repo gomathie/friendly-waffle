@@ -7,6 +7,13 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/).
 
 ### Changed
 
+- **Nav simplified: "Our Businesses" → "Solutions"; standalone "Consulting" item
+  removed.** Consulting is still reachable — it is one of the businesses listed in the
+  Solutions dropdown (desktop) and the Solutions list (mobile), plus the CTAs on the
+  Home and Services pages — so nothing is orphaned, only the duplicate top-level entry
+  is gone. `isBusinessesRoute` now also matches `/consulting`, so the Solutions nav
+  item highlights when that page is open (it had no route to an active state
+  otherwise, once its own nav item was removed).
 - **"Technology Group" is now "Technology Solutions".** "Group" reads as a large
   conglomerate in some markets and carries unwanted tax and pricing assumptions. The
   descriptor moved to a single source — `brand.descriptor` in `src/data/site.js` — and is

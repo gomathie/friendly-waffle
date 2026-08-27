@@ -27,7 +27,7 @@
               :aria-expanded="dropdownOpen"
               @click="dropdownOpen = !dropdownOpen"
             >
-              Our Businesses
+              Solutions
               <ChevronDown :size="14" class="nav__chevron" aria-hidden="true" />
             </button>
             <div v-show="dropdownOpen" class="dropdown">
@@ -60,9 +60,6 @@
             <router-link to="/industries" class="nav__link">Industries</router-link>
           </li>
           <li class="nav__item">
-            <router-link to="/consulting" class="nav__link">Consulting</router-link>
-          </li>
-          <li class="nav__item">
             <router-link to="/contact" class="nav__link">Contact</router-link>
           </li>
         </ul>
@@ -91,7 +88,7 @@
           <router-link to="/" class="mnav__link" @click="closeMobile">Home</router-link>
           <router-link to="/about" class="mnav__link" @click="closeMobile">About</router-link>
 
-          <p class="mnav__heading">Our Businesses</p>
+          <p class="mnav__heading">Solutions</p>
           <router-link
             v-for="business in businesses"
             :key="business.id"
@@ -112,7 +109,6 @@
 
           <router-link to="/services" class="mnav__link" @click="closeMobile">Services</router-link>
           <router-link to="/industries" class="mnav__link" @click="closeMobile">Industries</router-link>
-          <router-link to="/consulting" class="mnav__link" @click="closeMobile">Consulting</router-link>
           <router-link to="/contact" class="mnav__link" @click="closeMobile">Contact</router-link>
 
           <router-link to="/contact" class="btn btn--primary btn--lg mnav__cta" @click="closeMobile">
@@ -137,9 +133,12 @@ const mobileOpen = ref(false)
 const isMobile = ref(false)
 const dropdownOpen = ref(false)
 
-// The dropdown label lights up for any business profile page. /consulting has
-// its own top-level item, so it is deliberately not counted here.
-const isBusinessesRoute = computed(() => route.path.startsWith('/businesses'))
+// The dropdown label lights up for any business profile page, including
+// /consulting - it no longer has a standalone top-level nav item, so this is
+// its only route to an active state.
+const isBusinessesRoute = computed(
+  () => route.path.startsWith('/businesses') || route.path === '/consulting'
+)
 
 const closeMobile = () => {
   mobileOpen.value = false
