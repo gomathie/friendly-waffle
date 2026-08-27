@@ -96,6 +96,16 @@ export const routes = [
     }
   },
   {
+    path: '/vw',
+    name: 'VW Partner Portal',
+    component: () => import('../views/VwView.vue'),
+    meta: {
+      title: 'VW Partner Portal | HiTrace Solutions',
+      description:
+        'Access the VW monitoring platform provided by HiTrace Solutions.'
+    }
+  },
+  {
     path: '/careers',
     name: 'Careers',
     component: () => import('../views/CareersView.vue'),
